@@ -27,6 +27,10 @@ body {
   width: 100%;
 }
 
+.thumbnail iframe {
+	width: 100%;
+}
+
 .ratings {
   color: #d17581;
   padding-left: 10px;

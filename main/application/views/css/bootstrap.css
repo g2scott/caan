@@ -83,7 +83,7 @@ sup {
 sub {
   bottom: -.25em;
 }
-img {
+img, iframe {
   border: 0;
 }
 svg:not(:root) {
@@ -215,10 +215,10 @@ th {
     display: table-header-group;
   }
   tr,
-  img {
+  img, iframe {
     page-break-inside: avoid;
   }
-  img {
+  img, iframe {
     max-width: 100% !important;
   }
   p,
@@ -304,7 +304,7 @@ a:focus {
 figure {
   margin: 0;
 }
-img {
+img, iframe {
   vertical-align: middle;
 }
 .img-responsive {
@@ -3498,6 +3498,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a > img {
   max-width: none;
 }
+.nav > li > a > iframe {
+  max-width: none;
+}
 .nav-tabs {
   border-bottom: 1px solid #ddd;
 }
@@ -4422,6 +4425,16 @@ a.list-group-item.active > .badge,
   margin-right: auto;
   margin-left: auto;
 }
+
+.thumbnail > iframe,
+.thumbnail a > iframe {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 a.thumbnail:hover,
 a.thumbnail:focus,
 a.thumbnail.active {
@@ -5439,6 +5452,15 @@ button.close {
   height: auto;
   line-height: 1;
 }
+
+.carousel-inner > .item > iframe,
+.carousel-inner > .item > a > iframe {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  line-height: 1;
+}
+
 .carousel-inner > .active,
 .carousel-inner > .next,
 .carousel-inner > .prev {
