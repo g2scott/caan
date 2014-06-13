@@ -1,40 +1,49 @@
-<html>
-<head>
-</head>
-<body>
-	<?php
-		if(isset($message)){
-			echo $message;
-		}
-	
-	?>	
-<h1>Login Form</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link rel="shortcut icon" href="../../assets/ico/favicon.ico"> -->
 
-      <p>CAAN members please login</p>
+    <title>Signin Template for Bootstrap</title>
 
-      <!-- this tag starts the form, gives the   -->
-      <!-- method of sending information and the -->
-      <!-- location of form scripts              -->
-      <form method = "post" action = "<?=site_url("login"); ?>">
+    <!-- Bootstrap core CSS -->
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
 
-         
+    <!-- Custom styles for this template -->
+    <link href="../../assets/css/signin.css" rel="stylesheet">
 
-         <!-- <input type = "text"> inserts a text box -->
-         <p><label>Name:
-               <input name = "user_name" type = "text" size = "25" maxlength = "30" />
-            </label></p>
-			<label>Password:
-	               <input name = "password" type = "password" size = "25" maxlength = "30" />
-	            </label></p>
-  
-         <p>
-            <!-- input types "submit" and "reset" insert  -->
-            <!-- buttons for submitting and clearing the  -->
-            <!-- form's contents                          -->
-            <input type = "submit" value ="click to submit" name="login"/>
-            <input type = "reset" value ="click to clear" />
-         </p>   
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <form class="form-signin" role="form" action="<?=site_url("login"); ?>" method="post">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input type="text" class="form-control" placeholder="User Name" name="username" required autofocus>
+        <input type="password" class="form-control" placeholder="Password" name="password" required>
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
-</body>
+
+    </div> <!-- /container -->
+
+
+    <script src="../../assets/js/jquery-1.10.2.js"></script>
+    <script src="../../assets/js/bootstrap.js"></script>
+  </body>
 </html>

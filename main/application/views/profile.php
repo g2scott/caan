@@ -1,158 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<!doctype html>
-<html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Page</title>
-    <link href="../assets/css/main.css" rel="stylesheet">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-	<style>
-	
-/*	#footer {border-style: red 10px solid;}*/
-	#user_infor, #video_list {border-style: dotted; border-color: red;}
-	
+    <title>Shop Homepage Template for Bootstrap</title>
 
-	#footer_text ul {
-		font-size:small; 
-		margin-top:10px;
-		float:left;
-	}
-	#footer_text ul li {
-		display: inline;
-		margin-left: 2px;
-		margin-right: 2px;
-	}	
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
 
-	#footer_text p {
-		float:right; 
-		font-size:small;
-		margin-left:60px; 
-		padding-top:5px; 
-		margin-top:10px;
-	}
-	.iframe {
-		float:left;
-	}
-	.video_row {
-		clear:both;
-	}
-	
-	</style>
+    <!-- Add custom CSS here -->
+    <link href="../assets/css/shop-homepage.css" rel="stylesheet">
+	<link href="../assets/css/responsive_video.css" rel="stylesheet">
+
 </head>
 
 <body>
 
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#home">Start Bootstrap</a>
+            </div>
 
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#about">About</a>
+                    </li>
+                    <li><a href="#services">Services</a>
+                    </li>
+                    <li><a href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
 
-<div class="container">
-  <div class="header">
-	
-	
-		<a href="#"><img src="" alt="CAAN_Logo" name="CAAN_Logo" width="20%" height="90" id="Insert_logo" style="background: #8090AB; display:block; float:left" /></a>
-	
+    <div class="container">
 
-<div><p>vincent signin</p> </div>	
+        <div class="row">
 
-<div><a href=""></a></div> 
+            <div class="col-md-3">
+                <p class="lead">Shop Name</p>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">Printable</a>
+                    <a href="#" class="list-group-item">Cupcake Wrappers</a>
+                    <a href="#" class="list-group-item">Authentic Dragon Bones</a>
+                </div>
+            </div>
 
-<div style="clear:both"></div>
-	
-    <!-- end .header --></div>
-  
-  <div class="content">
-	<div id="user_infor"style="margin-left:60px;">
-	<div id="user_pic" style="float:left;">
-		<img src="../assets/imgs/vincent_small.jpg" alt="CAAN_Logo" name="CAAN_Logo" width="260px" height="370px" id="Insert_logo" style="background: #8090AB; display:block; float:left" />
-	</div>
-	<div id="about_me" style="float:right;">
-		<p>USER NAME (get from database) <br/>
-		<h3><?php 
-				if(isset($user_name))
-				{
-					$g_user_name = $user_name;
-				}
-		echo $g_user_name; ?></h3>
-		</p>
-		<div id="profile">
-			
-			<h3><?php 
-					if(isset($about_me))
-					{
-						$g_about_me = $about_me;
-					}
-			
-				echo $about_me;
-				?></h3>
-			<br/>
-			<p>
-				above information came from backend of<br /> user table about_me_text field
-			</p>	
-				
-			
-		</div>
-	</div>
-	<div style="float:right">
-		<h5>Add new video</h5>
-		<form action="<?=site_url("user_page/create_video"); ?>" method="post">
-		  <input type="submit" value="Add new video">
-		</form>
-		
-	</div>
-	
-	<div style="clear:both"></div>
-	<!-- end #user_infor --></div>
-	
-	
-	
-	
-	<div id="video_list" style="margin-left:30px;">
-    <h1>Videos list</h1>
-   
-       <div class="video_row">
- 		<div class="iframe">
-            <iframe class='sproutvideo-player' src='//videos.sproutvideo.com/embed/1c9bd9b01d18e7cf94/ea7ab276cb220754?type=sd' width='100' height='100' frameborder='0' allowfullscreen></iframe>
-        <!-- end #iframe --></div>
-   		<div class="video_describe" style="float:right"><p>this video is about the football player.</p></div>
-		<!-- end .video_row --></div>
-		
-	
+            <div class="col-md-9">
 
-	       <div class="video_row">
-	 		<div class="iframe">
-	            <iframe class='sproutvideo-player' src='//videos.sproutvideo.com/embed/1c9bd9b01d18e7cf94/ea7ab276cb220754?type=sd' width='100' height='100' frameborder='0' allowfullscreen></iframe>
-	        <!-- end #iframe --></div>
-	   		<div class="video_describe" style="float:right"><p>this video is about the football player.</p></div>
-			<!-- end .video_row --></div>
-			
+                <div class="row carousel-holder">
+
+                    <div class="col-md-12">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                </div>
+                                <div class="item">
+                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                </div>
+                                <div class="item">
+                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
 	
-		       <div class="video_row">
-		 		<div class="iframe">
-		            <iframe class='sproutvideo-player' src='//videos.sproutvideo.com/embed/1c9bd9b01d18e7cf94/ea7ab276cb220754?type=sd' width='100' height='100' frameborder='0' allowfullscreen></iframe>
-		        <!-- end #iframe --></div>
-		   		<div class="video_describe" style="float:right"><p>this video is about the football player.</p></div>
-				<!-- end .video_row --></div>
-				<div style="clear:both"></div>
-		
-    <!-- end #video_list --></div>
-    
+	<!-- ####### need using JavaScript to built below part ####### -->
+	<!-- information need for this block is: -->
+	<!-- 1. video src -->
+	<!-- 2. description -->
+	<!-- 3. rating information -->
 
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+						<div class="thumbnail">
+							<div class="span6">
+								
+                        		<div class="flex-video widescreen"><iframe src='//videos.sproutvideo.com/embed/1c9bd9b01d18e7cf94/ea7ab276cb220754?type=sd' allowfullscreen></iframe></div>
+							
+								<div class="caption">	
+	                                <h4 class="pull-right">$24.99</h4>
+	                                <h4><a href="#">First Product</a>
+	                                </h4>
+	                                <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
+	                            </div>
 
+                            	<div class="ratings">
+	                                <p class="pull-right">15 reviews</p>
+	                                <p>
+	                                    <span class="glyphicon glyphicon-star"></span>
+	                                    <span class="glyphicon glyphicon-star"></span>
+	                                    <span class="glyphicon glyphicon-star"></span>
+	                                    <span class="glyphicon glyphicon-star"></span>
+	                                    <span class="glyphicon glyphicon-star"></span>
+	                                </p>
+	                            </div>
+                    		</div>
+						</div>
+					</div>	
+					
+	<!-- ####### need using JavaScript to built above part ####### -->		
+					
 
-    <!-- end .content --></div>
-  <div id="footer" style="clear:both; display:block;">
-    	<div id="footer_text">
-			<ul>
-				<li>Contact us |</li>
-				<li>Privacy |</li>
-				<li>About CAAN |</li>
-				<li> Terms and Condition</li>
-			</ul>
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="http://placehold.it/320x150" alt="">
+                            <div class="caption">
+                                <h4 class="pull-right">$64.99</h4>
+                                <h4><a href="#">Second Product</a>
+                                </h4>
+                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">12 reviews</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
 
-			<p>Copyright caan 2014</p>
-		</div>
-		<div style="clear:both"></div>
-    <!-- end #footer --></div>
-  <!-- end .container --></div>
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="http://placehold.it/320x150" alt="">
+                            <div class="caption">
+                                <h4 class="pull-right">$74.99</h4>
+                                <h4><a href="#">Third Product</a>
+                                </h4>
+                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">31 reviews</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="http://placehold.it/320x150" alt="">
+                            <div class="caption">
+                                <h4 class="pull-right">$84.99</h4>
+                                <h4><a href="#">Fourth Product</a>
+                                </h4>
+                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">6 reviews</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="http://placehold.it/320x150" alt="">
+                            <div class="caption">
+                                <h4 class="pull-right">$94.99</h4>
+                                <h4><a href="#">Fifth Product</a>
+                                </h4>
+                                <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">18 reviews</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <h4><a href="#">Like this template?</a>
+                        </h4>
+                        <p>If you like this template, then check out <a target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this tutorial</a> on how to build a working review system for your online store!</p>
+                        <a class="btn btn-primary" target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">View Tutorial</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <div class="container">
+
+        <hr>
+
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Company 2013 - Template by <a href="http://maxoffsky.com/">Maks</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- JavaScript -->
+    <script src="../assets/js/jquery-1.10.2.js"></script>
+    <script src="../assets/js/bootstrap.js"></script>
+
 </body>
+
 </html>

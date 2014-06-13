@@ -71,7 +71,7 @@ class User extends CI_Model {
 	
 	public function find_user_password($login)
 	{
-		$query_string = "select password from user where login='{$login}'";
+		$query_string = "select password from users where login='{$login}'";
 		$query = $this->db->query($query_string);
 		
 		if ($query->num_rows() > 0) {			

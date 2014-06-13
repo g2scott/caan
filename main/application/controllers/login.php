@@ -14,19 +14,19 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
-		if (isset($_POST['login'])) 
+		if (isset($_POST['username'])) 
 		{	
 			/**
 			 *  user login validation here
 			 *
 			 * need add salt and blowfish later 
 			 */
-			$login = $_POST['user_name'];
-			$this->fb->info($login, "what login is");
+			$login = $_POST['username'];
+			$this->fireb->info($login, "what login is");
 			$user_password = $_POST['password'];
 			$password = $this->user->find_user_password($login);
-			$this->fb->info($password, "info");
-			$this->fb->info($user_password, "info");
+			$this->fireb->info($password, "info");
+			$this->fireb->info($user_password, "info");
 			
 			
 			if($user_password == $password)
@@ -44,11 +44,13 @@ class Login extends CI_Controller {
 				$this->load->view('profile', $data);
 				
 			}else{
-				$data["message"] = "username/password not match.";
-				$this->load->view('login_form', $data);
-			}
+					$data["message"] = "username/password not match.";
+					// $this->login->index();
+					$this->load->view('login_form', $data);
+				}
 			
 		}elseif(isset($_SESSION['user'])) {
+			$this->fireb->info("printed profile form here");
 			$this->load->view('profile');
 		}else{
 			$this->load->view('register_form');
