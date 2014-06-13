@@ -49,9 +49,9 @@ class Login extends CI_Controller {
 					$this->load->view('login_form', $data);
 				}
 			
-		}elseif(isset($_SESSION['user'])) {
-			$this->fireb->info("printed profile form here");
-			$this->load->view('profile');
+		// }elseif(isset($_SESSION['user'])) {
+		// 			$this->fireb->info("printed profile form here");
+		// 			$this->load->view('profile');
 		}else{
 			$this->load->view('register_form');
 		}		
@@ -65,11 +65,11 @@ class Login extends CI_Controller {
 	
 	public function register()
 	{
-		if (isset($_POST['login'])) 
+		if (isset($_POST['username'])) 
 		{
 			//user has tried registering, insert them into database
 			$email = $_POST['email'];
-			$login = $_POST['login'];
+			$login = $_POST['username'];
 			$first = $_POST['first'];
 			$last = $_POST['last'];
 			$password = $_POST['password'];
@@ -78,7 +78,7 @@ class Login extends CI_Controller {
 			// call user model register function, return boolean
 			$this->user->register($email, $login, $first, $last, $password, $about_me_text);
 			// $message = "insert successful."
-			redirect('login');
+			redirect('login/login_user');
 		}else{
 			// user has not tried registering, bring up registeration information  
 			$this->load->view('database_test');

@@ -38,14 +38,14 @@ class User extends CI_Model {
 			'about_me_text' => $about_me_text
 		);
 		// active record, database function
-		$this->db->insert('user', $new_user);
+		$this->db->insert('users', $new_user);
 		
 		return true;
 	}
 	
 	public function find_user_id($login)
 	{
-		$query_string = "select id from user where login='{$login}'";
+		$query_string = "select id from users where login='{$login}'";
 		$query = $this->db->query($query_string);
 		if ($query->num_rows() > 0) {
 			foreach ($query->result() as $row) {
@@ -56,7 +56,7 @@ class User extends CI_Model {
 	
 	public function find_user_by_id($user_id)
 	{
-		$query_string = "select * from user where id={$user_id}";
+		$query_string = "select * from users where id={$user_id}";
 		$query = $this->db->query($query_string);
 		if ($query->num_rows() > 0)
 		{
