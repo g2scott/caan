@@ -11,10 +11,10 @@
     <title>Signin Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../assets/css/signin.css" rel="stylesheet">
+    <link href="../../assets/css/signin.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -36,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo site_url('frontpage') ?>">Start Bootstrap</a>
+                <a class="navbar-brand" href="<?php echo site_url() ?>">Start Bootstrap</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -61,38 +61,35 @@
 
     <div class="container">
 
-      <form class="form-signin" role="form" action="<?=site_url("login/register"); ?>" method="post">
-        <h2 class="form-signin-heading">sign up</h2>
-        <input type="text" class="form-control" placeholder="First Name" name="first" required autofocus>
-		<input type="text" class="form-control" placeholder="Last Name" name="last" required autofocus>
-		<input type="email" class="form-control" placeholder="Email" name="email" required autofocus>
-		<input type="text" class="form-control" placeholder="User Name" name="username" required autofocus>
-        <input type="password" class="form-control" placeholder="password" name="password" required>
-		<!-- <textarea> creates a multiline textbox -->
-            <textarea class="form-control" placeholder="About Me" name = "about_me_text" rows = "4" cols = "36" autofocus></textarea>
-        
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+      <form class="form-signin" role="form" action="<?=site_url("account/Login"); ?>" method="post">
+        <h2 class="form-signin-heading">sign in</h2>
+        <input type="text" class="form-control" placeholder="User Name" name="username" required autofocus>
+        <input type="password" class="form-control" placeholder="Password" name="password" required>
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
 
     </div> <!-- /container -->
-		
-		<div class="container">
 
-	        <hr>
+	<div class="container">
 
-	        <footer>
-	            <div class="row">
-	                <div class="col-lg-12">
-	                    <!-- <p>Copyright &copy; Company 2013 - Template by <a href="http://maxoffsky.com/">Maks</a> -->
-	                    </p>
-	                </div>
-	            </div>
-	        </footer>
+        <hr>
 
-	    </div>
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- <p>Copyright &copy; Company 2013 - Template by <a href="http://maxoffsky.com/">Maks</a> -->
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
 
 
-    <script src="../assets/js/jquery-1.10.2.js"></script>
-    <script src="../assets/js/bootstrap.js"></script>
+    <script src="../../assets/js/jquery-1.10.2.js"></script>
+    <script src="../../assets/js/bootstrap.js"></script>
   </body>
 </html>

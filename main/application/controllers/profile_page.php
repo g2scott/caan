@@ -5,7 +5,7 @@ class Profile_page extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		// users moede will be used in this whole class 
+		// users model will be used in this whole class 
 		$this->load->model('video');
 		$this->load->model('user');
 		// need load helper before use it

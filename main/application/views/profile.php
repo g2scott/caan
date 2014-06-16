@@ -10,11 +10,11 @@
     <title>Shop Homepage Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../../assets/css/bootstrap.css" rel="stylesheet">
 
     <!-- Add custom CSS here -->
-    <link href="../assets/css/shop-homepage.css" rel="stylesheet">
-	<link href="../assets/css/responsive_video.css" rel="stylesheet">
+    <link href="../../assets/css/shop-homepage.css" rel="stylesheet">
+	<link href="../../assets/css/responsive_video.css" rel="stylesheet">
 
 </head>
 
@@ -41,7 +41,7 @@
                     </li>
                     <li><a href="#contact">Contact</a>
                     </li>
-					<li><a href=" <?php echo site_url() ?>/login/logout_user">Log out</a>
+					<li><a href=" <?php echo base_url() ?>/index.php">Log out</a>
                     </li>
                 </ul>
             </div>
