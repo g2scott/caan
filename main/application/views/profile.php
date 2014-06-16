@@ -239,7 +239,7 @@
     <script src="../assets/js/bootstrap.js"></script>
     <script src="../assets/js/profilepage.js"></script>
 	<script>
-	var url = "<?php echo $url ?>"
+	var url = "<?php echo $url ?>";
 	
 	window.onload = load(url);
 	

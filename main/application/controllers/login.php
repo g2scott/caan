@@ -42,7 +42,8 @@ class Login extends CI_Controller {
 				// 			$last_name = $row->last;
 				// 			$first_name = $row->first;
 				// 			$data["user_name"] = $first_name . " " . $last_name;
-				$this->load->view('profile');
+				$data['url'] = site_url();
+				$this->load->view('profile', $data);
 				
 			}else{
 					$data["message"] = "username/password not match.";

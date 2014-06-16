@@ -9,13 +9,14 @@ function generateVideoTags(data)
 
 
 
-function load () {
+function load (url) {
 	// var result = <?php echo $category_name ?>
 	// triger codeigniter controller to pick return
 	$.ajaxSetup({
 		timeout: 6000
 	});
-	$.getJSON('http://localhost/~vincent/caan/main/index.php/profile_page/build_profile', function(data){
+	console.log(url);
+	$.getJSON(url + '/profile_page/build_profile', function(data){
 		var userName = data[0].user_name;
 		var aboutMe = data[0].about_me_text;
 		console.log(userName);
