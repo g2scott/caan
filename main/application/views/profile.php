@@ -68,8 +68,10 @@
 	                	</div>
 						
 				
-				<a class="btn btn-primary" target="_blank" href=""> Edit Profile </a>
-				<a class="btn btn-primary" target="_blank" href="">Add New Video</a>
+				<!-- <a class="btn btn-primary" target="_blank" href="#edit_profile"> Edit Profile </a> -->
+				<a class="btn btn-primary" href="#edit_profile"> Edit Profile </a>
+				<!-- <a class="btn btn-primary" target="_blank" href="#edit_profile">Add New Video</a> -->
+				<a class="btn btn-primary" href="#edit_profile">Add New Video</a>
             </div>
 
             <div class="col-md-7">

@@ -51,9 +51,10 @@ class Login extends CI_Controller {
 					$this->load->view('login_form', $data);
 				}
 			
-		}elseif(isset($_SESSION['user_name'])) {
+		}elseif(isset($_SESSION['user_name'])) { // this need more specific 
 			//$this->fireb->info("printed profile form here");
-			$this->load->view('profile');
+			$data['url'] = site_url();
+			$this->load->view('profile', $data);
 		}else{
 			$this->load->view('register_form');
 		}		
