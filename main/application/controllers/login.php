@@ -52,7 +52,7 @@ class Login extends CI_Controller {
 				}
 			
 		}elseif(isset($_SESSION['user_name'])) {
-			$this->fireb->info("printed profile form here");
+			//$this->fireb->info("printed profile form here");
 			$this->load->view('profile');
 		}else{
 			$this->load->view('register_form');
