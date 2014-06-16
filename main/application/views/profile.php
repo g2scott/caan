@@ -41,7 +41,7 @@
                     </li>
                     <li><a href="#contact">Contact</a>
                     </li>
-					<li><a href="http://localhost/~vincent/caan/main/index.php/login/logout_user">Log out</a>
+					<li><a href=" <?php echo site_url() ?>/login/logout_user">Log out</a>
                     </li>
                 </ul>
             </div>
