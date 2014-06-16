@@ -4,9 +4,9 @@ class Video extends CI_Model {
 	
 	var $id = '';
 	// var $v_id = '';
+	var $name = '';
 	var $link = '';
-	var $thumbnail = '';
-	var $describe = '';
+	var $description = '';
 	var $type = '';
 	
 	public function __construct()
@@ -34,24 +34,41 @@ class Video extends CI_Model {
 		return true;
 	}
 	
+	/**
+	 * find video according user id or email
+	 * @param string $user_id
+	 * @param boolean $public A context variable 
+	 * @return array $page
+	 * @return null
+	 */
+	public function find_video_by_user($user_id)
+	{
+		$query_string = "select * from videos where u_id = '{$user_id}'";
+		$query = $this->db->query($query_string);
+		if ($query->num_rows() > 0) {
+			$result_array = $query->result_array();
+			$result_json = json_encode($result_array);
+			return $result_json;
+		}
+	}
+	
 	public function find_video_catgories()
 	{
-		$query_string = "select * from videos";
+		$query_string = "select * from videos order by type";
 		$query = $this->db->query($query_string);
 		if ($query->num_rows() > 0)
 		{
-		   foreach ($query->result() as $row)
-		   {
-
-		      return $row;
-		   }
+			$result_array = $query->result_array();
+			// $this->fireb->log($result_array, 'result array');
+			$result_json = json_encode($result_array);
+		   return $result_json;
 		}
 		
 	}
 	
 	public function find_video_links()
 	{
-		$query_string = "select link from videos";
+		$query_string = "select * from videos";
 		$query = $this->db->query($query_string);
 		if ($query->num_rows() > 0)
 		{
@@ -126,17 +143,7 @@ class Video extends CI_Model {
 
 	
 	
-	/**
-	 * find video according user id or email
-	 * @param string $user_id
-	 * @param boolean $public A context variable 
-	 * @return array $page
-	 * @return null
-	 */
-	public function find_video_by_user($user_id, $public=true)
-	{
-		
-	}
+	
 	
 	public function find_video_by_categlory($value='')
 	{

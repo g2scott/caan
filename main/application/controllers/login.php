@@ -14,6 +14,7 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
+		// if(isset(true))
 		if (isset($_POST['username'])) 
 		{	
 			/**
@@ -21,27 +22,27 @@ class Login extends CI_Controller {
 			 *
 			 * need add salt and blowfish later 
 			 */
-			$login = $_POST['username'];
-			$this->fireb->info($login, "what login is");
+			$user_name = $_POST['username'];
+			// $this->fireb->info($user_name, "what login is");
 			$user_password = $_POST['password'];
-			$password = $this->user->find_user_password($login);
-			$this->fireb->info($password, "info");
-			$this->fireb->info($user_password, "info");
+			$password = $this->user->find_user_password($user_name);
+			// $this->fireb->info($password, "info");
+			// $this->fireb->info($user_password, "info");
 			
 			
 			if($user_password == $password)
 			{	
-				$user_id = $this->user->find_user_id($login);
-				$_SESSION['user'] = $user_id;
-				$_SESSION["login"] = $login;
+				$user_id = $this->user->find_user_id($user_name);
+				$_SESSION['user_id'] = $user_id;
+				$_SESSION['user_name'] = $user_name;
 				
-				//$user_id = 2; // this hard code to test
-				$row = $this->user->find_user_by_id($user_id);
-				$data["about_me"] = $row->about_me_text;
-				$last_name = $row->last;
-				$first_name = $row->first;
-				$data["user_name"] = $first_name . " " . $last_name;
-				$this->load->view('profile', $data);
+				// //$user_id = 2; // this hard code to test
+				// 			$row = $this->user->find_user_by_id($user_id);
+				// 			$data["about_me"] = $row->about_me_text;
+				// 			$last_name = $row->last;
+				// 			$first_name = $row->first;
+				// 			$data["user_name"] = $first_name . " " . $last_name;
+				$this->load->view('profile');
 				
 			}else{
 					$data["message"] = "username/password not match.";
@@ -49,14 +50,13 @@ class Login extends CI_Controller {
 					$this->load->view('login_form', $data);
 				}
 			
-		// }elseif(isset($_SESSION['user'])) {
-		// 			$this->fireb->info("printed profile form here");
-		// 			$this->load->view('profile');
+		}elseif(isset($_SESSION['user_name'])) {
+			$this->fireb->info("printed profile form here");
+			$this->load->view('profile');
 		}else{
 			$this->load->view('register_form');
 		}		
 	}
-	
 	
 	public function login_user()
 	{
@@ -88,5 +88,11 @@ class Login extends CI_Controller {
 		
 	}
 
-
+	public function logout_user()
+	{
+		$_SESSION['user_id'] = null;
+		$_SESSION['user_name'] = null;
+		redirect('login/login_user');
+	}
+	
 }

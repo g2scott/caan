@@ -13,13 +13,27 @@ class Main_page extends CI_Controller {
 	
 	public function index()
 	{
-		$catgory_result = $this->video->find_video_catgories();
-		$link_result = $this->video->find_video_links();
-		$data['category_name'] = $catgory_result->type;
-		$data['video_links'] = $link_result->link;
-		$this->load->view('index.html', $data);
+		
+		// $link_result = $this->video->find_video_links();
+		$data['category_name'] = $this->video->find_video_catgories();
+		$data['url'] = site_url();
+		// $data['video_links'] = $link_result->link;
+		 $this->load->view('include/header');
+	     $this->load->view('landing.html', $data);
+	     $this->load->view('include/footer');
 	}
 	
+	public function build_category()
+	{
+		$this->load->model('video');
+		echo $this->video->find_video_catgories(); // need echo or print to ajax response
+		// return $category_result;
+	}
+	
+	public function built_video_list()
+	{
+		
+	}
 	
 	
 

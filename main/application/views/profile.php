@@ -41,6 +41,8 @@
                     </li>
                     <li><a href="#contact">Contact</a>
                     </li>
+					<li><a href="http://localhost/~vincent/caan/main/index.php/login/logout_user">Log out</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -52,49 +54,29 @@
 
         <div class="row">
 
-            <div class="col-md-3">
-                <p class="lead">Shop Name</p>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">Printable</a>
-                    <a href="#" class="list-group-item">Cupcake Wrappers</a>
-                    <a href="#" class="list-group-item">Authentic Dragon Bones</a>
-                </div>
+            <div class="col-md-5">
+				
+					
+	                	<p class="lead" id="user_name">User Name (getting from database)</p>
+		                <div class="list-group">
+							<div><img src="http://placehold.it/250x300" class="list-group-item thumbnail" style="text-align: center"></div>
+					
+				
+						
+	                    <div class="list-group-item" id="about_me">About Me</div>
+						
+	                	</div>
+						
+				
+				<a class="btn btn-primary" target="_blank" href=""> Edit Profile </a>
+				<a class="btn btn-primary" target="_blank" href="">Add New Video</a>
             </div>
 
-            <div class="col-md-9">
+            <div class="col-md-7">
 
-                <div class="row carousel-holder">
-
-                    <div class="col-md-12">
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="http://placehold.it/800x300" alt="">
-                                </div>
-                            </div>
-                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="row">
+           
+				
+                <div class="row" id="list_video">
 	
 	<!-- ####### need using JavaScript to built below part ####### -->
 	<!-- information need for this block is: -->
@@ -102,7 +84,7 @@
 	<!-- 2. description -->
 	<!-- 3. rating information -->
 
-                    <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="col-sm-6 col-lg-6 col-md-6">
 						<div class="thumbnail">
 							<div class="span6">
 								
@@ -132,7 +114,7 @@
 	<!-- ####### need using JavaScript to built above part ####### -->		
 					
 
-                    <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="col-sm-6 col-lg-6 col-md-6">
                         <div class="thumbnail">
                             <img src="http://placehold.it/320x150" alt="">
                             <div class="caption">
@@ -154,7 +136,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="col-sm-6 col-lg-6 col-md-6">
                         <div class="thumbnail">
                             <img src="http://placehold.it/320x150" alt="">
                             <div class="caption">
@@ -176,7 +158,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="col-sm-6 col-lg-6 col-md-6">
                         <div class="thumbnail">
                             <img src="http://placehold.it/320x150" alt="">
                             <div class="caption">
@@ -198,7 +180,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="col-sm-6 col-lg-6 col-md-6">
                         <div class="thumbnail">
                             <img src="http://placehold.it/320x150" alt="">
                             <div class="caption">
@@ -220,7 +202,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="col-sm-6 col-lg-6 col-md-6">
                         <h4><a href="#">Like this template?</a>
                         </h4>
                         <p>If you like this template, then check out <a target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this tutorial</a> on how to build a working review system for your online store!</p>
@@ -255,6 +237,8 @@
     <!-- JavaScript -->
     <script src="../assets/js/jquery-1.10.2.js"></script>
     <script src="../assets/js/bootstrap.js"></script>
+    <script src="../assets/js/profilepage.js"></script>
+	
 
 </body>
 

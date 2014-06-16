@@ -4,12 +4,12 @@
 class User extends CI_Model {
 
 	var $email = '';
-	var $login = '';
+	var $user_name = '';
 	var $id = '';
 	var $first = '';
 	var $last = '';
 	var $password = '';
-	var $salt = '';
+	var $img_path = '';
 	var $about_me_text = '';
 
     public function __construct()
@@ -43,9 +43,9 @@ class User extends CI_Model {
 		return true;
 	}
 	
-	public function find_user_id($login)
+	public function find_user_id($user_name)
 	{
-		$query_string = "select id from users where login='{$login}'";
+		$query_string = "select id from users where user_name='{$user_name}'";
 		$query = $this->db->query($query_string);
 		if ($query->num_rows() > 0) {
 			foreach ($query->result() as $row) {
@@ -58,20 +58,16 @@ class User extends CI_Model {
 	{
 		$query_string = "select * from users where id={$user_id}";
 		$query = $this->db->query($query_string);
-		if ($query->num_rows() > 0)
-		{
-		   foreach ($query->result() as $row)
-		   {
-		     
-		      return $row;
-		   }
+		if ($query->num_rows() > 0) {
+		   $result = $query->result_array();
+			return $result;
 		}
 		
 	}
 	
-	public function find_user_password($login)
+	public function find_user_password($user_name)
 	{
-		$query_string = "select password from users where login='{$login}'";
+		$query_string = "select password from users where user_name='{$user_name}'";
 		$query = $this->db->query($query_string);
 		
 		if ($query->num_rows() > 0) {			
