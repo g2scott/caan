@@ -7,15 +7,16 @@ function generateVideoTags(data)
 	return outputVideo;
 }
 
-window.onload = load();
 
-function load () {
+
+function load (url) {
 	// var result = <?php echo $category_name ?>
 	// triger codeigniter controller to pick return
 	$.ajaxSetup({
 		timeout: 6000
 	});
-	$.getJSON('http://localhost/~vincent/caan/main/index.php/main_page/build_category', function(data){
+	console.log(url);
+	$.getJSON( url + '/main_page/build_category', function(data){
 		// console.log(data[1].type);
 		// console.log(data.length);
 		var outputVideo = '';

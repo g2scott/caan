@@ -7,7 +7,7 @@ function generateVideoTags(data)
 	return outputVideo;
 }
 
-window.onload = load();
+
 
 function load () {
 	// var result = <?php echo $category_name ?>

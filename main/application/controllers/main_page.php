@@ -26,7 +26,10 @@ class Main_page extends CI_Controller {
 	public function build_category()
 	{
 		$this->load->model('video');
+		
 		echo $this->video->find_video_catgories(); // need echo or print to ajax response
+		//$data['url'] = site_url();
+		//echo $data;
 		// return $category_result;
 	}
 	
