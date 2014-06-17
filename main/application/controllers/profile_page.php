@@ -1,11 +1,13 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php 
+session_start();
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Profile_page extends CI_Controller {
 	
 	public function __construct()
 	{
 		parent::__construct();
-		session_start();
+		//session_start();
 	}
 	
 	
