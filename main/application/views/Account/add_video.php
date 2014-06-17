@@ -8,7 +8,7 @@
 	
 	<h1>Add Video</h1>
 
-	
+								//post to srpoutvideo? 
 		<form method = "post" action = "<?=site_url("user_page/create_video"); ?>">
 
 	         <p>
