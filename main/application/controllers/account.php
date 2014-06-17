@@ -50,12 +50,12 @@ class Account extends CI_Controller {
 	
 	public function login_user()
 	{
-		$this->load->view('account/login_form');
+		$this->load->view('Account/login_form');
 	}
 	
 	public function register_user()
 	{
-		$this->load->view('account/register_form');
+		$this->load->view('Account/register_form');
 	}
 	
 	function createNew() {
