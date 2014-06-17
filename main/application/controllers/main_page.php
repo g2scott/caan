@@ -5,14 +5,12 @@ class Main_page extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		// users moede will be used in this whole class 
-		$this->load->model('video');
-		// need load helper before use it
-		// $this->load->helper('url');
+		session_start();
 	}
 	
 	public function index()
 	{
+		$this->load->model('video');
 		
 		// $link_result = $this->video->find_video_links();
 		$data['category_name'] = $this->video->find_video_catgories();
