@@ -12,6 +12,17 @@ class Account extends CI_Controller {
 		session_start(); 		// call session start
 	}
 
+	
+// 	function index() {
+// 		$data['user']=$_SESSION['user'];
+// 		if (isset($_SESSION['errmsg'])) {
+// 			$data['errmsg']=	$_SESSION['errmsg'];
+// 			unset($_SESSION['errmsg']);
+// 		}
+// 		$this->load->view('Account/profile',$data);
+// 	}
+	
+	
 // 	public function index()
 // 	{
 // 		// if(isset(true))
@@ -84,8 +95,8 @@ class Account extends CI_Controller {
 				$data['user']=$user;
 				$data['url'] = site_url();
 	
-				$this->load->view('profile', $data);
-				//redirect('profile', 'refresh'); //redirect to the main application page
+				$this->load->view('Account/profile', $data);
+				//redirect('profile_page/index', 'refresh'); //redirect to the main application page
 			}
 			else {
 				$data['errorMsg']='Incorrect username or password!';

@@ -19,7 +19,7 @@ class Main_page extends CI_Controller {
 		$data['url'] = site_url();
 		// $data['video_links'] = $link_result->link;
 		 $this->load->view('include/header');
-	     $this->load->view('landing.html', $data);
+	     $this->load->view('main_page.html', $data);
 	     $this->load->view('include/footer');
 	}
 	

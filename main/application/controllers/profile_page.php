@@ -10,7 +10,10 @@ class Profile_page extends CI_Controller {
 		$this->load->model('user');
 		// need load helper before use it
 		// $this->load->helper('url');
-		session_start();
+	}
+	
+	function index() {
+		$this->load->view('arcade/mainPage');
 	}
 	
 	public function build_profile()
