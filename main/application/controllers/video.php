@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class User_page extends CI_Controller {
+class Video extends CI_Controller {
 	
 	public function __construct()
 	{
@@ -12,10 +12,10 @@ class User_page extends CI_Controller {
 		// $this->load->helper('url');
 	}
 	
-	public function index()
-	{
-		$this->load->view('Account/profile');
-	}
+	// public function index()
+	// 	{
+	// 		$this->load->view('Account/profile');
+	// 	}
 	
 	public function get_videos_by_id()
 	{
