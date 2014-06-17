@@ -7,8 +7,6 @@ function generateVideoTags(data)
 	return outputVideo;
 }
 
-
-
 function load (url) {
 	// var result = <?php echo $category_name ?>
 	// triger codeigniter controller to pick return
@@ -25,7 +23,7 @@ function load (url) {
 		$('#about_me').html(aboutMe);
 	});
 	
-	$.getJSON('http://localhost/~vincent/caan/main/index.php/profile_page/build_video_list', function(data){
+	$.getJSON(url + '/profile_page/build_video_list', function(data){
 		console.log(data);
 		var outputVideo = '';
 		for (var i=0; i < data.length; i++) {

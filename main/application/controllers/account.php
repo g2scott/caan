@@ -12,66 +12,7 @@ class Account extends CI_Controller {
 		session_start(); 		// call session start
 	}
 
-	
-// 	function index() {
-// 		$data['user']=$_SESSION['user'];
-// 		if (isset($_SESSION['errmsg'])) {
-// 			$data['errmsg']=	$_SESSION['errmsg'];
-// 			unset($_SESSION['errmsg']);
-// 		}
-// 		$this->load->view('Account/profile',$data);
-// 	}
-	
-	
-// 	public function index()
-// 	{
-// 		// if(isset(true))
-// 		if (isset($_POST['username'])) 
-// 		{	
-// 			/**
-// 			 *  user login validation here
-// 			 *
-// 			 * need add salt and blowfish later 
-// 			 */
-// 			$user_name = $_POST['username'];
-// 			// $this->fireb->info($user_name, "what login is");
-// 			$user_password = $_POST['password'];
-// 			$this->load->model('user_model');
-// 			$password = $this->user_model->find_user_password($user_name);
-// 			// $this->fireb->info($password, "info");
-// 			// $this->fireb->info($user_password, "info");
-			
-			
-// 			if($user_password == $password)
-// 			{	
-// 				$user_id = $this->user_model->find_user_id($user_name);
-// 				$_SESSION['user_id'] = $user_id;
-// 				$_SESSION['user_name'] = $user_name;
-				
-// 				// //$user_id = 2; // this hard code to test
-// 				// 			$row = $this->user->find_user_by_id($user_id);
-// 				// 			$data["about_me"] = $row->about_me_text;
-// 				// 			$last_name = $row->last;
-// 				// 			$first_name = $row->first;
-// 				// 			$data["user_name"] = $first_name . " " . $last_name;
-// 				$data['url'] = site_url();
-// 				$this->load->view('profile', $data);
-				
-// 			}else{
-// 					$data["message"] = "username/password not match.";
-// 					// $this->login->index();
-// 					$this->load->view('login_form', $data);
-// 				}
-			
-// 		}elseif(isset($_SESSION['user_name'])) { // this need more specific 
-// 			//$this->fireb->info("printed profile form here");
-// 			$data['url'] = site_url();
-// 			$this->load->view('profile', $data);
-// 		}else{
-// 			$this->load->view('register_form');
-// 		}		
-// 	}
-	
+		
 	function login() {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('username', 'Username', 'required');
@@ -92,6 +33,7 @@ class Account extends CI_Controller {
 	
 			if (isset($user) && $user->comparePassword($clearPassword)) {
 				$_SESSION['user'] = $user;
+				$_SESSION['user_id'] = $user->id; // need return a user id from above get function 
 				$data['user']=$user;
 				$data['url'] = site_url();
 	

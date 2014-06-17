@@ -1,11 +1,6 @@
 <?php
 class User_model extends CI_Model {
 
-//     public function __construct()
-//     {
-//         // Call the Model constructor
-//         parent::__construct();
-//     }
     
     public function get_last_entrie()
     {
@@ -18,6 +13,7 @@ class User_model extends CI_Model {
     	$this->db->where('user_name',$username);
     	$query = $this->db->get('users');
     	if ($query && $query->num_rows() > 0)
+			
     		return $query->row(0,'User');
     	else
     		return null;
