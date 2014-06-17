@@ -37,7 +37,7 @@ class Account extends CI_Controller {
 				$data['user']=$user;
 				$data['url'] = site_url();
 	
-				$this->load->view('Account/profile', $data);
+				$this->load->view('profile_page', $data);
 				//redirect('profile_page/index', 'refresh'); //redirect to the main application page
 			}
 			else {
