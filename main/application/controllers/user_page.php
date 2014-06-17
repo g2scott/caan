@@ -14,7 +14,7 @@ class User_page extends CI_Controller {
 	
 	public function index()
 	{
-		$this->load->view('profile');
+		$this->load->view('Account/profile');
 	}
 	
 	public function get_videos_by_id()
