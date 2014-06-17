@@ -28,6 +28,32 @@ class User_model extends CI_Model {
     	return $this->db->insert('users',$user);
     }
     
+    function updatePassword($user) {
+    	$this->db->where('id',$user->id);
+    	return $this->db->update('user',array('password'=>$user->password,
+    			'salt' => $user->salt));
+    }
+    
+    function getFromEmail($email)
+    {
+    	$this->db->where('email',$email);
+    	$query = $this->db->get('user');
+    	if ($query && $query->num_rows() > 0)
+    		return $query->row(0,'User');
+    	else
+    		return null;
+    }
+    
+    function getFromId($id)
+    {
+    	$this->db->where('id',$id);
+    	$query = $this->db->get('user');
+    	if ($query && $query->num_rows() > 0)
+    		return $query->row(0,'User');
+    	else
+    		return null;
+    }
+    
 /**
 * add a use
 */

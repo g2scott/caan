@@ -6,7 +6,7 @@ public $user_name;
 public $id;
 public $first;
 public $last;
-public $password; //encrypted
+public $password; //encrypted 
 public $salt;
 public $img_path;
 public $about_me_text;
