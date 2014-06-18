@@ -52,6 +52,15 @@ class Video extends CI_Model {
 		}
 	}
 	
+	public function like_video($video_id){
+		$this->db->where('id',$video_id);
+		$query = $this->db->get('likes');
+		if ($query && $query->num_rows() > 0)
+			$likes =  $query->row(0,'likes');
+		return $this->db->update('video',array('likes'=>$likes + 1));
+		
+	}
+	
 	public function find_video_catgories()
 	{
 		$query_string = "select * from videos order by type";

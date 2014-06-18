@@ -49,6 +49,13 @@ class Video extends CI_Controller {
 		}
 	}
 	
+	public function like_video($video_id)
+	{
+		$this->load->model('video');
+		$this->video->like_video($video_id);
+		
+	}
+	
 	
 }	
 	
