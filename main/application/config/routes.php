@@ -38,6 +38,7 @@
 |
 */
 
+// $route['default_controller'] = "upload_test";
 $route['default_controller'] = "main_page";
 
 $route['404_override'] = '';

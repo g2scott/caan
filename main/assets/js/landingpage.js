@@ -23,7 +23,9 @@ function load (url) {
 		for (var i=0; i < data.length; i++) {
 			outputVideo += generateVideoTags(data[i]);
 		};
-		var outputType = "<p class=\"lead\">Video Category</p><div id=\"category\" class=\"list-group\"><a href=\"" + data[0].type + ".html\" class=\"list-group-item\">" + data[0].type + "</a>";
+		var outputType =  "<p class=\"lead\">Video Category</p><div id=\"category\" class=\"list-group\">";
+		outputType += "<a href=\"all_type.html\" class=\"list-group-item\">All Category</a>";
+		outputType += "<a href=\"" + data[0].type + ".html\" class=\"list-group-item\">" + data[0].type + "</a>";
 		for (var i=1; i < data.length; i++) {
 			if(data[i].type != data[i-1].type){
 				outputType += "<a href=\""+ data[i].type +".html\" class=\"list-group-item\">";
@@ -47,10 +49,17 @@ function load (url) {
 				type = type.slice(0, index);
 				// console.log(type);
 				var outputVideo = '';
-				for (var i=0; i < data.length; i++) {
-					// console.log(data[i].type);
-					if (type == data[i].type) {
+				
+				if (type == 'all_type'){
+					for (var i=0; i<data.length; i++){
 						outputVideo += generateVideoTags(data[i]);
+					}
+				}else{
+					for (var i=0; i < data.length; i++) {
+						// console.log(data[i].type);
+						if (type == data[i].type) {
+							outputVideo += generateVideoTags(data[i]);
+						}
 					}
 				}	
 				$('#list_video').html(outputVideo);
