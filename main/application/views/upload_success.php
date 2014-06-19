@@ -16,6 +16,7 @@
 </ul>
 
 <p><?php echo anchor('upload', 'Upload Another File!'); ?></p>
+<p><?php echo anchor('main_page', 'HOME'); ?></p>
 
 </body>
 </html>
