@@ -34,6 +34,12 @@ class Video extends CI_Model {
 		return true;
 	}
 	
+	public function upload_sprout_video()
+	{
+		Sproutvideo::$api_key = '1e376f3f3954ea1ef83163390092427c';
+		
+	}
+	
 	/**
 	 * find video according user id or email
 	 * @param string $user_id

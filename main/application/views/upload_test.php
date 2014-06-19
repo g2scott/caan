@@ -31,33 +31,33 @@
 </html>
 
 <script>
-	$("#target").submit(function(event){ event.preventDefault(); });
-	$("#file").change(function( event ) {
-		//event.preventDefault();
-		//var value = $("#file").innerHTML;
-		console.log(this.files[0].mozFullPath);
-		
-	});
-	
-	var request;
-	if (window.XMLHttpRequest) {
-		request = new XMLHttpRequest();
-	}else {
-		request = new ActiveXObject("Microsoft.XMLHTTP");
-		// this compatible with old browser
-	}
-	request.open('GET', 'data.txt');
-	request.onreadystatechange = function() {
-		if ((request.readyState ===4) && (request.status ===200)) {
-			
-			var modify = document.getElementsByTagName("li");
-				for(var i = 0; i < modify.length; i++){
-					modify[i].innerHTML = request.responseText;
-			}
-
-			}
-		}	
-	request.send();
+	// $("#target").submit(function(event){ event.preventDefault(); });
+	// 	$("#file").change(function( event ) {
+	// 		//event.preventDefault();
+	// 		//var value = $("#file").innerHTML;
+	// 		console.log(this.files[0].mozFullPath);
+	// 		
+	// 	});
+	// 	
+	// 	var request;
+	// 	if (window.XMLHttpRequest) {
+	// 		request = new XMLHttpRequest();
+	// 	}else {
+	// 		request = new ActiveXObject("Microsoft.XMLHTTP");
+	// 		// this compatible with old browser
+	// 	}
+	// 	request.open('GET', 'data.txt');
+	// 	request.onreadystatechange = function() {
+	// 		if ((request.readyState ===4) && (request.status ===200)) {
+	// 			
+	// 			var modify = document.getElementsByTagName("li");
+	// 				for(var i = 0; i < modify.length; i++){
+	// 					modify[i].innerHTML = request.responseText;
+	// 			}
+	// 
+	// 			}
+	// 		}	
+	// 	request.send();
 	
 	
 	// $('#submit').click(function(){

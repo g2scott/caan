@@ -33,6 +33,7 @@ class Upload extends CI_Controller {
 		else
 		{
 			$data = array('upload_data' => $this->upload->data());
+			//$path = array('path' => $this->upload->)
 
 			$this->load->view('upload_success', $data);
 		}

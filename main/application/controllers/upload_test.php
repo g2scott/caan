@@ -9,7 +9,8 @@ class Upload_test extends CI_Controller {
 	
 	public function index()
 	{
-		$this->load->view('upload_test');
+		//$this->load->view('upload_test');
+		
 	}
 	
 }
