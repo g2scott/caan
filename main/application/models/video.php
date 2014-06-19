@@ -1,5 +1,5 @@
 <?php
-
+require_once '../vendor/autoload.php';
 class Video extends CI_Model {
 	
 	var $id = '';
@@ -34,9 +34,12 @@ class Video extends CI_Model {
 		return true;
 	}
 	
-	public function upload_sprout_video()
+	public function upload_to_sprout($data_array)
 	{
 		Sproutvideo::$api_key = '1e376f3f3954ea1ef83163390092427c';
+		$path = $data_array['full_path'];
+		$json_return = SproutVideo\Video::create_video($path);
+		return $json_return;
 		
 	}
 	

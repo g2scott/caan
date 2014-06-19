@@ -11,7 +11,9 @@
 <li><?php echo $item;?>: <?php echo $value;?></li>
 <?php endforeach; ?>
 
-<?php // echo $path; ?>
+<?php  echo $path; ?>
+
+<?php var_dump ($json) ?>
 
 </ul>
 

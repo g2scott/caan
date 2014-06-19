@@ -6,6 +6,8 @@ class Upload extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
+		$this->load->model('video');
+		
 
 	}
 
@@ -13,11 +15,14 @@ class Upload extends CI_Controller {
 	{
 		$this->load->view('upload_form', array('error' => ' ' ));
 	}
-
+	
+	/**
+	 *  
+	 */
 	function do_upload()
 	{
 		$config['upload_path'] = './assets/temp';
-		$config['allowed_types'] = 'gif|jpg|png';
+		$config['allowed_types'] = 'flv';
 		$config['max_size']	= '0';
 		$config['max_width']  = '0';
 		$config['max_height']  = '0';
@@ -32,8 +37,11 @@ class Upload extends CI_Controller {
 		}
 		else
 		{
-			$data = array('upload_data' => $this->upload->data());
-			//$path = array('path' => $this->upload->)
+			$data_array = $this->upload->data();
+			$json_return = $this->video->upload_to_sprout($data_array);
+			$data = array('upload_data' => $this->upload->data(), 'path' => $data_array['full_path'], 'json' => $json_return);
+			
+	
 
 			$this->load->view('upload_success', $data);
 		}
