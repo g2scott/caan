@@ -6,7 +6,7 @@ class Upload extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
-		$this->load->model('video');
+		$this->load->model('video_model');
 		
 
 	}

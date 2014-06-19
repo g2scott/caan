@@ -22,9 +22,9 @@ class Profile_page extends CI_Controller {
 	
 	public function build_video_list()
 	{
-		$this->load->model('video');
+		$this->load->model('video_model');
 		$user_id = $_SESSION['user_id'];
-		$result = $this->video->find_video_by_user($user_id);
+		$result = $this->video_model->find_video_by_user($user_id);
 		echo $result;
 	}
 

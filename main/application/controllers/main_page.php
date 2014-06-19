@@ -10,10 +10,10 @@ class Main_page extends CI_Controller {
 	
 	public function index()
 	{
-		$this->load->model('video');
+		$this->load->model('video_model');
 		
 		// $link_result = $this->video->find_video_links();
-		$data['category_name'] = $this->video->find_video_catgories();
+		$data['category_name'] = $this->video_model->find_video_catgories();
 		$data['url'] = site_url();
 		// $data['video_links'] = $link_result->link;
 		 $this->load->view('include/header');
@@ -23,9 +23,9 @@ class Main_page extends CI_Controller {
 	
 	public function build_category()
 	{
-		$this->load->model('video');
+		$this->load->model('video_model');
 		
-		echo $this->video->find_video_catgories(); // need echo or print to ajax response
+		echo $this->video_model->find_video_catgories(); // need echo or print to ajax response
 		//$data['url'] = site_url();
 		//echo $data;
 		// return $category_result;

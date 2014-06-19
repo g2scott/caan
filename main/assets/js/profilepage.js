@@ -7,24 +7,23 @@ function generateVideoTags(data)
 	return outputVideo;
 }
 
-function load (url) {
-	// var result = <?php echo $category_name ?>
-	// triger codeigniter controller to pick return
+function load (url) 
+{
 	$.ajaxSetup({
 		timeout: 6000
 	});
-	console.log(url);
+	//console.log(url);
 	$.getJSON(url + '/profile_page/build_profile', function(data){
 		var userName = data[0].user_name;
 		var aboutMe = data[0].about_me_text;
-		console.log(userName);
-		console.log(aboutMe);
+		//console.log(userName);
+		//console.log(aboutMe);
 		$('#user_name').html(userName);
 		$('#about_me').html(aboutMe);
 	});
 	
 	$.getJSON(url + '/profile_page/build_video_list', function(data){
-		console.log(data);
+		//console.log(data);
 		var outputVideo = '';
 		for (var i=0; i < data.length; i++) {
 			outputVideo += generateVideoTags(data[i]);

@@ -1,4 +1,7 @@
 <?php
+/**
+ * User_model collect functions with working with User Table
+ */
 class User_model extends CI_Model {
 
     
