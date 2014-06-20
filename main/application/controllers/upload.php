@@ -17,7 +17,7 @@ class Upload extends CI_Controller {
 	}
 	
 	/**
-	 *  
+	 * This function may moved to video_model, rename to video_upload 
 	 */
 	function do_upload()
 	{
@@ -38,11 +38,9 @@ class Upload extends CI_Controller {
 		else
 		{
 			$data_array = $this->upload->data();
-			$json_return = $this->video->upload_to_sprout($data_array);
+			$json_return = $this->video_model->upload_to_sprout($data_array);
 			$data = array('upload_data' => $this->upload->data(), 'path' => $data_array['full_path'], 'json' => $json_return);
 			
-	
-
 			$this->load->view('upload_success', $data);
 		}
 	}

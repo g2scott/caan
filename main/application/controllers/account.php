@@ -60,6 +60,7 @@ class Account extends CI_Controller {
 	
 	/**
 	 * This function is used to register new user to insert to user table
+	 * create a User object then insert to user table
 	 */
 	function createNew() {
 		$this->load->library('form_validation');

@@ -14,6 +14,22 @@ class Video_model extends CI_Model {
 	
 
     /**
+     * Query video table to get the video
+     * @param $video_id string
+     * @return $video, object
+     */
+    function get($video_id)
+    {
+    	$this->db->where('v_id',$video_id);
+    	$query = $this->db->get('videos');
+    	if ($query && $query->num_rows() > 0)
+			
+    		return $query->row(0,'Video');
+    	else
+    		return null;
+    }
+
+    /**
 	 * upload video to sproutvideo site,
 	 * @param associative array, contain file path, 
 	 * @return json string
