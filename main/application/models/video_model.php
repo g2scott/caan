@@ -29,6 +29,47 @@ class Video_model extends CI_Model {
     		return null;
     }
 
+    function insert($video) {
+    	return $this->db->insert('videos',$video);
+    }
+
+    /**
+	 * This function is used to create new video to insert to video table
+	 * create a Video object then insert to video table
+	 */
+	// function createNew($link) {
+		// $this->load->library('form_validation');
+		// //$this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.user_name]');
+		// $this->form_validation->set_rules('video_name', 'Video Name', 'required');
+		// $this->form_validation->set_rules('video_description', 'Video Description', "required");
+		// // $this->form_validation->set_rules('file', 'Uploaded file', "required");
+	
+		 
+		// if ($this->form_validation->run() == FALSE)
+		// {
+		// 	$this->load->view('Account/add_video');
+		// }
+		// else
+		// {
+		// 	// this class autoloaded 
+		// 	$video = new Video();
+		// 	$user_id = $this->session->userdata('user_id');
+
+		// 	$video->u_id = $user_id;
+		// 	$video->link = $link; 	// need input from the sproutvide upload return
+		// 	$video->type = $this->input->post('type');
+		// 	$video->name = $this->input->post('name');
+		// 	$video->name = $this->input->post('description');
+		// 	$video->name = $this->input->post('likes');
+
+		// 	//$this->load->model('video_model');
+
+		// 	$error = $this->insert($video);
+			 
+		// 	// $this->load->view('profile_page');
+	// 	}
+	// }
+
     /**
 	 * upload video to sproutvideo site,
 	 * @param associative array, contain file path, 

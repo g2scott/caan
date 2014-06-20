@@ -5,13 +5,15 @@
 	*/
 	class Video
 	{
-		
-		public $id ;
+		//public $id ;
+		public $u_id ;
 		public $name ;
 		public $link ;
 		public $description ;
 		public $type ;
 	}
+
+
 
 
 

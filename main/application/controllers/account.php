@@ -9,7 +9,7 @@ class Account extends CI_Controller {
 		$this->load->model('user');
 		// need load helper before use it
 		// $this->load->helper('url');
-		session_start(); 		// call session start
+		//session_start(); 		// call session start
 	}
 
 		
@@ -32,8 +32,18 @@ class Account extends CI_Controller {
 			$user = $this->user_model->get($login);
 	
 			if (isset($user) && $user->comparePassword($clearPassword)) {
-				$_SESSION['user'] = $user;
-				$_SESSION['user_id'] = $user->id; // need return a user id from above get function 
+
+				$session_data = array(
+                   'user'  		=> $user,
+                   'user_id'    => $user->id,
+                   'logged_in' 	=> TRUE
+               );
+
+				$this->session->set_userdata($session_data);
+
+				// $_SESSION['user'] = $user;
+				// $_SESSION['user_id'] = $user->id; // need return a user id from above get function 
+
 				$data['user']=$user;
 				$data['url'] = site_url();
 	

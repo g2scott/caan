@@ -52,7 +52,11 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database');
+
+// $autoload['libraries'] = array('database', 'session');
+
+//for test purpose, just uncommon it if you want to switch.
+$autoload['libraries'] = array('database', 'session', 'firephp', 'fireb');
 
 
 /*
@@ -109,7 +113,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('User'); 
+$autoload['model'] = array('User', 'Video'); 
 
 
 /* End of file autoload.php */

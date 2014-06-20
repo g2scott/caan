@@ -7,11 +7,9 @@ class Upload extends CI_Controller {
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
 		$this->load->model('video_model');
-		
-
 	}
 
-	function index()
+	function video_upload()
 	{
 		$this->load->view('upload_form', array('error' => ' ' ));
 	}
@@ -39,10 +37,59 @@ class Upload extends CI_Controller {
 		{
 			$data_array = $this->upload->data();
 			$json_return = $this->video_model->upload_to_sprout($data_array);
+			//$array_return = json_decode($json_return);
+			$link = $json_return['embed_code'];
+			//$this->$fireb->log($link);
+			// $this->load->model('video_model');
+			// $this->video_model->createNew($link);
+
+			/**
+			 * start form validation here, may move to some other function later
+			 */
+			$this->load->library('form_validation');
+			//$this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.user_name]');
+			$this->form_validation->set_rules('video_name', 'Video Name', 'required');
+			$this->form_validation->set_rules('video_description', 'Video Description', "required");
+			// $this->form_validation->set_rules('file', 'Uploaded file', "required");
+	
+		 
+			if ($this->form_validation->run() == FALSE)
+			{
+				$this->load->view('Account/add_video');
+			}
+			else
+			{
+				// this class autoloaded 
+				$video = new Video();
+				$user_id = $this->session->userdata('user_id');
+
+				$video->u_id = $user_id;
+				$video->link = $link; 	// need input from the sproutvide upload return
+				$video->type = $this->input->post('type');
+				$video->name = $this->input->post('video_name');
+				$video->description = $this->input->post('video_description');
+
+				
+
+				// $video->type = $this->input->post('type');
+				// $video->name = $this->input->post('name');
+				// $video->name = $this->input->post('description');
+				// $video->name = $this->input->post('likes');
+
+				$this->load->model('video_model');
+
+				$error = $this->video_model->insert($video);
+				 
+				// $this->load->view('profile_page');
+
+			}	
+
+
 			$data = array('upload_data' => $this->upload->data(), 'path' => $data_array['full_path'], 'json' => $json_return);
 			
 			$this->load->view('upload_success', $data);
 		}
 	}
 }
+
 ?>
