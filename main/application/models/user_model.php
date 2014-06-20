@@ -1,4 +1,7 @@
 <?php
+/**
+ * User_model collect functions with working with User Table
+ */
 class User_model extends CI_Model {
 
     
@@ -8,6 +11,11 @@ class User_model extends CI_Model {
         return $query->result();
     }
 
+    /**
+     * Query user database to get the usr
+     * @param $username string
+     * @return $user, object
+     */
     function get($username)
     {
     	$this->db->where('user_name',$username);
@@ -26,8 +34,7 @@ class User_model extends CI_Model {
     
     function updatePassword($user) {
     	$this->db->where('id',$user->id);
-    	return $this->db->update('user',array('password'=>$user->password,
-    			'salt' => $user->salt));
+    	return $this->db->update('user',array('password'=>$user->password, 'salt' => $user->salt));
     }
     
     function getFromEmail($email)

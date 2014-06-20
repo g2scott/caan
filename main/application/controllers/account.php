@@ -58,6 +58,10 @@ class Account extends CI_Controller {
 		$this->load->view('Account/register_form');
 	}
 	
+	/**
+	 * This function is used to register new user to insert to user table
+	 * create a User object then insert to user table
+	 */
 	function createNew() {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.user_name]');
@@ -73,7 +77,7 @@ class Account extends CI_Controller {
 		}
 		else
 		{
-			$user = new User();
+			$user = new User(); // this class autoloaded 
 	
 			$user->user_name = $this->input->post('username');
 			$user->first = $this->input->post('first');
