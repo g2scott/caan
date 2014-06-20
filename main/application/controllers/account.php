@@ -69,7 +69,7 @@ class Account extends CI_Controller {
 		 
 		if ($this->form_validation->run() == FALSE)
 		{
-			$this->load->view('account/newForm');
+			$this->load->view('account/register_form');
 		}
 		else
 		{
