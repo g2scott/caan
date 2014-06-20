@@ -70,12 +70,6 @@ class Upload extends CI_Controller {
 				$video->description = $this->input->post('video_description');
 
 				
-
-				// $video->type = $this->input->post('type');
-				// $video->name = $this->input->post('name');
-				// $video->name = $this->input->post('description');
-				// $video->name = $this->input->post('likes');
-
 				$this->load->model('video_model');
 
 				$error = $this->video_model->insert($video);
@@ -87,7 +81,9 @@ class Upload extends CI_Controller {
 
 			$data = array('upload_data' => $this->upload->data(), 'path' => $data_array['full_path'], 'json' => $json_return);
 			
-			$this->load->view('upload_success', $data);
+			// $this->load->view('upload_success', $data);
+			$url['url'] = site_url();
+			$this->load->view('profile_page', $url);
 		}
 	}
 }
