@@ -11,7 +11,7 @@
     <title>Signin Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="../../assets/css/signin.css" rel="stylesheet">
@@ -36,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo site_url() ?>">Start Bootstrap</a>
+                <a class="navbar-brand" href="<?php echo site_url() ?>">Home</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -48,9 +48,9 @@
                     </li>
                     <li><a href="#contact">Contact</a>
                     </li>
-					<li><a href="<?php echo site_url('login/login_user') ?>">Sign in</a>
+					<li><a href="<?php echo site_url('account/login_user') ?>">Sign in</a>
                     </li>
-					<li><a href="<?php echo site_url('login') ?>">Sign up</a>
+					<li><a href="<?php echo site_url('account/register_user') ?>">Sign up</a>
                     </li>
                 </ul>
             </div>

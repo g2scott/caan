@@ -65,7 +65,8 @@ class Account extends CI_Controller {
 	
 	public function register_user()
 	{
-		$this->load->view('Account/register_form');
+		$url['url'] = base_url();
+		$this->load->view('Account/register_form', $url);
 	}
 	
 	/**

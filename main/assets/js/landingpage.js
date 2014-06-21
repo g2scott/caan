@@ -9,6 +9,18 @@ function generateVideoTags(data)
 	return outputVideo;
 }
 
+// // want to build function to solve home page drop down issue.
+// function() 
+// {
+// 	$('ul.nav').click(function() {
+//     	$('.dropdown-menu', this).fadeIn('fast');
+// 	}, 
+// 	function() {
+//     $('.dropdown-menu', this).fadeOut('fast');
+// 	});
+
+// } 
+
 
 
 function load (url) {

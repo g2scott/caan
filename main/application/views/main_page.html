@@ -10,14 +10,12 @@
     <title>Shop Homepage Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="<?php echo base_url() ?>/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/css/bootstrap.css" rel="stylesheet">
 
     <!-- Add custom CSS here -->
-    <link href="<?php echo base_url() ?>/assets/css/shop-homepage.css" rel="stylesheet">
-	<link href="<?php echo base_url() ?>/assets/css/responsive_video.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/css/shop-homepage.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/css/responsive_video.css" rel="stylesheet">
 	
-
-
 </head>
 
 <body>
@@ -31,7 +29,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#home">Home</a>
+                <a class="navbar-brand" href="<?php echo site_url() ?>">Home</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,9 +41,9 @@
                     </li>
                     <li><a href="#contact">Contact</a>
                     </li>
-					<li><a href="<?php echo site_url('account/login_user') ?>">Sign in</a>
+                    <li><a href="<?php echo site_url('account/login_user') ?>">Sign in</a>
                     </li>
-					<li><a href="<?php echo site_url('account/register_user') ?>">Sign up</a>
+                    <li><a href="<?php echo site_url('account/register_user') ?>">Sign up</a>
                     </li>
                 </ul>
             </div>
@@ -58,13 +56,13 @@
 
         <div class="row">
 
-            <div id="list_category" class="col-md-3">
+            <div class="col-md-3" id="list_category">
                 <!-- <p class="lead">Video Category</p>
-                                <div id="category" class="list-group">
-                                    <a href="#" class="list-group-item">Printable</a>
-                                    <a href="#" class="list-group-item">Cupcake Wrappers</a>
-                                    <a href="#" class="list-group-item">Authentic Dragon Bones</a>
-                                </div> -->
+                    <div id="category" class="list-group">
+                        <a href="#" class="list-group-item">Printable</a>
+                        <a href="#" class="list-group-item">Cupcake Wrappers</a>
+                        <a href="#" class="list-group-item">Authentic Dragon Bones</a>
+                    </div> -->
             </div>
 
             <div class="col-md-9">
@@ -96,149 +94,55 @@
                                 <span class="glyphicon glyphicon-chevron-right"></span>
                             </a>
                         </div>
+                        <!-- /#carousel-example-generic -->
                     </div>
-
+                    <!-- /.col-md-12 -->
                 </div>
+                <!-- /.row carousel-holder -->
 
                 <div id="list_video" class="row">
 	
-	<!-- ####### need using JavaScript to built below part ####### -->
-	<!-- information need for this block is: -->
-	<!-- 1. video src -->
-	<!-- 2. description -->
-	<!-- 3. rating information -->
+                	<!-- ####### need using JavaScript to built below part ####### -->
+                	<!-- information need for this block is: -->
+                	<!-- 1. video src -->
+                	<!-- 2. description -->
+                	<!-- 3. rating information -->
 
-                    <!-- <div class="col-sm-4 col-lg-4 col-md-4">
-                   						<div class="thumbnail">
-                   							<div class="span6">
-                   								
-                                           		<div class="flex-video widescreen"><iframe src='//videos.sproutvideo.com/embed/1c9bd9b01d18e7cf94/ea7ab276cb220754?type=sd' allowfullscreen></iframe></div>
-                   							
-                   								<div class="caption">	
-                   	                                <h4 class="pull-right">$24.99</h4>
-                   	                                <h4><a href="#">First Product</a>
-                   	                                </h4>
-                   	                                <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
-                   	                            </div>
+                        <!-- <div class="col-sm-4 col-lg-4 col-md-4">
+                       			<div class="thumbnail">
+                       				<div class="span6">
+                       								
+                               		<div class="flex-video widescreen"><iframe src='//videos.sproutvideo.com/embed/1c9bd9b01d18e7cf94/ea7ab276cb220754?type=sd' allowfullscreen></iframe></div>
+                       							
+       								<div class="caption">	
+       	                                <h4 class="pull-right">$24.99</h4>
+       	                                <h4><a href="#">First Product</a>
+       	                                </h4>
+       	                                <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
+       	                            </div>
 
-                                               	<div class="ratings">
-                   	                                <p class="pull-right">15 reviews</p>
-                   	                                <p>
-                   	                                    <span class="glyphicon glyphicon-star"></span>
-                   	                                    <span class="glyphicon glyphicon-star"></span>
-                   	                                    <span class="glyphicon glyphicon-star"></span>
-                   	                                    <span class="glyphicon glyphicon-star"></span>
-                   	                                    <span class="glyphicon glyphicon-star"></span>
-                   	                                </p>
-                   	                            </div>
-                                       		</div>
-                   						</div>
-                   					</div>	 -->
-					
-	<!-- ####### need using JavaScript to built above part ####### -->		
-					
-
-                    <!-- <div class="col-sm-4 col-lg-4 col-md-4">
-                                            <div class="thumbnail">
-                                                <img src="http://placehold.it/320x150" alt="">
-                                                <div class="caption">
-                                                    <h4 class="pull-right">$64.99</h4>
-                                                    <h4><a href="#">Second Product</a>
-                                                    </h4>
-                                                    <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                                </div>
-                                                <div class="ratings">
-                                                    <p class="pull-right">12 reviews</p>
-                                                    <p>
-                                                        <span class="glyphicon glyphicon-star"></span>
-                                                        <span class="glyphicon glyphicon-star"></span>
-                                                        <span class="glyphicon glyphicon-star"></span>
-                                                        <span class="glyphicon glyphicon-star"></span>
-                                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-4 col-lg-4 col-md-4">
-                                            <div class="thumbnail">
-                                                <img src="http://placehold.it/320x150" alt="">
-                                                <div class="caption">
-                                                    <h4 class="pull-right">$74.99</h4>
-                                                    <h4><a href="#">Third Product</a>
-                                                    </h4>
-                                                    <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                                </div>
-                                                <div class="ratings">
-                                                    <p class="pull-right">31 reviews</p>
-                                                    <p>
-                                                        <span class="glyphicon glyphicon-star"></span>
-                                                        <span class="glyphicon glyphicon-star"></span>
-                                                        <span class="glyphicon glyphicon-star"></span>
-                                                        <span class="glyphicon glyphicon-star"></span>
-                                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-4 col-lg-4 col-md-4">
-                                            <div class="thumbnail">
-                                                <img src="http://placehold.it/320x150" alt="">
-                                                <div class="caption">
-                                                    <h4 class="pull-right">$84.99</h4>
-                                                    <h4><a href="#">Fourth Product</a>
-                                                    </h4>
-                                                    <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                                </div>
-                                                <div class="ratings">
-                                                    <p class="pull-right">6 reviews</p>
-                                                    <p>
-                                                        <span class="glyphicon glyphicon-star"></span>
-                                                        <span class="glyphicon glyphicon-star"></span>
-                                                        <span class="glyphicon glyphicon-star"></span>
-                                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-4 col-lg-4 col-md-4">
-                                            <div class="thumbnail">
-                                                <img src="http://placehold.it/320x150" alt="">
-                                                <div class="caption">
-                                                    <h4 class="pull-right">$94.99</h4>
-                                                    <h4><a href="#">Fifth Product</a>
-                                                    </h4>
-                                                    <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                                </div>
-                                                <div class="ratings">
-                                                    <p class="pull-right">18 reviews</p>
-                                                    <p>
-                                                        <span class="glyphicon glyphicon-star"></span>
-                                                        <span class="glyphicon glyphicon-star"></span>
-                                                        <span class="glyphicon glyphicon-star"></span>
-                                                        <span class="glyphicon glyphicon-star"></span>
-                                                        <span class="glyphicon glyphicon-star-empty"></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-4 col-lg-4 col-md-4">
-                                            <h4><a href="#">Like this template?</a>
-                                            </h4>
-                                            <p>If you like this template, then check out <a target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this tutorial</a> on how to build a working review system for your online store!</p>
-                                            <a class="btn btn-primary" target="_blank" href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">View Tutorial</a>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </div> -->
-
+                                   	<div class="ratings">
+       	                                <p class="pull-right">15 reviews</p>
+       	                                <p>
+       	                                    <span class="glyphicon glyphicon-star"></span>
+       	                                    <span class="glyphicon glyphicon-star"></span>
+       	                                    <span class="glyphicon glyphicon-star"></span>
+       	                                    <span class="glyphicon glyphicon-star"></span>
+       	                                    <span class="glyphicon glyphicon-star"></span>
+       	                                </p>
+       	                            </div>
+                           		</div>
+       						</div>
+       					</div>	 -->
+    					
+                	<!-- ####### need using JavaScript to built above part ####### -->		
+                
+                </div> 
+                <!-- /#list_video     -->
+            </div>  
+            <!-- /.col-md-9 -->
+        </div>      
+        <!-- /.row -->
     </div>
     <!-- /.container -->
 
@@ -250,16 +154,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <p>Copyright &copy; Company 2013 - Template by <a href="http://maxoffsky.com/">Maks</a>
-                    </p>
-					<p>
-						<?php //var_dump($category_name) ?>
-						
-						<br />
-						<?php //echo ($url); ?>
-					</p>
-					
-					<div id="json_return"></div>
-						
+                    </p>	
                 </div>
             </div>
         </footer>
@@ -268,28 +163,10 @@
     <!-- /.container -->
 
 
-
-	<script>
-		// var return = <?php echo $category_name; ?>;
-		// 		return.appendTo('#json_return')
-		// $.getJSON( "ajax/test.json", function( data ) {
-		// 		var items = [];
-		// 		$.each( data, function( key, val ) {
-		// 		items.push( "<li id='" + key + "'>" + val + "</li>" );
-		// 		});
-		// 		$( "<ul/>", {
-		// 		"class": "my-new-list",
-		// 		html: items.join( "" )
-		// 		}).appendTo( "body" );
-		// 		});
-		
-	</script>
-	
-
     <!-- JavaScript -->
-    <script src="<?php echo base_url() ?>/assets/js/jquery-1.10.2.js"></script>
-    <script src="<?php echo base_url() ?>/assets/js/bootstrap.js"></script>
-	<script src="<?php echo base_url() ?>/assets/js/landingpage.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/jquery-1.10.2.js"></script>
+    <!-- removed bootstrap.js to fix the dropdown menu issue -->
+	<script src="<?php echo base_url() ?>assets/js/landingpage.js"></script>
 	
 	<script>
 		var url = "<?php echo $url ?>"
@@ -297,14 +174,7 @@
 	</script>
 	<?php //echo $url ?>
 
-	<script>
-			
-			
-		
-		</script>
-			
-		
-
+	
 </body>
 
 </html>

@@ -11,10 +11,10 @@
     <title>Signin Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo $url; ?>/assets/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../../assets/css/signin.css" rel="stylesheet">
+    <link href="<?php echo $url ?>/assets/css/signin.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
 <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -36,7 +36,7 @@
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
 </button>
-<a class="navbar-brand" href="<?php echo site_url('frontpage') ?>">Start Bootstrap</a>
+<a class="navbar-brand" href="<?php echo site_url() ?>">Home</a>
 </div>
 
 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -48,9 +48,9 @@
 </li>
 <li><a href="#contact">Contact</a>
 </li>
-<li><a href="<?php echo site_url('login/login_user') ?>">Sign in</a>
+<li><a href="<?php echo site_url('account/login_user') ?>">Sign in</a>
 </li>
-<li><a href="<?php echo site_url('login') ?>">Sign up</a>
+<li><a href="<?php echo site_url('account/register_user') ?>">Sign up</a>
 </li>
 </ul>
 </div>
@@ -90,7 +90,7 @@
 </div>
 
 
-<script src="../assets/js/jquery-1.10.2.js"></script>
-<script src="../assets/js/bootstrap.js"></script>
+<script src="<?php echo $url ?>/assets/js/jquery-1.10.2.js"></script>
+<script src="<?php echo $url ?>/assets/js/bootstrap.js"></script>
 </body>
 </html>
