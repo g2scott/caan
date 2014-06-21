@@ -41,7 +41,7 @@
                     </li>
                     <li><a href="#contact">Contact</a>
                     </li>
-					<li><a href=" <?php echo base_url() ?>/index.php">Log out</a>
+					<li><a href=" <?php echo base_url() ?>index.php">Log out</a>
                     </li>
                 </ul>
             </div>
