@@ -98,7 +98,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright</a>
+                    <p>Canadian Amateur Athletes Network</a>
                     </p>
                 </div>
             </div>
