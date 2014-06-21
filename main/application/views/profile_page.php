@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Shop Homepage Template for Bootstrap</title>
+    <title>Canadian Amateur Athletes Network</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url() ?>assets/css/bootstrap.css" rel="stylesheet">
