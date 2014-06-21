@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Canadian Amateur Athletes Network</title>
+    <title>Canadian Amateur</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url() ?>assets/css/bootstrap.css" rel="stylesheet">
