@@ -28,6 +28,7 @@ class Profile_page extends CI_Controller {
 		echo $result;
 	}
 
+
 }	
 	
 ?>	
