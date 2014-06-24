@@ -8,7 +8,16 @@ function generateVideoTags(data, url)
 	outputVideo += "</div><div class=\"caption\"><h4 class=\"pull-right\"></h4><h4><a href=\"#\">" + data.name + "</a></h4><p>" + data.description +  "</p>";
 	outputVideo += "<p><a href=\""
 
-	outputVideo +=	url + '/public_profile_page/load/' + data.u_id + "\">" + "view the athlete" + "</a></p></div>";
+	outputVideo +=	url + '/public_profile_page/load/' + data.u_id + "\">" + "view the athlete" + "</a></p>";
+
+	outputVideo += "</div>" // end .caption div
+	// add like button below 
+	//outputVideo += "<div class=\"fb-like\" data-href=\"";
+	//outputVideo += "https://developers.facebook.com/docs/plugins/\"";
+
+	//outputVideo += "data-layout=\"button\" data-action=\"like\" data-show-faces=\"true\" data-share=\"true\"></div>";
+
+	// rating reviews 
 	outputVideo += "<div class=\"ratings\"><p class=\"pull-right\">15 reviews</p><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span></p></div></div></div></div>";
 	return outputVideo;
 }
