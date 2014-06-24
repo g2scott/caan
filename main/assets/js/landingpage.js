@@ -79,13 +79,13 @@ function load (url) {
 				
 				if (type == 'all_type'){
 					for (var i=0; i<data.length; i++){
-						outputVideo += generateVideoTags(data[i]);
+						outputVideo += generateVideoTags(data[i], url);
 					}
 				}else{
 					for (var i=0; i < data.length; i++) {
 						// console.log(data[i].type);
 						if (type == data[i].type) {
-							outputVideo += generateVideoTags(data[i]);
+							outputVideo += generateVideoTags(data[i], url);
 						}
 					}
 				}	
