@@ -1,4 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+require_once '../vendor/autoload.php';
 
 class Account extends CI_Controller {
 	
@@ -12,8 +13,28 @@ class Account extends CI_Controller {
 		//session_start(); 		// call session start
 	}
 
+	public function facebook_login()
+	{
+		$helper = new FacebookRedirectLoginHelper();
+		try {
+		  $fb_session = $helper->getSessionFromRedirect();
+		} catch(FacebookRequestException $ex) {
+		  // When Facebook returns an error
+		} catch(\Exception $ex) {
+		  // When validation fails or other local issues
+		}
+		if ($fb_session) {
+		    // Logged in
+			// create a user in my database, to compare with next login, 
+			// simple store user's facebook username as 
+			$session_data = array('user'  => "vincent_test");
+			$this->session->set_userdata($session_data);
+			$this->load->view('profile_page');
+
+}
+	}
 		
-	function login() {
+	public function login() {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
