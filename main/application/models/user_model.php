@@ -40,7 +40,7 @@ class User_model extends CI_Model {
     function getFromEmail($email)
     {
     	$this->db->where('email',$email);
-    	$query = $this->db->get('user');
+    	$query = $this->db->get('users');
     	if ($query && $query->num_rows() > 0)
     		return $query->row(0,'User');
     	else
@@ -107,6 +107,14 @@ if ($query->num_rows() > 0) {
 $row = $query->row();
 return $row->password;
 }
+}
+
+// Initializes the password to a random value
+public function initPassword() {
+	$this->salt = mt_rand();
+	$clearPassword = mt_rand();
+	$this->password = sha1($this->salt . $clearPassword);
+	return $clearPassword;
 }
 
 public function delete_user()

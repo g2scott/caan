@@ -1,5 +1,4 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-require_once '../vendor/autoload.php';
 
 class Account extends CI_Controller {
 	
@@ -8,33 +7,14 @@ class Account extends CI_Controller {
 		parent::__construct();
 		// users moede will be used in this whole class 
 		$this->load->model('user');
+		$this->load->helper('form');
 		// need load helper before use it
 		// $this->load->helper('url');
 		//session_start(); 		// call session start
 	}
 
-	public function facebook_login()
-	{
-		$helper = new FacebookRedirectLoginHelper();
-		try {
-		  $fb_session = $helper->getSessionFromRedirect();
-		} catch(FacebookRequestException $ex) {
-		  // When Facebook returns an error
-		} catch(\Exception $ex) {
-		  // When validation fails or other local issues
-		}
-		if ($fb_session) {
-		    // Logged in
-			// create a user in my database, to compare with next login, 
-			// simple store user's facebook username as 
-			$session_data = array('user'  => "vincent_test");
-			$this->session->set_userdata($session_data);
-			$this->load->view('profile_page');
-
-}
-	}
 		
-	public function login() {
+	function login() {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
@@ -160,5 +140,65 @@ class Account extends CI_Controller {
 		session_destroy();
 		$this->load->view('landing.html');
 	}
+	
+	function recoverPasswordForm() {
+		$this->load->view('Account/recoverPasswordForm');
+	}
+	
+	function recoverPassword() {
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('email', 'email', 'required');
+	
+		if ($this->form_validation->run() == FALSE)
+		{
+			$this->load->view('account/recoverPasswordForm');
+		}
+		else
+		{
+			$email = $this->input->post('email');
+			$this->load->model('user_model');
+			$user = $this->user_model->getFromEmail($email);
+	
+			if (isset($user)) {
+				$newPassword = $user->initPassword();
+				$this->user_model->updatePassword($user);
+	
+				$this->load->library('email');
+		   
+				$config['protocol']    = 'smtp';
+				$config['smtp_host']    = 'ssl://smtp.gmail.com';
+				$config['smtp_port']    = '465';
+				$config['smtp_timeout'] = '7';
+				$config['smtp_user']    = 'your gmail user name';
+				$config['smtp_pass']    = 'your gmail password';
+				$config['charset']    = 'utf-8';
+				$config['newline']    = "\r\n";
+				$config['mailtype'] = 'text'; // or html
+				$config['validation'] = TRUE; // bool whether to validate email or not
+	
+				$this->email->initialize($config);
+	
+				$this->email->from('csc309Login@cs.toronto.edu', 'Login App');
+				
+				$this->email->to($user->email);
+	
+				$this->email->subject('Password recovery');
+				$this->email->message("Your new password is $newPassword");
+	
+				$result = $this->email->send();
+	
+				//$data['errorMsg'] = $this->email->print_debugger();
+	
+				//$this->load->view('emailPage',$data);
+				$this->load->view('Account/login_form');
+	
+			}
+			else {
+				$data['errorMsg']="No record exists for this email!";
+				$this->load->view('account/recoverPasswordForm',$data);
+			}
+		}
+	}
+	
 	
 }
