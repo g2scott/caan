@@ -1,67 +1,219 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+session_start(); 		// call session start
+require_once '../vendor/autoload.php';
+use Facebook\FacebookRequest;
+use Facebook\GraphUser;
+use Facebook\FacebookRequestException;
 
 class Account extends CI_Controller {
-	
+
+	public $fb_helper;
+	public $fb_session;
+	// public $session_data;
+
+	private $appId = "481528471979743";
+	private $appSecret = "076f8796209ca3aac466108669545f03";
+
 	public function __construct()
 	{
 		parent::__construct();
-		// users moede will be used in this whole class 
 		$this->load->model('user');
 		$this->load->helper('form');
-		// need load helper before use it
-		// $this->load->helper('url');
-		//session_start(); 		// call session start
+		/**
+		 * construct facebook helper when this controller been called
+		 * to prepare the user login with facebook
+		 *	
+		 * might need deal some expression later 	
+		 */
+		$this->_facebook_login();
+		
+		/**
+		 *  end of facebook helper prepare
+		 */
+
+
 	}
 
+	/**
+	 * function to prepare facebook login with facebook app configuration information
+	 * this will be called throught this controller constructor when this controller been invoked
+	 */
+	public function _facebook_login()
+	{
+		// $appId = "481528471979743";
+		// $appSecret = "076f8796209ca3aac466108669545f03";
+		// $redirect_url = "http://www.bellashop.ca/simplenote/public/";
+		$redirect_url = "http://localhost/htdocs/caan/main/main/index.php/account/Login";
+		// $redirect_url = "http://localhost/~vincent/caan/main/index.php";
+
+		// $appId = "129704493787021";
+		// $appSecret = "9f2f02c678fb359804197bc05e3eacd6";
+		// $redirect_url = "http://50.87.144.46/~caan/main";
+
+		Facebook\FacebookSession::setDefaultApplication($this->appId, $this->appSecret);
+		$this->fb_helper = new Facebook\FacebookRedirectLoginHelper($redirect_url, $this->appId, $this->appSecret);
+
+		try {
+		  $session = $this->fb_helper->getSessionFromRedirect();
+		} catch(FacebookRequestException $ex) {
+		  // When Facebook returns an error
+		} catch(\Exception $ex) {
+		  // When validation fails or other local issues
+		}
+		if ($session) {
+		    // Logged in
+			// create a user in my database, to compare with next login, 
+			// simple store user's facebook username as 
+
+			// $session_data = array('user'  => "vincent_test");
+			// $this->session->set_userdata($session_data);
+			// $this->load->view('profile_page');
+			$this->fb_session = $session;
+		}
+	}
+
+	/**
+	 * if login user with active facebook session, will to retrive this user
+	 */
+	public function _retrive_facebook_user($user)
+	{
+		if (false) {
+			// find the user from the database to setup $session_data
+			$session_data = array(
+                'user'  	=> $user,
+                'user_id'   => $user->id,
+                'logged_in' => TRUE
+            );
+
+			$this->session->set_userdata($session_data);
+		} else {
+			// add user to our database
+			$this->_create_account_for_fb_user();
+
+		}
+	}
+
+	/**
+	 * create account for facebook user at the first time logged in throught their facebook account
+	 * user_id, user_name, user_profile, and user_infor get from the facebook profile
+	 * to insert this into the database. 
+	 */
+	public function _create_account_for_fb_user()
+	{
+		$user = new User();
+		// $user->id = ''; // came from facebook user account
+		// $user->password = ''; // need generate by the system
+
+		$facebook = new Facebook(array(
+		  'appId' => $this->appId,
+		  'secret' => $this->appSecret,
+		));
+		if ($user) {
+		  try {
+		    // Proceed knowing you have a logged in user who's authenticated.
+		    $user_profile = $facebook->api('/me');
+		    $this->fireb->info($user_profile);
+		  } catch (FacebookApiException $e) {
+		    error_log($e);
+		    $user = null;
+		  }
+		}
+		$this->fireb->info($user_profile);
+		$this->load->model('user_model');
+		$this->user_model->insert($user);
+	}
+	
+	/**
+	 * during user login need to check if this user clicked login with facebook link 
+	 * and with active facebook session if not using regular login function from login_form form
+	 * 
+	 */	
+	public function login() {
+		if (isset($this->fb_session)) {
+
+			
+
+
+			if($this->fb_session) {
+
+			  try {
+
+			    // $user_profile = (new FacebookRequest(
+			    //   $this->fb_session, 'GET', '/me'
+			    // ))->execute()->getGraphObject(GraphUser::className());
+
+			    $user_profile = (new FacebookRequest(
+			      $this->fb_session, 'GET', '/me'
+			    ))->execute()->getGraphObject();;
+			    
+			    //$user_profile = (new FacebookRequest($this->fb_session, "GET", "/me"))->execute()->getGraphObject();
+
+			    // echo "Name: " . $user_profile->getName();
+			    $this->fireb->info($user_profile->getPropertyNames());
+
+			  } catch(FacebookRequestException $e) {
+
+			    echo "Exception occured, code: " . $e->getCode();
+			    echo " with message: " . $e->getMessage();
+
+			  }   
+
+			}
+
+
+			$data['url'] = site_url();
+			$this->load->view('profile_page', $data);
+		} else {
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('username', 'Username', 'required');
+			$this->form_validation->set_rules('password', 'Password', 'required');
 		
-	function login() {
-		$this->load->library('form_validation');
-		$this->form_validation->set_rules('username', 'Username', 'required');
-		$this->form_validation->set_rules('password', 'Password', 'required');
-	
-		if ($this->form_validation->run() == FALSE)
-		{
-			$this->load->view('account/login_form');
-		}
-		else
-		{
-			$login = $this->input->post('username');
-			$clearPassword = $this->input->post('password');
-	
-			$this->load->model('user_model');
-	
-			$user = $this->user_model->get($login);
-	
-			if (isset($user) && $user->comparePassword($clearPassword)) {
-
-				$session_data = array(
-                   'user'  		=> $user,
-                   'user_id'    => $user->id,
-                   'logged_in' 	=> TRUE
-               );
-
-				$this->session->set_userdata($session_data);
-
-				// $_SESSION['user'] = $user;
-				// $_SESSION['user_id'] = $user->id; // need return a user id from above get function 
-
-				$data['user']=$user;
-				$data['url'] = site_url();
-	
-				$this->load->view('profile_page', $data);
-				//redirect('profile_page/index', 'refresh'); //redirect to the main application page
+			if ($this->form_validation->run() == FALSE)
+			{
+				$this->load->view('account/login_form');
 			}
-			else {
-				$data['errorMsg']='Incorrect username or password!';
-				$this->load->view('account/login_form',$data);
-				
-			}
-		}
+			else
+			{
+				$login = $this->input->post('username');
+				$clearPassword = $this->input->post('password');
+		
+				$this->load->model('user_model');
+		
+				$user = $this->user_model->get($login);
+		
+				if (isset($user) && $user->comparePassword($clearPassword)) {
+
+					$session_data = array(
+	                   'user'  		=> $user,
+	                   'user_id'    => $user->id,
+	                   'logged_in' 	=> TRUE
+	               );
+
+					$this->session->set_userdata($session_data);
+
+					// $_SESSION['user'] = $user;
+					// $_SESSION['user_id'] = $user->id; // need return a user id from above get function 
+
+					$data['user']=$user;
+					$data['url'] = site_url();
+		
+					$this->load->view('profile_page', $data);
+					//redirect('profile_page/index', 'refresh'); //redirect to the main application page
+				}
+				else {
+					$data['errorMsg']='Incorrect username or password!';
+					$this->load->view('account/login_form',$data);
+					
+				}
+			}			
+		}		
 	}
 	
 	public function login_user()
 	{
-		$this->load->view('Account/login_form');
+		$data['helper'] = $this->fb_helper;
+		$data['test'] = 'test message';
+		$this->load->view('Account/login_form', $data);
 	}
 	
 	public function register_user()

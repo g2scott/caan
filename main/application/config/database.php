@@ -49,8 +49,8 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = '50.87.144.46:3306';
-$db['default']['username'] = 'caan_web';
-$db['default']['password'] = 'develop';
+$db['default']['username'] = 'caan_caan';
+$db['default']['password'] = 'raw0_finally';
 $db['default']['database'] = 'caan_database';
 
 $db['default']['dbdriver'] = 'mysql';
