@@ -8,7 +8,7 @@ function generateVideoTags(data, url)
 	outputVideo += "</div><div class=\"caption\"><h4 class=\"pull-right\"></h4><h4><a href=\"#\">" + data.name + "</a></h4><p>" + data.description +  "</p>";
 	outputVideo += "<p><a href=\""
 
-	outputVideo +=	url + '/public_profile_page/load/' + data.u_id + "\">" + "view the athlete" + "</a></p>";
+	outputVideo +=	url + '/public_profile_page/load/' + data.u_id + "\">" + data.first + ' ' + data.last + "</a></p>";
 
 	outputVideo += "</div>" // end .caption div
 	// add like button below 
@@ -44,6 +44,7 @@ function load (url) {
 	});
 	console.log(url);
 	$.getJSON( url + '/main_page/build_category', function(data){
+		// console.log(data);
 		// console.log(data[1].type);
 		// console.log(data.length);
 		var outputVideo = '';
