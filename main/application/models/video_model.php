@@ -18,7 +18,7 @@ class Video_model extends CI_Model {
      * @param $video_id string
      * @return $video, object
      */
-    function get($video_id)
+    public function get($video_id)
     {
     	$this->db->where('v_id',$video_id);
     	$query = $this->db->get('videos');
@@ -29,46 +29,11 @@ class Video_model extends CI_Model {
     		return null;
     }
 
-    function insert($video) {
+    public function insert($video) {
     	return $this->db->insert('videos',$video);
     }
 
-    /**
-	 * This function is used to create new video to insert to video table
-	 * create a Video object then insert to video table
-	 */
-	// function createNew($link) {
-		// $this->load->library('form_validation');
-		// //$this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.user_name]');
-		// $this->form_validation->set_rules('video_name', 'Video Name', 'required');
-		// $this->form_validation->set_rules('video_description', 'Video Description', "required");
-		// // $this->form_validation->set_rules('file', 'Uploaded file', "required");
-	
-		 
-		// if ($this->form_validation->run() == FALSE)
-		// {
-		// 	$this->load->view('Account/add_video');
-		// }
-		// else
-		// {
-		// 	// this class autoloaded 
-		// 	$video = new Video();
-		// 	$user_id = $this->session->userdata('user_id');
-
-		// 	$video->u_id = $user_id;
-		// 	$video->link = $link; 	// need input from the sproutvide upload return
-		// 	$video->type = $this->input->post('type');
-		// 	$video->name = $this->input->post('name');
-		// 	$video->name = $this->input->post('description');
-		// 	$video->name = $this->input->post('likes');
-
-		// 	//$this->load->model('video_model');
-
-		// 	$error = $this->insert($video);
-			 
-		// 	// $this->load->view('profile_page');
-	// 	}
-	// }
+ 
 
     /**
 	 * upload video to sproutvideo site,
@@ -81,6 +46,29 @@ class Video_model extends CI_Model {
 		$path = $data_array['full_path'];
 		$json_return = SproutVideo\Video::create_video($path);
 		return $json_return;	
+	}
+
+	public function delete_from_sprout($sprout_id)
+	{
+		$return = SproutVideo\Video::delete_video($sprout_id);
+		return $return;
+	}
+
+	/**
+	 * This function find video acoording to provide video_id
+	 * @param String $video_id, passed from controller
+	 * @return Object return a video object
+	 */
+	public function find_video_by_id($video_id)
+	{
+	
+		$id = $video_id;
+		$query_string = "select * from videos where id={$id}";
+		$query = $this->db->query($query_string);
+		if ($query->num_rows() > 0)
+		{
+		   return $query->result()
+		}
 	}
 
 	/**
@@ -136,6 +124,18 @@ class Video_model extends CI_Model {
 		
 	}
 
+	/**
+	 * delete video according video id
+	 * @param string $video_id 
+	 * update session message
+	 */
+	public function delete_video_by_id($video_id)
+	{
+		$query_string = "delete from videos where v_id = {$video_id}";
+		$query = $this->db->query($query_string);
+		// might update session 
+	}
+
 
 
 
@@ -187,17 +187,7 @@ class Video_model extends CI_Model {
 		
 	}
 	
-	/**
-	 * delete video according video id
-	 * @param string $video_id 
-	 * or
-	 * @param string $email
-	 * update session message
-	 */
-	public function delete_video_by_id($video_id)
-	{
-		
-	}
+	
 	
 	/**
 	 * delete all videos belong to single user according to user id or user email
@@ -215,23 +205,7 @@ class Video_model extends CI_Model {
 		
 	}
 	
-	public function find_video_by_id($user_id)
-	{
 	
-		$id = $user_id;
-		$query_string = "select * from video where id={$id}";
-		$query = $this->db->query($query_string);
-		if ($query->num_rows() > 0)
-		{
-		   foreach ($query->result() as $row)
-		   {
-
-		      return $row;
-		   }
-		}
-
-	
-	}
 	
 
 	
