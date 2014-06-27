@@ -29,8 +29,6 @@ class Video extends CI_Controller {
 			$result = $this->video_model->delete_video_by_id($video_id);
 		}
 
-	}
-	
-	
-}	
-	
+	}	
+}
+?>

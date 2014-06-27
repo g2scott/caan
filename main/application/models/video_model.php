@@ -1,4 +1,5 @@
 <?php
+
 require_once '../vendor/autoload.php';
 /**
  * video_model handle functions with video table
@@ -31,9 +32,8 @@ class Video_model extends CI_Model {
 
     public function insert($video) {
     	return $this->db->insert('videos',$video);
-    }
 
- 
+    }
 
     /**
 	 * upload video to sproutvideo site,
@@ -67,7 +67,7 @@ class Video_model extends CI_Model {
 		$query = $this->db->query($query_string);
 		if ($query->num_rows() > 0)
 		{
-		   return $query->result()
+		   return $query->result();
 		}
 	}
 
@@ -97,7 +97,7 @@ class Video_model extends CI_Model {
 	 */
 	public function find_video_by_user($user_id)
 	{
-		$query_string = "select * from videos where u_id = '{$user_id}'";
+		$query_string = "select * from videos where u_id='{$user_id}'";
 		$query = $this->db->query($query_string);
 		if ($query->num_rows() > 0) {
 			$result_array = $query->result_array();
@@ -112,16 +112,16 @@ class Video_model extends CI_Model {
 	 */
 	public function find_video_catgories()
 	{
-		$query_string = "select * from videos join users where videos.u_id = users.id order by type";
+		$query_string = "select * from videos join users where videos.u_id=users.id order by type";
 		$query = $this->db->query($query_string);
 		if ($query->num_rows() > 0)
 		{
 			$result_array = $query->result_array();
 			// $this->fireb->log($result_array, 'result array');
 			$result_json = json_encode($result_array);
+			$this->fireb->log($result_json);
 		   return $result_json;
 		}
-		
 	}
 
 	/**
@@ -136,20 +136,11 @@ class Video_model extends CI_Model {
 		// might update session 
 	}
 
-
-
-
-	/**
-	 * --------- below are not used functions -----------
-	 */
-
-
-
-
 	/**
 	 * 
 	 */
-	public function like_video($video_id){
+	public function like_video($video_id)
+	{
 		$this->db->where('id',$video_id);
 		$query = $this->db->get('likes');
 		if ($query && $query->num_rows() > 0)
@@ -167,58 +158,10 @@ class Video_model extends CI_Model {
 		{
 		   foreach ($query->result() as $row)
 		   {
-
 		      return $row;
 		   }
 		}
 	}
 	
-	
-	
-	/**
-	 * edit video according the passed video id / user email
-	 * @param string $user_id
-	 * or
-	 * @param string $email
-	 * update session message
-	 */
-	public function edit_video($video_id)
-	{
-		
-	}
-	
-	
-	
-	/**
-	 * delete all videos belong to single user according to user id or user email
-	 */
-	public function delete_video_by_user()
-	{
-		
-	}
-	
-	/**
-	 * return all videos from table videos
-	 */
-	public function find_all_videos()
-	{
-		
-	}
-	
-	
-	
-
-	
-	
-	
-	
-	public function find_video_by_categlory($value='')
-	{
-		# code...
-	}
-	
-
 }	
-
-
 ?>
