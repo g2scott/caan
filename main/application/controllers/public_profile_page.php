@@ -1,13 +1,11 @@
-<?php 
-session_start();
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Public_profile_page extends CI_Controller {
 	
 	public function __construct()
 	{
 		parent::__construct();
-		//session_start();
+		// session_start();
 	}
 	
 	public function load($user_id)
@@ -34,9 +32,8 @@ class Public_profile_page extends CI_Controller {
 		$user_id = $user_id;
 		$result = $this->video_model->find_video_by_user($user_id);
 		echo $result;
-		
 	}
 
 }	
-	
-?>	
+
+/* end public_profile_page.php */

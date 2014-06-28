@@ -18,9 +18,10 @@ function load (url)
 	});
 	//console.log(url);
 	$.getJSON(url + '/profile_page/build_profile', function(data){
-		var userName = data[0].user_name;
+		// console.log(data);
+		var userName = data[0].first + " " + data[0].last;
 		var aboutMe = data[0].about_me_text;
-		//console.log(userName);
+		// console.log(userName);
 		//console.log(aboutMe);
 		$('#user_name').html(userName);
 		$('#about_me').html(aboutMe);

@@ -18,7 +18,7 @@ function load (url, userId)
 	});
 	//console.log(url);
 	$.getJSON(url + '/public_profile_page/build_public_profile/' + userId, function(data){
-		var userName = data[0].user_name;
+		var userName = data[0].first + " " + data[0].last;
 		var aboutMe = data[0].about_me_text;
 		//console.log(userName);
 		//console.log(aboutMe);
