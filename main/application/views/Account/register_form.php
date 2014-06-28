@@ -11,10 +11,10 @@
     <title>Register</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="<?php echo $url; ?>/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>/assets/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="<?php echo $url ?>/assets/css/signin.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>/assets/css/signin.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
 <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -90,7 +90,7 @@
 </div>
 
 
-<script src="<?php echo $url ?>/assets/js/jquery-1.10.2.js"></script>
-<script src="<?php echo $url ?>/assets/js/bootstrap.js"></script>
+<script src="<?php echo base_url(); ?>/assets/js/jquery-1.10.2.js"></script>
+<script src="<?php echo base_url(); ?>/assets/js/bootstrap.js"></script>
 </body>
 </html>

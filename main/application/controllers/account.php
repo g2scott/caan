@@ -200,7 +200,7 @@
 		public function login_user()
 		{
 			$data['helper'] = $this->fb_helper;
-			$data['test'] = 'test message';
+			//$data['test'] = 'test message';
 			$this->load->view('Account/login_form', $data);
 		}
 		
@@ -243,8 +243,9 @@
 		
 				 
 				$error = $this->user_model->insert($user);
-				 
-				$this->load->view('account/login_form');
+
+				$data['helper'] = $this->fb_helper; 
+				$this->load->view('account/login_form', $data);
 			}
 		}
 
