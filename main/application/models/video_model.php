@@ -48,6 +48,10 @@ class Video_model extends CI_Model {
 		return $json_return;	
 	}
 
+	/**
+	 * delete video from sprout video site
+	 * @param int/string $sprout_id 
+	 */
 	public function delete_from_sprout($sprout_id)
 	{
 		$return = SproutVideo\Video::delete_video($sprout_id);
@@ -105,6 +109,33 @@ class Video_model extends CI_Model {
 			return $result_json;
 		}
 	}
+
+	/**
+	 * find video according user's first name
+	 * @param string $first_name
+	 * @return $result_json a json string
+	 */
+	public function find_video_by_user_first($first_name)
+	{
+		$query_string = "select * from videos where first='{$first_name}'";
+		$query = $this->db->query($query_string);
+		if ($query->num_rows() > 0) {
+			$result_array = $query->result_array();
+			$result_json = json_encode($result_array);
+			return $result_json;
+		}
+	}
+
+	public function find_video_by_video_name($video_name)
+	{
+		$query_string = "select * from videos where video_name='{$video_name}'";
+		$query = $this->db->query($query_string);
+		if ($query->num_rows() > 0) {
+			$result_array = $query->result_array();
+			$result_json = json_encode($result_array);
+			return $result_json;
+		}
+	}
 	
 	/**
 	 * Query Video table to select all videos sorted by type
@@ -112,14 +143,12 @@ class Video_model extends CI_Model {
 	 */
 	public function find_video_catgories()
 	{
-		$query_string = "select * from videos join users where videos.u_id=users.id order by type";
+		$query_string = "select link, name, description, u_id, first, last from videos join users where videos.u_id=users.id order by type";
 		$query = $this->db->query($query_string);
 		if ($query->num_rows() > 0)
 		{
 			$result_array = $query->result_array();
-			// $this->fireb->log($result_array, 'result array');
 			$result_json = json_encode($result_array);
-			$this->fireb->log($result_json);
 		   return $result_json;
 		}
 	}

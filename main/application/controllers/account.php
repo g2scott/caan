@@ -110,13 +110,12 @@
 			  try {
 			    // Proceed knowing you have a logged in user who's authenticated.
 			    $user_profile = $facebook->api('/me');
-			    $this->fireb->info($user_profile);
 			  } catch (FacebookApiException $e) {
 			    error_log($e);
 			    $user = null;
 			  }
 			}
-			$this->fireb->info($user_profile);
+			//$this->fireb->info($user_profile);
 			$this->load->model('user_model');
 			$this->user_model->insert($user);
 		}
@@ -141,7 +140,6 @@
 			    
 
 				    // echo "Name: " . $user_profile->getName();
-				    // $this->fireb->info($user_profile->getPropertyNames());
 
 			  	} catch(FacebookRequestException $e) {
 

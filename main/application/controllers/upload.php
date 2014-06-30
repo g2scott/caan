@@ -39,7 +39,6 @@ class Upload extends CI_Controller {
 			$json_return = $this->video_model->upload_to_sprout($data_array);
 			//$array_return = json_decode($json_return);
 			$link = $json_return['embed_code'];
-			//$this->$fireb->log($link);
 			// $this->load->model('video_model');
 			// $this->video_model->createNew($link);
 

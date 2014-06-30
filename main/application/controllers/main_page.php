@@ -18,7 +18,6 @@ class Main_page extends CI_Controller {
 		$this->load->model('video_model');
 		$return = $this->video_model->find_video_catgories(); 
 		// $return = NULL;
-		// $this->fireb->log($return);
 		// need echo or print to ajax response
 		echo $return;
 	}
