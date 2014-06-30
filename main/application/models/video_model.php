@@ -143,7 +143,7 @@ class Video_model extends CI_Model {
 	 */
 	public function find_video_catgories()
 	{
-		$query_string = "select link, name, description, u_id, first, last from videos join users where videos.u_id=users.id order by type";
+		$query_string = "select link, name, description, u_id, first, last, type from videos join users where videos.u_id=users.id order by type";
 		$query = $this->db->query($query_string);
 		if ($query->num_rows() > 0)
 		{
