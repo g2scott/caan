@@ -4,7 +4,24 @@
  */
 class User_model extends CI_Model {
 
-    
+    /**
+     * function to support main_page controller stream function
+     * to find following users for provide user
+     * @param int $user_id
+     * @return string like grouped user id '2,5,9'
+     */
+    public function find_following_users($user_id)
+    {
+        $this->db->where('u_id', $user_id);
+        $this->db->select('following');
+        $query = $this->db->get('users');
+        if ($query && $query->num_rows() > 0){
+            foreach ($query->result_array() as $row){
+                return $row['following'];
+            }
+        }
+    }
+
     public function get_last_entrie()
     {
         $query = $this->db->get('user', 1);

@@ -22,8 +22,7 @@ class Public_profile_page extends CI_Controller {
 		$user_id = $user_id;
 		$result = $this->user_model->find_user_by_id($user_id);
 		$result = json_encode($result); // moved out json_encode from find_user_by_id function
-		echo $result;
-		
+		echo $result;	
 	}
 
 	public function build_public_video_list($user_id)
