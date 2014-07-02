@@ -115,7 +115,6 @@
 			    $user = null;
 			  }
 			}
-			//$this->fireb->info($user_profile);
 			$this->load->model('user_model');
 			$this->user_model->insert($user);
 		}

@@ -54,6 +54,7 @@ class Video_model extends CI_Model {
 	 */
 	public function delete_from_sprout($sprout_id)
 	{
+		Sproutvideo::$api_key = '1e376f3f3954ea1ef83163390092427c';
 		$return = SproutVideo\Video::delete_video($sprout_id);
 		return $return;
 	}
@@ -67,12 +68,13 @@ class Video_model extends CI_Model {
 	{
 	
 		$id = $video_id;
-		$this->db->where("v_id", $video_id);
-		$query_string = $this->db->get('videos');
-		$query = $this->db->query($query_string);
+		$this->db->where("v_id", $id);
+		$query = $this->db->get('videos');
 		if ($query->num_rows() > 0)
 		{
-		   return $query->result();
+			foreach ($query->result() as $row){
+				return $row;
+			}
 		}
 	}
 

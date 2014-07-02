@@ -39,14 +39,35 @@ class Profile_page extends CI_Controller {
 	{
 		$video = $this->video_model->find_video_by_id($video_id);
 		$sprout_id = $video->sprout_id;
-		$return = $this->video_model->delete_from_sprout($sprout_id);
+		try {
+			$return = $this->video_model->delete_from_sprout($sprout_id);
+			
+		} catch (Exception $e) {
+			$req = $e->getRequest();
+            $resp =$e->getResponse();
+            echo $req;
+            echo $resp;
+		}
+		
 
 		if (isset($return)) {
 			// delete record from videos table
 			$result = $this->video_model->delete_video_by_id($video_id);
+			$data['url'] = site_url();
+			$this->load->view('profile_page', $data);
 		}
 
-	}	
+	}
+
+	/**
+	 * to follow athlete from athlete profile by clicking follow button
+	 */
+	public function follow($value='')
+		{
+			// get user_id for this athlete
+
+			// built 
+		}	
 
 
 }	
