@@ -129,6 +129,11 @@ class Video_model extends CI_Model {
 		}
 	}
 
+	/**
+	 * function to get video by video's name support search in the main_page controller
+	 * @param string $video_name a full name from the video
+	 * @return json object 
+	 */
 	public function find_video_by_video_name($video_name)
 	{
 		$query_string = "select * from videos where video_name='{$video_name}'";

@@ -22,6 +22,14 @@ class User_model extends CI_Model {
         }
     }
 
+    public function update_following_users($user_id, $update_field)
+    {
+        $user = new User;
+        $user->following = $update_field;
+        $this->db->where('id', $user_id);
+        $this->db->update('users', $user);
+    }
+
     public function get_last_entrie()
     {
         $query = $this->db->get('user', 1);
