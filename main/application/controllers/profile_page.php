@@ -8,6 +8,8 @@ class Profile_page extends CI_Controller {
 	{
 		parent::__construct();
 		//session_start();
+		$this->load->model('video_model');
+
 	}
 	
 	
@@ -22,11 +24,29 @@ class Profile_page extends CI_Controller {
 	
 	public function build_video_list()
 	{
-		$this->load->model('video_model');
 		$user_id = $this->session->userdata('user_id');
 		$result = $this->video_model->find_video_by_user($user_id);
 		echo $result;
 	}
+
+	/**
+	 * Two processes to delete video
+	 * 1. delete video from sprout video (need a sprout_video id)
+	 * 2. delete video record from videos table
+	 * @param String $video_id passed from user click
+	 */
+	public function delete($video_id)
+	{
+		$video = $this->video_model->find_video_by_id($video_id);
+		$sprout_id = $video->sprout_id;
+		$return = $this->video_model->delete_from_sprout($sprout_id);
+
+		if (isset($return)) {
+			// delete record from videos table
+			$result = $this->video_model->delete_video_by_id($video_id);
+		}
+
+	}	
 
 
 }	

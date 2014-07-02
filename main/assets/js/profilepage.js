@@ -1,4 +1,4 @@
-function generateVideoTags(data)
+function generateVideoTags(data, url)
 {
 	var outputVideo = '';
 	// outputVideo += "<div class=\"col-sm-6 col-lg-6 col-md-6\"><div class=\"thumbnail\"><div class=\"span6\"><div class=\"flex-video widescreen\"><iframe src=\'";
@@ -6,7 +6,9 @@ function generateVideoTags(data)
 	outputVideo += data.link;
 	// outputVideo += "\' allowfullscreen></iframe></div><div class=\"caption\"><h4 class=\"pull-right\"></h4><h4><a href=\"#\">" + data.name + "</a></h4><p>" + data.description +  "</p></div><div class=\"ratings\"><p class=\"pull-right\">15 reviews</p><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span></p></div></div></div></div>";
 	outputVideo += "</div><div class=\"caption\"><h4 class=\"pull-right\"></h4><h4><a href=\"#\">" + data.name + "</a></h4><p>" + data.description +  "</p>";
-	outputVideo += "<p><a href=\"#\">DELETE</a></p></div>";
+	outputVideo += "<p><a href=\"";
+	outputVideo += url + "/profile_page/delete/" + data.v_id;
+	outputVideo += "\" onclick=\"return confirm('Are you sure?')\"><span style=\"color:red\">DELETE</span></a></p></div>";
 	outputVideo += "<div class=\"ratings\"><p class=\"pull-right\">15 reviews</p><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span></p></div></div></div></div>";
 	return outputVideo;
 }
@@ -28,10 +30,10 @@ function load (url)
 	});
 	
 	$.getJSON(url + '/profile_page/build_video_list', function(data){
-		//console.log(data);
+		// console.log(data);
 		var outputVideo = '';
 		for (var i=0; i < data.length; i++) {
-			outputVideo += generateVideoTags(data[i]);
+			outputVideo += generateVideoTags(data[i],url);
 		}
 		$('#list_video').html(outputVideo);
 	});

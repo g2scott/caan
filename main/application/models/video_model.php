@@ -67,7 +67,8 @@ class Video_model extends CI_Model {
 	{
 	
 		$id = $video_id;
-		$query_string = "select * from videos where id={$id}";
+		$this->db->where("v_id", $video_id);
+		$query_string = $this->db->get('videos');
 		$query = $this->db->query($query_string);
 		if ($query->num_rows() > 0)
 		{

@@ -11,6 +11,7 @@
 		public $link ;
 		public $description ;
 		public $type ;
+		public $sprout_id ;
 	}
 
 

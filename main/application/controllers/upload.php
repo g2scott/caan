@@ -39,6 +39,7 @@ class Upload extends CI_Controller {
 			$json_return = $this->video_model->upload_to_sprout($data_array);
 			//$array_return = json_decode($json_return);
 			$link = $json_return['embed_code'];
+			$sprout_id = $json_return['id'];
 			// $this->load->model('video_model');
 			// $this->video_model->createNew($link);
 
@@ -64,6 +65,7 @@ class Upload extends CI_Controller {
 
 				$video->u_id = $user_id;
 				$video->link = $link; 	// need input from the sproutvide upload return
+				$video->sprout_id = $sprout_id;
 				$video->type = $this->input->post('type');
 				$video->name = $this->input->post('video_name');
 				$video->description = $this->input->post('video_description');

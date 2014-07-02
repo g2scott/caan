@@ -14,7 +14,8 @@
 
     <!-- Add custom CSS here -->
     <link href="<?php echo base_url() ?>assets/css/shop-homepage.css" rel="stylesheet">
-	<link href="<?php echo base_url() ?>assets/css/responsive_video.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/css/responsive_video.css" rel="stylesheet">
+	<link href="<?php echo base_url() ?>assets/css/profile_page.css" rel="stylesheet">
 
 </head>
 
