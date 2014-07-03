@@ -65,6 +65,10 @@
 	                    <div class="list-group-item" id="about_me"></div>
 						
 	                	</div>
+
+                        <div id="follow">  
+                        <!-- <a class="btn btn-primary" href="#">follow</a> -->
+                        </div>
 						
 				
 				<!-- <a class="btn btn-primary" target="_blank" href="#edit_profile"> Edit Profile </a> -->

@@ -12,7 +12,7 @@ class User_model extends CI_Model {
      */
     public function find_following_users($user_id)
     {
-        $this->db->where('u_id', $user_id);
+        $this->db->where('id', $user_id);
         $this->db->select('following');
         $query = $this->db->get('users');
         if ($query && $query->num_rows() > 0){
@@ -30,10 +30,29 @@ class User_model extends CI_Model {
         $this->db->update('users', $user);
     }
 
-    public function get_last_entrie()
+    /**
+     * This function test if the submit user if been followed or not
+     * @param $user_id if this user is been followed
+     * @return boolean $boolean for if the user been followed
+     */
+    public function is_following($user_id)
     {
-        $query = $this->db->get('user', 1);
-        return $query->result();
+        $boolean = FALSE;
+        $current_user_id = $this->session->userdata('user_id');
+        if (isset($current_user_id) && ($current_user_id != $user_id)) {
+            $following_string = $this->find_following_users($current_user_id);
+            $following_array = explode(",", $following_string);
+            foreach ($following_array as $key => $value) {
+                if ($user_id == $value ) {
+                    $boolean = TRUE;
+                }
+            }
+        }else{
+            // user not logged in 
+            $boolean = NULL;
+        }
+        
+        return $boolean;
     }
 
     /**
@@ -151,6 +170,12 @@ public function edit_user()
 {
 
 }
+
+public function get_last_entrie()
+    {
+        $query = $this->db->get('user', 1);
+        return $query->result();
+    }
 
 
     // function insert_entry()

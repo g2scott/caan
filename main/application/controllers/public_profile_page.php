@@ -33,6 +33,30 @@ class Public_profile_page extends CI_Controller {
 		echo $result;
 	}
 
+	public function build_follow_button($user_id)
+	{
+		// check if current user has been followd or not ? 
+		// I know the user of this profile's id
+		$this->load->model('user_model');
+		$data = '';
+		$tester = $this->user_model->is_following($user_id);
+
+		if (!empty($tester)) {
+			if ($tester) {
+				$data = TRUE;
+			}else {
+				$data = FALSE;
+		}
+			
+		}else {
+			$data = NULL;
+		}
+
+		$return['data'] = $data;
+		$json_return = json_encode($return);
+		echo $json_return; // string follow or not follow
+	}
+
 }	
 
 /* end public_profile_page.php */

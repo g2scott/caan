@@ -35,4 +35,21 @@ function load (url, userId)
 		$('#list_video').html(outputVideo);
 	});
 
+	$.getJSON(url + '/public_profile_page/build_follow_button/' + userId, function(data){
+		var output = '';
+		if (data != null) {	
+		// build output by adding variable data(data is the text of follow or unfollow)
+			if (data == true) {
+				output = "<a class=\"btn btn-primary\" href=\"#\">unfollow</a>";
+			} else {
+				output = "<a class=\"btn btn-primary\" href=\"#\">follow</a>";
+			} 
+		}
+		console.log(output);
+		console.log("output");
+		$('#follow').html(output);
+		
+		
+	});
+
 }
