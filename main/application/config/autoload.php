@@ -53,10 +53,10 @@ $autoload['packages'] = array();
 */
 
 
-$autoload['libraries'] = array('database', 'session');
+// $autoload['libraries'] = array('database', 'session');
 
 //for test purpose, just uncommon it if you want to switch.
-// $autoload['libraries'] = array('database', 'session', 'firephp', 'fireb');
+$autoload['libraries'] = array('database', 'session', 'firephp', 'fireb');
 
 
 /*

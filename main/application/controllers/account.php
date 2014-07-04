@@ -32,6 +32,11 @@
 			 */
 		}
 
+		public function index()
+		{
+			$this->login();
+		}
+
 		/**
 		 * function to prepare facebook login with facebook app configuration information
 		 * this will be called throught this controller constructor when this controller been invoked
@@ -126,6 +131,8 @@
 		 */	
 		public function login() {
 
+			$user = $this->session->userdata('user');
+			//$this->fireb->log("what is the user", $user);
 			if (isset($this->fb_session)) {
 
 				try {
@@ -148,7 +155,11 @@
 
 				$data['url'] = site_url();
 				$this->load->view('profile_page', $data);
-			} else {
+			} elseif (!empty($user)) {
+				$data['url'] = site_url();
+				$this->load->view('profile_page', $data);
+
+			}else {
 				$this->load->library('form_validation');
 				$this->form_validation->set_rules('username', 'Username', 'required');
 				$this->form_validation->set_rules('password', 'Password', 'required');
@@ -198,9 +209,14 @@
 	
 		public function login_user()
 		{
-			$data['helper'] = $this->fb_helper;
-			//$data['test'] = 'test message';
-			$this->load->view('Account/login_form', $data);
+			$user = $this->session->userdata('user');
+			if (!empty($user)) {
+				$this->login();	
+			} else {
+				$data['helper'] = $this->fb_helper;
+				//$data['test'] = 'test message';
+				$this->load->view('Account/login_form', $data);
+			}
 		}
 		
 		public function register_user()
