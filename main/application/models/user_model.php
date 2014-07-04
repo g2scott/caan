@@ -30,6 +30,12 @@ class User_model extends CI_Model {
         return $this->db->update('users', $user);
     }
 
+    public function update_user($user)
+    {
+        $this->db->where('id', $user->id);
+        return $this->db->update('users', $user);
+    }
+
     /**
      * This function test if the submit user if been followed or not
      * @param $user_id if this user is been followed

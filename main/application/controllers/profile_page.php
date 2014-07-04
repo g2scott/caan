@@ -9,7 +9,7 @@ class Profile_page extends CI_Controller {
 		parent::__construct();
 		//session_start();
 		$this->load->model('video_model');
-
+		$this->load->model('user_model');
 	}
 	
 	
@@ -57,6 +57,54 @@ class Profile_page extends CI_Controller {
 			$this->load->view('profile_page', $data);
 		}
 
+	}
+
+	public function prepare_edit_profile()
+	{
+		$user_id = $this->session->userdata("user_id");
+		// 1. get back profile from database
+		$user = $this->user_model->find_user_object_by_id($user_id);
+		// 2. display in the view and filled into the form
+		$data['first'] = $user->first;
+		$data['last'] = $user->last;
+		$data['email'] = $user->email;
+		$data['about_me_text'] = $user->about_me_text;
+		$this->load->view('edit_profile', $data);
+		// in the profile view sign data back to form's element value. 
+	}
+
+	public function edit_profile()
+	{
+		// 3. receive the form submited by user
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('first', 'First', 'required');
+		$this->form_validation->set_rules('last', 'Last', 'required');
+		$this->form_validation->set_rules('email', 'Email', 'required|is_unique[users.email]');
+		$this->form_validation->set_rules('about_me_text', 'About_Me', 'required');
+		if ($this->form_validation->run() == FALSE)
+			{
+				$this->load->view('edit_profile');
+			}
+			else
+			{	
+				$user_id = $this->session->userdata('user_id');
+				$user = $this->find_user_object_by_id($user_id);
+		
+				$user->first = $this->input->post('first');
+				$user->last = $this->input->post('last');
+				$user->email = $this->input->post('email');
+				$user->about_me_text = $_POST['about_me_text'];
+				 
+				$this->load->model('user_model');
+		
+		// 4. update database
+		 		$error = $this->user_model->update_user($user);
+
+				//$data['helper'] = $this->fb_helper; 
+				$this->load->view('profile');
+			}
+		
+		// 5. display user updated profile
 	}
 
 }

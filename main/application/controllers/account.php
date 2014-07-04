@@ -131,7 +131,7 @@
 		 */	
 		public function login() {
 
-			$user = $this->session->userdata('user');
+			$user_id = $this->session->userdata('user_id');
 			//$this->fireb->log("what is the user", $user);
 			if (isset($this->fb_session)) {
 
@@ -155,7 +155,7 @@
 
 				$data['url'] = site_url();
 				$this->load->view('profile_page', $data);
-			} elseif (!empty($user)) {
+			} elseif (!empty($user_id)) {
 				$data['url'] = site_url();
 				$this->load->view('profile_page', $data);
 
@@ -180,8 +180,12 @@
 			
 					if (isset($user) && $user->comparePassword($clearPassword)) {
 
+						// $session_data = array(
+		    //                'user'  		=> $user,
+		    //                'user_id'    => $user->id,
+		    //                'logged_in' 	=> TRUE
+		    //            );
 						$session_data = array(
-		                   'user'  		=> $user,
 		                   'user_id'    => $user->id,
 		                   'logged_in' 	=> TRUE
 		               );
@@ -209,8 +213,8 @@
 	
 		public function login_user()
 		{
-			$user = $this->session->userdata('user');
-			if (!empty($user)) {
+			$user_id = $this->session->userdata('user_id');
+			if (!empty($user_id)) {
 				$this->login();	
 			} else {
 				$data['helper'] = $this->fb_helper;
