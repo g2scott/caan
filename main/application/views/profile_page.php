@@ -43,7 +43,7 @@
                     </li>
                     <li><a href="#contact">Contact</a>
                     </li>
-					<li><a href=" <?php echo base_url() ?>index.php">Log out</a>
+					<li><a href=" <?php echo site_url() ?>/account/logout_user">Log out</a>
                     </li>
                 </ul>
             </div>

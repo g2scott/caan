@@ -251,7 +251,9 @@
 
 		public function logout_user()
 		{
-			session_destroy();
+			//session_destroy();
+			// $this->session->unset_userdata('some_name');
+			$this->session->sess_destroy();
 			$this->load->view('main_page.html');
 		}
 		

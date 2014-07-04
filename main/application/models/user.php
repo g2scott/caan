@@ -10,6 +10,7 @@ public $password; //encrypted
 public $salt;
 public $img_path;
 public $about_me_text;
+public $following;
 
 
 public function encryptPassword($clearPassword) {

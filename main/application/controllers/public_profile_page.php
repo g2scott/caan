@@ -40,16 +40,15 @@ class Public_profile_page extends CI_Controller {
 		$this->load->model('user_model');
 		$data = '';
 		$tester = $this->user_model->is_following($user_id);
+		if (is_null($tester)) {
+			$data = NULL;
 
-		if (!empty($tester)) {
+		}else {
 			if ($tester) {
 				$data = TRUE;
 			}else {
 				$data = FALSE;
-		}
-			
-		}else {
-			$data = NULL;
+			}
 		}
 
 		$return['data'] = $data;
@@ -57,6 +56,73 @@ class Public_profile_page extends CI_Controller {
 		echo $json_return; // string follow or not follow
 	}
 
+	/**
+	 * to follow athlete from athlete profile by clicking follow button
+	 */
+	public function follow($athlete_id)
+	{	
+		/**
+		 * what if this user has been followed already? 
+		 * currently 
+		 */
+		$this->load->model('user_model');
+		// get user_id for the athlete been followed
+		// follow button need to send athlete id to this function
+
+		// get the following field from the follower
+		$follower_id = $this->session->userdata('user_id');
+		// $this->fireb->log("follower_id", $follower_id);
+		$following_field = $this->user_model->find_following_users($follower_id);
+		// $this->fireb->log("following_field", $following_field);
+
+		if (!empty($following_field)) {
+			$new_following_field = $following_field . "," . $athlete_id;
+		} else {
+			// how to add the first follower with the " , " sign
+			$new_following_field = $athlete_id; 
+		}
+		
+		// add the athlete user id to the follower's following field
+		// $new_following_field = $following_field . "," . $follower_id;
+		// $new_following_field = implode(",", $following_array);
+		// update user database
+		// $this->fireb->log("new_field", $new_following_field);
+		$return = $this->user_model->update_following_users($follower_id, $new_following_field);
+		// $this->fireb->log("update return", $return);
+		$data['url'] = site_url();
+		$data['user_id'] = $athlete_id;
+		$this->load->view('public_profile_page', $data);
+
+	}
+
+	public function unfollow($athlete_id)
+	{
+		$this->load->model('user_model');
+		$unfollow_id = $this->session->userdata('user_id');
+		// $this->fireb->log("unfollower_id", $unfollow_id);
+		$following_field = $this->user_model->find_following_users($unfollow_id);
+		// $this->fireb->log("following_field", $following_field);
+
+		if (!empty($following_field)) {
+			// remove the input athlete_id from current following field
+			$following_array = explode(",", $following_field);
+			foreach ($following_array as $key => $value) {
+				if ($value == $athlete_id) {
+					unset($following_array[$key]);
+				}
+			}
+		}
+
+		$new_following_field = implode(",", $following_array);
+		// $this->fireb->log("new_field", $new_following_field);
+		$return = $this->user_model->update_following_users($unfollow_id, $new_following_field);
+		// $this->fireb->log("update return", $return);
+		$data['url'] = site_url();
+		$data['user_id'] = $athlete_id;
+		$this->load->view('public_profile_page', $data);
+
+
+	}
 }	
 
 /* end public_profile_page.php */

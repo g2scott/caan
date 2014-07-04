@@ -59,50 +59,5 @@ class Profile_page extends CI_Controller {
 
 	}
 
-	/**
-	 * to follow athlete from athlete profile by clicking follow button
-	 */
-	public function follow($athlete_id)
-	{
-		// get user_id for the athlete been followed
-		// follow button need to send athlete id to this function
-
-		// get the following field from the follower
-		$follower_id = $this->session->userdata('user_id');
-		$following_field = $this->user_model->find_following_users($follower_id);
-
-
-		// add the athlete user id to the follower's following field
-		$new_following_field = $following_field . "," . $follower_id;
-		// update user database
-		$return = $this->user_model->update_following_users($follower_id, $new_following_field);
-
-	}
-
-	public function unfollow($athlete_id)
-	{
-		// get user_id for the athlete been followed
-		// follow button need to send athlete id to this function
-
-		// get the following field from the follower
-		$follower_id = $this->session->userdata('user_id');
-		$following_field = $this->user_model->find_following_users($follower_id);
-
-		// delete the athlete user id to the follower's following field
-		$array = explode(",", $following_field);
-
-		// find passed athlete id, then delete it
-		foreach ($array as $key => $value) {
-			if ($value == $athlete_id) {
-				unset($array[$athlete_id]);
-			}
-		}
-
-		$new_following_field = implode(",", $array);
-		$return = $this->user_model->update_following_users($follower_id, $new_following_field);
-	}	
-
-
-}	
-	
-?>	
+}
+?>

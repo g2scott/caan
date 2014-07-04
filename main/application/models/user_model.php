@@ -24,10 +24,10 @@ class User_model extends CI_Model {
 
     public function update_following_users($user_id, $update_field)
     {
-        $user = new User;
+        $user = $this->find_user_object_by_id($user_id);
         $user->following = $update_field;
         $this->db->where('id', $user_id);
-        $this->db->update('users', $user);
+        return $this->db->update('users', $user);
     }
 
     /**
@@ -39,7 +39,7 @@ class User_model extends CI_Model {
     {
         $boolean = FALSE;
         $current_user_id = $this->session->userdata('user_id');
-        if (isset($current_user_id) && ($current_user_id != $user_id)) {
+        if ($current_user_id && ($current_user_id != $user_id)) {
             $following_string = $this->find_following_users($current_user_id);
             $following_array = explode(",", $following_string);
             foreach ($following_array as $key => $value) {
@@ -100,6 +100,28 @@ class User_model extends CI_Model {
     	else
     		return null;
     }
+
+    public function find_user_by_id($user_id)
+    {
+        $query_string = "select * from users where id={$user_id}";
+        $query = $this->db->query($query_string);
+        if ($query->num_rows() > 0) {
+            $result = $query->result_array();
+            return $result;
+        }
+
+    }
+
+    public function find_user_object_by_id($user_id)
+    {
+        $query_string = "select * from users where id={$user_id}";
+        $query = $this->db->query($query_string);
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $object) {
+                return $object;
+            }
+        }      
+    }
     
 /**
 * add a use
@@ -131,16 +153,7 @@ return $row->id;
 }
 }
 
-public function find_user_by_id($user_id)
-{
-$query_string = "select * from users where id={$user_id}";
-$query = $this->db->query($query_string);
-if ($query->num_rows() > 0) {
-$result = $query->result_array();
-return $result;
-}
 
-}
 
 public function find_user_password($user_name)
 {

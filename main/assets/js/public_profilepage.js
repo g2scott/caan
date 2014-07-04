@@ -37,12 +37,14 @@ function load (url, userId)
 
 	$.getJSON(url + '/public_profile_page/build_follow_button/' + userId, function(data){
 		var output = '';
-		if (data != null) {	
+		var tester = data.data;
+		console.log(data.data);
+		if (tester != null) {	
 		// build output by adding variable data(data is the text of follow or unfollow)
-			if (data == true) {
-				output = "<a class=\"btn btn-primary\" href=\"#\">unfollow</a>";
+			if (tester == true) {
+				output = "<a class=\"btn btn-primary\" href=\"" + url + "/public_profile_page/unfollow/" + userId + "\">unfollow</a>";
 			} else {
-				output = "<a class=\"btn btn-primary\" href=\"#\">follow</a>";
+				output = "<a class=\"btn btn-primary\" href=\"" + url + "/public_profile_page/follow/" + userId +"\">follow</a>";
 			} 
 		}
 		console.log(output);
