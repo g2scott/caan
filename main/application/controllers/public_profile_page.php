@@ -30,7 +30,8 @@ class Public_profile_page extends CI_Controller {
 		$this->load->model('video_model');
 		$user_id = $user_id;
 		$result = $this->video_model->find_video_by_user($user_id);
-		echo $result;
+		$json_result = json_encode($result);
+		echo $json_result;
 	}
 
 	public function build_follow_button($user_id)

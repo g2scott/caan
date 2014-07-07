@@ -23,17 +23,17 @@ class Main_page extends CI_Controller {
 		echo $return;
 	}
 
-	public function stream($user_name)
-	{
-		// get following users
-		$users = $this->user_model->find_following_users($user_name);
-		$user_array = explode(",", $users);
-		foreach ($user_array as $key => $value) {
-			$return = $this->video_model->find_video_by_user($value);
-			$data["user_{$key}"] = $return;
-		}
-		echo $data;
-	}
+	// public function stream($user_name)
+	// {
+	// 	// get following users
+	// 	$users = $this->user_model->find_following_users($user_name);
+	// 	$user_array = explode(",", $users);
+	// 	foreach ($user_array as $key => $value) {
+	// 		$return = $this->video_model->find_video_by_user($value);
+	// 		$data["user_{$key}"] = $return;
+	// 	}
+	// 	echo $data;
+	// }
 
 	public function search($search_term)
 	{

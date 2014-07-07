@@ -108,8 +108,7 @@ class Video_model extends CI_Model {
 		$query = $this->db->query($query_string);
 		if ($query->num_rows() > 0) {
 			$result_array = $query->result_array();
-			$result_json = json_encode($result_array);
-			return $result_json;
+			return $result_array;
 		}
 	}
 
