@@ -187,15 +187,15 @@ class Video_model extends CI_Model {
 	}
 	
 	
-	public function find_video_links()
+	public function find_video_links($video_id)
 	{
-		$query_string = "select * from videos";
+		$query_string = "select * from videos where id={$video_id}";
 		$query = $this->db->query($query_string);
 		if ($query->num_rows() > 0)
 		{
 		   foreach ($query->result() as $row)
 		   {
-		      return $row;
+		      return $row->link;
 		   }
 		}
 	}

@@ -11,5 +11,11 @@ class Video extends CI_Controller {
 		// need load helper before use it
 		// $this->load->helper('url');
 	}
+
+	public function build_single_video_page($video_id)
+	{
+		$link = $this->video_model->find_video_links($video_id);
+		
+	}
 }
 ?>

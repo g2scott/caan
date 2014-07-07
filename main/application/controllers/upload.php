@@ -9,9 +9,67 @@ class Upload extends CI_Controller {
 		$this->load->model('video_model');
 	}
 
+	public function profile_upload()
+	{
+		$this->load->view('profile_upload_form',array('error' => ' ' ));
+	}
+
 	function video_upload()
 	{
 		$this->load->view('upload_form', array('error' => ' ' ));
+	}
+
+	public function upload_profile()
+	{
+		$user_id = $this->session->userdata['user_id'];
+	
+		$config['upload_path'] = './assets/img/profile';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '0';
+		$config['max_width']  = '0';
+		$config['max_height']  = '0';
+		$config['file_name'] = "{$user_id}" . ".jpg";
+		$config['overwrite'] = "true";
+
+		$this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload())
+		{
+			$error = array('error' => $this->upload->display_errors());
+
+			$this->load->view('profile_upload_form', $error);
+		}
+		else
+		{
+			$error = array('error' => $this->upload->display_errors());
+			$data_array = $this->upload->data();
+
+			$this->load->library('form_validation');
+			$this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.user_name]');
+			$this->form_validation->set_rules('email', 'Email', 'required|is_unique[users.email]');
+			$this->form_validation->set_rules('password', 'Password', 'required');
+			$this->form_validation->set_rules('about_me_text', 'AboutMe', "required");
+
+			if ($this->form_validation->run() == FALSE)
+			{
+				$error = array('error' => validation_errors());
+				$this->load->view('profile_upload_form', $error);
+			}
+			else
+			{
+				$user = $this->user_model->find_user_object_by_id($user_id);
+				$user->user_name = $this->input->post('username');
+				$user->email = $this->input->post('email');
+				$clearPassword = $this->input->post('password');
+				$user->encryptPassword($clearPassword);
+				$user->about_me = $this->input->post('about_me');
+				$user->img_path = $data_array['full_path'];
+
+				$this->user_model->update_user($user);
+
+			}
+
+		}
 	}
 	
 	/**
