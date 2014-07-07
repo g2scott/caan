@@ -15,7 +15,13 @@ class Video extends CI_Controller {
 	public function build_single_video_page($video_id)
 	{
 		$link = $this->video_model->find_video_links($video_id);
-		
+
+		$output  = "<div class=\"flex-video widescreen\">";
+		$output += $link;
+		$output += "</div>";
+		$data['output'] = $output;
+
+		$this->load->view('single_page', $data);
 	}
 }
 ?>
