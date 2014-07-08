@@ -108,23 +108,23 @@ class Profile_page extends CI_Controller {
 		// 5. display user updated profile
 	}
 
-	/**
-	 * user login their profile page, click 'feed' button, then load single page view, triger
-	 * javascript file to run ajax call this controller get the json return then display at 
-	 * the main pages
-	 */
-	public function build_video_stream()
-	{
-		$user_id = $this->session->userdata['user_id'];
-		$following_string = $this->user_model->find_following_users($user_id);
-		$array = explode(",", $following_string);
-		$data = array();
-		foreach ($array as $key => $value) {
-			$data['$key'] = $this->video_model->find_video_by_user($value);
-		}
-		$json_result = json_encode($data);
-		echo $json_result;
-	}
+	// /**
+	//  * user login their profile page, click 'feed' button, then load single page view, triger
+	//  * javascript file to run ajax call this controller get the json return then display at 
+	//  * the main pages
+	//  */
+	// public function build_video_stream()
+	// {
+	// 	$user_id = $this->session->userdata['user_id'];
+	// 	$following_string = $this->user_model->find_following_users($user_id);
+	// 	$array = explode(",", $following_string);
+	// 	$data = array();
+	// 	foreach ($array as $key => $value) {
+	// 		$data['$key'] = $this->video_model->find_video_by_user($value);
+	// 	}
+	// 	$json_result = json_encode($data);
+	// 	echo $json_result;
+	// }
 
 }
 ?>

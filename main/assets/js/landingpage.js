@@ -29,14 +29,59 @@ function generateVideoTags(data, url)
 	return outputVideo;
 }
 
+function loadMenubar (url) {
+	$.getJSON( url + '/main_page/check_login', function(data){
+		// console.log(data);
+		if (data.login != false) {
+			var profile = "<a href=\"";
+			profile += url + '/main_page/profile';
+			profile += "\">Profile</a>";
+			var logout = "<a href=\"";
+			logout += url + '/account/logout_user';
+			logout += "\">Log out</a>";
+			$('#signin').html(profile);
+			$('#signup').html(logout);
+		} else {
+			var signin = "<a href=\"";
+			signin += url + '/account/login_user';
+			signin += "\">Sign in</a>";
+			var signup = "<a href=\"";
+			signup += url + '/account/register_user';
+			signup += "\">Sign up</a>";
+			$('#signin').html(signin);
+			$('#signup').html(signup);
 
-function load (url) {
-	// var result = <?php echo $category_name ?>
-	// triger codeigniter controller to pick return
-	$.ajaxSetup({
-		timeout: 6000
-	});
-	console.log(url);
+		}
+	}) // getJSON end
+}
+
+function loadVideoByCategory (data, url) {
+	// console.log(data);
+	$('#category').find('a').on('click', function(e){
+		e.preventDefault();
+		var type = $(this).attr('href');
+		var index = type.indexOf('.');
+		type = type.slice(0, index);
+		// console.log(type);
+		var outputVideo = '';
+		
+		if (type == 'all_type'){
+			for (var i=0; i<data.length; i++){
+				outputVideo += generateVideoTags(data[i], url);
+			}
+		}else{
+			for (var i=0; i < data.length; i++) {
+				// console.log(data[i].type);
+				if (type == data[i].type) {
+					outputVideo += generateVideoTags(data[i], url);
+				}
+			}
+		}	
+		$('#list_video').html(outputVideo);
+	})
+}
+
+function loadCategory (url) {
 	$.getJSON( url + '/main_page/build_category', function(data){
 		// console.log(data);
 		// console.log(data[1].type);
@@ -60,34 +105,21 @@ function load (url) {
 			$('#list_category').html(outputType);
 			$('#list_video').html(outputVideo);
 			
-	
-		$('#list_category').mouseenter(loadVideoByCategory);
-
-		function loadVideoByCategory(){
-			$('#category').find('a').on('click', function(e){
-				e.preventDefault();
-				var type = $(this).attr('href');
-				var index = type.indexOf('.');
-				type = type.slice(0, index);
-				// console.log(type);
-				var outputVideo = '';
-				
-				if (type == 'all_type'){
-					for (var i=0; i<data.length; i++){
-						outputVideo += generateVideoTags(data[i], url);
-					}
-				}else{
-					for (var i=0; i < data.length; i++) {
-						// console.log(data[i].type);
-						if (type == data[i].type) {
-							outputVideo += generateVideoTags(data[i], url);
-						}
-					}
-				}	
-				$('#list_video').html(outputVideo);
-			})
-		}
-	
+		$('#list_category').mouseenter(loadVideoByCategory(data, url));
 	
 	}) // getJSON end 
+}
+
+
+function load (url) {
+	// var result = <?php echo $category_name ?>
+	// triger codeigniter controller to pick return
+	$.ajaxSetup({
+		timeout: 6000
+	});
+
+	loadMenubar(url);
+
+	loadCategory(url);
+	
 }

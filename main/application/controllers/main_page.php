@@ -35,7 +35,30 @@ class Main_page extends CI_Controller {
 	// 	echo $data;
 	// }
 
-	public function search($search_term)
+	/**
+	 * user login their profile page, click 'feed' button, then load single page view, triger
+	 * javascript file to run ajax call this controller get the json return then display at 
+	 * the main pages
+	 */
+	public function build_video_stream()
+	{
+		$user_id = $this->session->userdata['user_id'];
+		if (isset($user_id)) {
+			$following_string = $this->user_model->find_following_users($user_id);
+			$array = explode(",", $following_string);
+			$data = array();
+			foreach ($array as $key => $value) {
+				$data['$key'] = $this->video_model->find_video_by_user($value);
+			}
+			$json_result = json_encode($data);
+			echo $json_result;
+		} else {
+			$this->load->view("main_page.html");
+		}
+		
+	}
+
+	public function search_video($search_term)
 	{
 		$result_one = $this->video_model->find_video_by_video_name($search_term);
 		$result_two = $this->video_model->find_video_by_user_first($search_term);
@@ -45,6 +68,25 @@ class Main_page extends CI_Controller {
 			$data = $result_two;
 		}
 		echo $data; 
+	}
+
+	public function check_login()
+	{
+		
+		if (isset($this->session->userdata['user_id'])) {
+			$user_id = $this->session->userdata['user_id'];
+			$data['login'] = $user_id;
+		}else{
+			$data['login'] = FALSE;
+		}
+		$data = json_encode($data);
+		echo $data;
+	}
+
+	public function profile()
+	{
+		$data['url'] = site_url();
+		$this->load->view("profile_page", $data);
 	}
 
 
