@@ -32,10 +32,12 @@ function load (url)
 	$.getJSON(url + '/profile_page/build_video_list', function(data){
 		// console.log(data);
 		var outputVideo = '';
-		for (var i=0; i < data.length; i++) {
+		if (data != null) {
+			for (var i=0; i < data.length; i++) {
 			outputVideo += generateVideoTags(data[i],url);
-		}
-		$('#list_video').html(outputVideo);
+			}
+			$('#list_video').html(outputVideo);
+		};
 	});
 
 }

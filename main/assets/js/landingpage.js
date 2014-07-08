@@ -3,7 +3,9 @@ function generateVideoTags(data, url)
 	var outputVideo = '';
 	// outputVideo += "<div class=\"col-sm-4 col-lg-4 col-md-4\"><div class=\"thumbnail\"><div class=\"span6\"><div class=\"flex-video widescreen\"><iframe src=\'";
 	outputVideo += "<div class=\"col-sm-4 col-lg-4 col-md-4\"><div class=\"thumbnail\"><div class=\"span6\"><div class=\"flex-video widescreen\">";
-	outputVideo += data.link;
+	var replace = /<iframe class='sproutvideo-player' src='/gi;
+	var link = data.link.replace(replace, "<iframe class='sproutvideo-player' src='http:");
+	outputVideo += link;
 	// outputVideo += "\' allowfullscreen></iframe></div><div class=\"caption\"><h4 class=\"pull-right\"></h4><h4><a href=\"#\">" + data.name + "</a></h4><p>" + data.description +  "</p></div><div class=\"ratings\"><p class=\"pull-right\">15 reviews</p><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span></p></div></div></div></div>";
 	outputVideo += "</div><div class=\"caption\"><h4 class=\"pull-right\"></h4><h4><a href=\"#\">" + data.name + "</a></h4><p>" + data.description +  "</p>";
 	outputVideo += "<p><a href=\"";
@@ -21,6 +23,7 @@ function generateVideoTags(data, url)
 
 	// rating reviews 
 	outputVideo += "<div class=\"ratings\"><p class=\"pull-right\">15 reviews</p><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span></p></div></div></div></div>";
+	console.log(link);
 	return outputVideo;
 }
 
