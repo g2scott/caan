@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Video extends CI_Controller {
+class Video_controller extends CI_Controller {
 	
 	public function __construct()
 	{
@@ -17,11 +17,10 @@ class Video extends CI_Controller {
 		$link = $this->video_model->find_video_links($video_id);
 
 		$output  = "<div class=\"flex-video widescreen\">";
-		$output += $link;
-		$output += "</div>";
+		$output .= "$link";
+		$output .= "</div>";
 		$data['output'] = $output;
-
-		$this->load->view('single_page', $data);
+		$this->load->view('single_video_page', $data);
 	}
 }
 ?>

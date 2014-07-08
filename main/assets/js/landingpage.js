@@ -7,7 +7,9 @@ function generateVideoTags(data, url)
 	var link = data.link.replace(replace, "<iframe class='sproutvideo-player' src='http:");
 	outputVideo += link;
 	// outputVideo += "\' allowfullscreen></iframe></div><div class=\"caption\"><h4 class=\"pull-right\"></h4><h4><a href=\"#\">" + data.name + "</a></h4><p>" + data.description +  "</p></div><div class=\"ratings\"><p class=\"pull-right\">15 reviews</p><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span></p></div></div></div></div>";
-	outputVideo += "</div><div class=\"caption\"><h4 class=\"pull-right\"></h4><h4><a href=\"#\">" + data.name + "</a></h4><p>" + data.description +  "</p>";
+	outputVideo += "</div><div class=\"caption\"><h4 class=\"pull-right\"></h4><h4><a href=\"";
+	outputVideo += url + "/video_controller/build_single_video_page/" + data.v_id;
+	outputVideo +=	"\">" + data.name + "</a></h4><p>" + data.description +  "</p>";
 	outputVideo += "<p><a href=\"";
 
 	outputVideo +=	url + "/public_profile_page/load/" + data.u_id + "\">" + data.first + " " + data.last + "</a></p>";
@@ -23,7 +25,7 @@ function generateVideoTags(data, url)
 
 	// rating reviews 
 	outputVideo += "<div class=\"ratings\"><p class=\"pull-right\">15 reviews</p><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span></p></div></div></div></div>";
-	console.log(link);
+	// console.log(link);
 	return outputVideo;
 }
 
