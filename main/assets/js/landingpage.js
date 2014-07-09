@@ -110,6 +110,26 @@ function loadCategory (url) {
 	}) // getJSON end 
 }
 
+function loadVideoStream (url) {
+	var outputVideo = '';
+	$('#stream').on('click', function(e){
+		e.preventDefault();
+		$.getJSON( url + '/main_page/build_video_stream', function(data){
+			if (data.result != false) {
+				$.each(data, function(){
+					$.each(this, function(key, value){
+						// console.log(value);
+						outputVideo += generateVideoTags(value);
+					})
+				});
+				$('#list_video').html(outputVideo);
+			};
+			// console.log(outputVideo);
+			// console.log(data);
+		})
+	})
+}		
+
 
 function load (url) {
 	// var result = <?php echo $category_name ?>
@@ -121,5 +141,7 @@ function load (url) {
 	loadMenubar(url);
 
 	loadCategory(url);
+
+	$('#stream').mouseenter(loadVideoStream(url));
 	
 }

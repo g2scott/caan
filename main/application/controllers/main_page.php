@@ -42,18 +42,23 @@ class Main_page extends CI_Controller {
 	 */
 	public function build_video_stream()
 	{
-		$user_id = $this->session->userdata['user_id'];
-		if (isset($user_id)) {
+		if (isset($this->session->userdata['user_id'])) {
+			$user_id = $this->session->userdata['user_id'];
 			$following_string = $this->user_model->find_following_users($user_id);
 			$array = explode(",", $following_string);
 			$data = array();
 			foreach ($array as $key => $value) {
-				$data['$key'] = $this->video_model->find_video_by_user($value);
+				$result = $this->video_model->find_video_by_user($value);
+				if (isset($result)) {
+					$data["{$value}"] = $result;
+				}
 			}
 			$json_result = json_encode($data);
 			echo $json_result;
 		} else {
-			$this->load->view("main_page.html");
+			$data['result'] = FALSE;
+			$json_result = json_encode($data);
+			echo $json_result;
 		}
 		
 	}
