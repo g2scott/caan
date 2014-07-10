@@ -12,6 +12,14 @@ public $img_path;
 public $about_me_text;
 public $following;
 
+public static function serialize_object($user)
+{
+	$new_user = new User();
+	foreach (get_object_vars($user) as $key => $value) {
+		$new_user->$key = $value;
+	}
+	return $new_user;
+}
 
 public function encryptPassword($clearPassword) {
 	$this->salt = mt_rand();

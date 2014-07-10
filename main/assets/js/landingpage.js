@@ -78,6 +78,7 @@ function loadVideoByCategory (data, url) {
 			}
 		}	
 		$('#list_video').html(outputVideo);
+		// $('#list_video').replaceAll(outputVideo);
 	})
 }
 
@@ -112,7 +113,7 @@ function loadCategory (url) {
 
 function loadVideoStream (url) {
 	var outputVideo = '';
-	$('#stream').on('click', function(e){
+	$('#stream').click(function(e){
 		e.preventDefault();
 		$.getJSON( url + '/main_page/build_video_stream', function(data){
 			if (data.result != false) {
@@ -122,7 +123,10 @@ function loadVideoStream (url) {
 						outputVideo += generateVideoTags(value);
 					})
 				});
-				$('#list_video').html(outputVideo);
+				// var element = document.getElementById('list_video');
+				// element.innerHTML = outputVideo;
+				$("#list_video").html(outputVideo);
+				// $('#ul').show().html
 			};
 			// console.log(outputVideo);
 			// console.log(data);

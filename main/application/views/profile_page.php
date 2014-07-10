@@ -61,7 +61,7 @@
 					
 	                	<p class="lead" id="user_name">User Name (getting from database)</p>
 		                <div class="list-group">
-							<div><img src="http://placehold.it/250x300" class="list-group-item thumbnail" style="text-align: center"></div>
+							<div id="profile_img"><img src="http://placehold.it/250x300" class="list-group-item thumbnail" style="text-align: center"></div>
 					
 				
 						

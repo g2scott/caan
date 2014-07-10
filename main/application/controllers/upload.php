@@ -7,6 +7,7 @@ class Upload extends CI_Controller {
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
 		$this->load->model('video_model');
+		$this->load->model('user_model');
 	}
 
 	public function profile_upload()
@@ -57,15 +58,18 @@ class Upload extends CI_Controller {
 			}
 			else
 			{
-				$user = $this->user_model->find_user_object_by_id($user_id);
+				$stored_user = $this->user_model->find_user_object_by_id($user_id);
+				$user = User::serialize_object($stored_user);
 				$user->user_name = $this->input->post('username');
 				$user->email = $this->input->post('email');
 				$clearPassword = $this->input->post('password');
 				$user->encryptPassword($clearPassword);
-				$user->about_me = $this->input->post('about_me');
+				$user->about_me_text = $this->input->post('about_me_text');
 				$user->img_path = $data_array['full_path'];
 
 				$this->user_model->update_user($user);
+				$data['url'] = site_url();
+				$this->load->view('profile_page', $data);
 
 			}
 

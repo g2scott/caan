@@ -30,6 +30,23 @@ class Profile_page extends CI_Controller {
 		echo $json_result;
 	}
 
+	public function find_user_img_path()
+	{
+		$this->load->helper('directory');
+		$dir = './assets/img/profile';
+		$map = directory_map($dir);
+		$user_id = $this->session->userdata['user_id'];
+		foreach ($map as $key => $value) {
+			$file = strstr($value, '.' , true);
+			if ($user_id == $file) {
+				$data['file'] = $value;
+			}
+		}
+		$data['url'] = base_url();
+		$result = json_encode($data);
+		echo $result; 
+	}
+
 	/**
 	 * Two processes to delete video
 	 * 1. delete video from sprout video (need a sprout_video id)

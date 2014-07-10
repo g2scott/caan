@@ -13,6 +13,7 @@ class Upload_test extends CI_Controller {
 		$this->load->view('main_page.html'); 
 		
 	}
+
 	
 }
 

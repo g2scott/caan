@@ -78,6 +78,8 @@ class Video_model extends CI_Model {
 		}
 	}
 
+	
+
 	/**
 	 * crate a new row in the video table,
 	 * the $link @param need get from 'upload_to_sprout' function return.

@@ -21,6 +21,7 @@ function load (url)
 		timeout: 6000
 	});
 	//console.log(url);
+
 	$.getJSON(url + '/profile_page/build_profile', function(data){
 		// console.log(data);
 		var userName = data[0].first + " " + data[0].last;
@@ -39,6 +40,16 @@ function load (url)
 			outputVideo += generateVideoTags(data[i],url);
 			}
 			$('#list_video').html(outputVideo);
+		};
+	});
+
+	$.getJSON(url + '/profile_page/find_user_img_path', function(data){
+		console.log(data);
+		console.log(data.file);
+		if ( data!= null) {
+			var file = data.file;
+			var img_path = data.url + 'assets/img/profile/' + data.file;
+			$('#profile_img :first-child').attr('src', img_path);
 		};
 	});
 
