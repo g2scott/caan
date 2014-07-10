@@ -57,6 +57,23 @@ class Public_profile_page extends CI_Controller {
 		echo $json_return; // string follow or not follow
 	}
 
+	public function find_user_img_path($user_id)
+	{
+		$this->load->helper('directory');
+		$dir = './assets/img/profile';
+		$map = directory_map($dir);
+		// $user_id = $this->session->userdata['user_id'];
+		foreach ($map as $key => $value) {
+			$file = strstr($value, '.' , true);
+			if ($user_id == $file) {
+				$data['file'] = $value;
+			}
+		}
+		$data['url'] = base_url();
+		$result = json_encode($data);
+		echo $result; 
+	}
+
 	/**
 	 * to follow athlete from athlete profile by clicking follow button
 	 */

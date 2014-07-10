@@ -44,8 +44,8 @@ function load (url)
 	});
 
 	$.getJSON(url + '/profile_page/find_user_img_path', function(data){
-		console.log(data);
-		console.log(data.file);
+		// console.log(data);
+		// console.log(data.file);
 		if ( data!= null) {
 			var file = data.file;
 			var img_path = data.url + 'assets/img/profile/' + data.file;

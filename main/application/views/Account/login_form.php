@@ -76,7 +76,7 @@
       <form class="form-signin" role="form" action="<?=site_url("account/Login"); ?>" method="post">
         <h2 class="form-signin-heading">sign in</h2>
 
-        <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
+        <!-- <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div> -->
 
         <?php echo '<a href="' . $helper->getLoginUrl() . '">Login with Facebook</a>'; ?>
 

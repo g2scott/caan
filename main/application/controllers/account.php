@@ -11,8 +11,8 @@
 		public $fb_session;
 		// public $session_data;
 
-		private $appId = "481528471979743";
-		private $appSecret = "076f8796209ca3aac466108669545f03";
+		private $appId = "129704493787021";
+		private $appSecret = "9f2f02c678fb359804197bc05e3eacd6";
 
 		public function __construct()
 		{
@@ -43,16 +43,8 @@
 		 */
 		public function _facebook_login()
 		{
-			// $appId = "481528471979743";
-			// $appSecret = "076f8796209ca3aac466108669545f03";
-			// $redirect_url = "http://www.bellashop.ca/simplenote/public/";
-			$redirect_url = "http://localhost/htdocs/caan/main/main/index.php/account/Login";
-			// $redirect_url = "http://localhost/~vincent/caan/main/index.php";
-
-			// $appId = "129704493787021";
-			// $appSecret = "9f2f02c678fb359804197bc05e3eacd6";
-			// $redirect_url = "http://50.87.144.46/~caan/main";
-
+			$redirect_url = "http://caanapp.ca/caan/main/";
+			
 			Facebook\FacebookSession::setDefaultApplication($this->appId, $this->appSecret);
 			$this->fb_helper = new Facebook\FacebookRedirectLoginHelper($redirect_url, $this->appId, $this->appSecret);
 
@@ -80,7 +72,7 @@
 		 */
 		// public function _retrive_facebook_user($user)
 		// {
-		// 	if (false) {
+		// 	if () {
 		// 		// find the user from the database to setup $session_data
 		// 		$session_data = array(
 	 //                'user'  	=> $user,
@@ -132,20 +124,28 @@
 		public function login() {
 
 			$user_id = $this->session->userdata('user_id');
-			//$this->fireb->log("what is the user", $user);
+			
 			if (isset($this->fb_session)) {
 
 				try {
-				    // $user_profile = (new FacebookRequest(
-				    //   $this->fb_session, 'GET', '/me'
-				    // ))->execute()->getGraphObject(GraphUser::className());
 
 				    $user_profile = (new FacebookRequest(
 				      $this->fb_session, 'GET', '/me'
-				    ))->execute()->getGraphObject();;
+				    ))->execute()->getGraphObject(GraphUser::className());;
 			    
-
 				    // echo "Name: " . $user_profile->getName();
+
+
+				    /**
+				     * 1. get infor for facebook user from $user_profile object, ex. facebook id, 
+				     *
+				     * 2. check if this facebook id existd in users table fb_id field
+				     *
+				     * 3. yes, using facebook id to retrieve user infor to prepare loading profile_page
+				     *
+				     * 4. no, create account for facebook user, pass $user_profile object to _create_account_for_fb_user
+				     * function, then automatic login
+				     */
 
 			  	} catch(FacebookRequestException $e) {
 
@@ -155,6 +155,7 @@
 
 				$data['url'] = site_url();
 				$this->load->view('profile_page', $data);
+
 			} elseif (!empty($user_id)) {
 				$data['url'] = site_url();
 				$this->load->view('profile_page', $data);
@@ -180,11 +181,6 @@
 			
 					if (isset($user) && $user->comparePassword($clearPassword)) {
 
-						// $session_data = array(
-		    //                'user'  		=> $user,
-		    //                'user_id'    => $user->id,
-		    //                'logged_in' 	=> TRUE
-		    //            );
 						$session_data = array(
 		                   'user_id'    => $user->id,
 		                   'logged_in' 	=> TRUE
@@ -192,8 +188,6 @@
 
 						$this->session->set_userdata($session_data);
 
-						// $_SESSION['user'] = $user;
-						// $_SESSION['user_id'] = $user->id; // need return a user id from above get function 
 
 						$data['user']=$user;
 						$data['url'] = site_url();

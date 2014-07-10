@@ -60,7 +60,7 @@
 				
 	                	<p class="lead" id="user_name"></p>
 		                <div class="list-group">
-							<div><img src="http://placehold.it/250x300" class="list-group-item thumbnail" style="text-align: center"></div>
+							<div id="profile_img"><img src="http://placehold.it/250x300" class="list-group-item thumbnail" style="text-align: center"></div>
 		
 	                    <div class="list-group-item" id="about_me"></div>
 						
