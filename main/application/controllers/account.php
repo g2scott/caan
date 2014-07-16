@@ -168,7 +168,7 @@
 				if ($this->form_validation->run() == FALSE)
 				{
 					$data['helper'] = $this->fb_helper;
-					$this->load->view('account/login_form', $data);
+					$this->load->view('Account/login_form', $data);
 				}
 				else
 				{
@@ -198,7 +198,7 @@
 					else {
 						$data['errorMsg']='Incorrect username or password!';
 						$data['helper'] = $this->fb_helper;
-						$this->load->view('account/login_form',$data);
+						$this->load->view('Account/login_form',$data);
 						
 					}
 				}			
