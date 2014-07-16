@@ -52,7 +52,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li id="stream"><a href="stream">Stream</a>
+                    <li id="stream"><a href="<?php echo site_url() ?>">Stream</a>
                     </li>
                     <li>
                         
