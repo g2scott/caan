@@ -43,16 +43,15 @@ class Upload extends CI_Controller {
 
 		$this->load->library('upload', $config);
 
-		
-		if ($this->input->post('username') != "No file selected."){
-		if ( ! $this->upload->do_upload())
-		{
-			$data['error'] = $this->upload->display_errors();
-			
-			
-
-			$this->load->view('profile_upload_form', $data);
-		}
+		if (!empty($_FILES['userfile']['name'])){
+			if ( ! $this->upload->do_upload())
+			{
+				$data['error'] = $this->upload->display_errors();
+				
+				
+	
+				$this->load->view('profile_upload_form', $data);
+			}
 		}else
 		{
 			$error = array('error' => $this->upload->display_errors());
