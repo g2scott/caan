@@ -53,7 +53,7 @@
          </div>
         
                     </li>
-					<li><a href=" <?php echo site_url() ?>/account/logout_user">Log out</a>
+					<li><a href=" <?php echo base_url() ?>/account/logout_user">Log out</a>
                     </li>
                 </ul>
             </div>
@@ -71,7 +71,7 @@
 					
 	                	<p class="lead" id="user_name">User Name (getting from database)</p>
 		                <div class="list-group">
-							<div id="profile_img"><img src="http://placehold.it/250x300" class="list-group-item thumbnail" style="text-align: center"></div>
+							<div id="profile_img"><img src="<?php echo base_url() ?>/assets/img/missing.jpg" class="list-group-item thumbnail" style="text-align: center"></div>
 					
 				
 						
