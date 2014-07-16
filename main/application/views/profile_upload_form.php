@@ -26,19 +26,30 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#home">Start Bootstrap</a>
+                <a class="navbar-brand" href="<?php echo site_url() ?>">Home</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#about">About</a>
+                    <li id="stream"><a href="stream">Stream</a>
                     </li>
-                    <li><a href="#services">Services</a>
+                    <li>
+                        
+             <div class="input-group input-group-sm">
+         <form class="navbar-form" role="search">
+         <div class="input-group">
+             <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+             <div class="input-group-btn">
+                 <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+             </div>
+         </div>
+         </form>
+         </div>
+        
                     </li>
-                    <li><a href="#contact">Contact</a>
-                    </li>
-          <li><a href=" <?php echo base_url() ?>/index.php">Log out</a>
+                    
+        <li><a href=" <?php echo base_url() ?>/index.php">Log out</a>  
                     </li>
                 </ul>
             </div>
@@ -49,18 +60,20 @@
 
 
 
-<?php //echo form_open_multipart('upload/do_upload');?>
+<!-- <?php //echo form_open_multipart('upload/do_upload');?>  -->
 
 <form class="form-signin" role="form" action="<?=site_url("upload/upload_profile"); ?>" method="post" enctype="multipart/form-data">
         <h4 class="form-signin-heading"><?php echo $error;?></h4>
-        <h2 class="form-signin-heading">upload profile</h2>
+        <h2 class="form-signin-heading">Settings</h2>
 
 
-<input type="text" class="form-control" placeholder="User Name" name="username" required autofocus>
-<input type="email" class="form-control" placeholder="Email" name="email" required autofocus>
-<input type="password" class="form-control" placeholder="password" name="password" required>
+<input type="text" class="form-control" value="<?php echo $user->first ?>" name="first" required autofocus>
+<input type="text" class="form-control" value="<?php echo $user->last ?>" name="last" required autofocus>
+<input type="text" class="form-control" value="<?php echo $user->user_name ?>" name="username" required autofocus>
+<input type="email" class="form-control" value="<?php echo $user->email ?>" name="email" required autofocus>
+<input type="password" class="form-control" value="<?php echo $user->password ?>" name="password" required>
 <!-- <textarea> creates a multiline textbox -->
-<textarea class="form-control" placeholder="About Me" name = "about_me_text" rows = "4" cols = "36" autofocus></textarea>
+<input type ="text" class="form-control" value="<?php echo $user->about_me_text ?>" name = "about_me_text" rows = "4" cols = "36" autofocus></input>
 
 <label>select personal picture</label>
 <input type="file" class="form-control" name="userfile" size="20" />

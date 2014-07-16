@@ -12,7 +12,12 @@ class Upload extends CI_Controller {
 
 	public function profile_upload()
 	{
-		$this->load->view('profile_upload_form',array('error' => ' ' ));
+		$user_id = $this->session->userdata("user_id");
+		// 1. get back profile from database
+		$data['user'] = $this->user_model->find_user_object_by_id($user_id);
+		// 2. display in the view and filled into the form
+		$data['error'] = '';
+		$this->load->view('profile_upload_form', $data);
 	}
 
 	function video_upload()
@@ -22,6 +27,10 @@ class Upload extends CI_Controller {
 
 	public function upload_profile()
 	{
+		$user_id = $this->session->userdata("user_id");
+		// 1. get back profile from database
+		$data['user'] = $this->user_model->find_user_object_by_id($user_id);
+		// 2. display in the view and filled into the form
 		$user_id = $this->session->userdata['user_id'];
 	
 		$config['upload_path'] = './assets/img/profile';
@@ -34,16 +43,21 @@ class Upload extends CI_Controller {
 
 		$this->load->library('upload', $config);
 
+		if ($this->input->post('userfile') != ""  ){
+		
 		if ( ! $this->upload->do_upload())
 		{
-			$error = array('error' => $this->upload->display_errors());
+			$data['error'] = $this->upload->display_errors();
+			
+			
 
-			$this->load->view('profile_upload_form', $error);
+			$this->load->view('profile_upload_form', $data);
 		}
-		else
+		}else
 		{
 			$error = array('error' => $this->upload->display_errors());
 			$data_array = $this->upload->data();
+
 
 			$this->load->library('form_validation');
 			$this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.user_name]');
@@ -53,8 +67,8 @@ class Upload extends CI_Controller {
 
 			if ($this->form_validation->run() == FALSE)
 			{
-				$error = array('error' => validation_errors());
-				$this->load->view('profile_upload_form', $error);
+				$data['error'] = validation_errors();
+				$this->load->view('profile_upload_form', $data);
 			}
 			else
 			{
@@ -74,6 +88,7 @@ class Upload extends CI_Controller {
 			}
 
 		}
+		
 	}
 	
 	/**
