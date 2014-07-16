@@ -91,7 +91,7 @@ function loadCategory (url) {
 		for (var i=0; i < data.length; i++) {
 			outputVideo += generateVideoTags(data[i],url);
 		};
-		var outputType =  "<p class=\"lead\">Video Category</p><div id=\"category\" class=\"list-group\">";
+		var outputType =  "<p class=\"lead\"></p><div id=\"category\" class=\"list-group\">";
 		outputType += "<a href=\"all_type.html\" class=\"list-group-item\">All Categories</a>";
 		outputType += "<a href=\"" + data[0].type + ".html\" class=\"list-group-item\">" + data[0].type + "</a>";
 		for (var i=1; i < data.length; i++) {

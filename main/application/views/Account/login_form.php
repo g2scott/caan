@@ -52,14 +52,23 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#about">About</a>
+                    <li id="stream"><a href="stream">Stream</a>
                     </li>
-                    <li><a href="#services">Services</a>
+                    <li>
+                        
+             <div class="input-group input-group-sm">
+         <form class="navbar-form" role="search">
+         <div class="input-group">
+             <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+             <div class="input-group-btn">
+                 <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+             </div>
+         </div>
+         </form>
+         </div>
+        
                     </li>
-                    <li><a href="#contact">Contact</a>
-                    </li>
-					<li><a href="<?php echo site_url('account/login_user') ?>">Sign in</a>
-                    </li>
+
 					<li><a href="<?php echo site_url('account/register_user') ?>">Sign up</a>
                     </li>
                 </ul>
