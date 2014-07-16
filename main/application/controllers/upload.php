@@ -43,7 +43,6 @@ class Upload extends CI_Controller {
 
 		$this->load->library('upload', $config);
 
-		if ($this->input->post('userfile') != ""  ){
 		
 		if ( ! $this->upload->do_upload())
 		{
@@ -53,7 +52,7 @@ class Upload extends CI_Controller {
 
 			$this->load->view('profile_upload_form', $data);
 		}
-		}else
+		else
 		{
 			$error = array('error' => $this->upload->display_errors());
 			$data_array = $this->upload->data();
