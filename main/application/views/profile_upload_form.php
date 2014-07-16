@@ -66,12 +66,17 @@
         <h4 class="form-signin-heading"><?php echo $error;?></h4>
         <h2 class="form-signin-heading">Settings</h2>
 
-
+First
 <input type="text" class="form-control" value="<?php echo $user->first ?>" name="first" required autofocus>
+Last
 <input type="text" class="form-control" value="<?php echo $user->last ?>" name="last" required autofocus>
+Username
 <input type="text" class="form-control" value="<?php echo $user->user_name ?>" name="username" required autofocus>
+Email
 <input type="email" class="form-control" value="<?php echo $user->email ?>" name="email" required autofocus>
+Password
 <input type="password" class="form-control" value="<?php echo $user->password ?>" name="password" required>
+Description
 <!-- <textarea> creates a multiline textbox -->
 <input type ="text" class="form-control" value="<?php echo $user->about_me_text ?>" name = "about_me_text" rows = "4" cols = "36" autofocus></input>
 

@@ -69,10 +69,10 @@
             <div class="col-md-5">
 				
 					
-	                	<p class="lead" id="user_name">User Name (getting from database)</p>
+	                	
 		                <div class="list-group">
 							<div id="profile_img"><img src="<?php echo base_url() ?>/assets/img/missing.jpg" class="list-group-item thumbnail" style="text-align: center"></div>
-					
+						<p class="lead" id="user_name">User Name (getting from database)</p>
 				
 						
 	                    <div class="list-group-item" id="about_me">About Me</div>
