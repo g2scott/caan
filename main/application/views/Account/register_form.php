@@ -36,7 +36,10 @@
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
 </button>
-<a class="navbar-brand" href="<?php echo site_url() ?>">Home</a>
+<a class="navbar-brand" href="<?php echo site_url() ?>">
+<img style="max-width:100px; margin-top: -3px;"
+             src="<?php echo base_url() ?>assets/img/home.jpg">
+             </a>
 </div>
 
 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -71,7 +74,7 @@
 <div class="container">
 
 <form class="form-signin" role="form" action="<?=site_url("account/createNew"); ?>" method="post">
-<h2 class="form-signin-heading">sign up</h2>
+<h2 class="form-signin-heading">Register</h2>
 <input type="text" class="form-control" placeholder="First Name" name="first" required autofocus>
 <input type="text" class="form-control" placeholder="Last Name" name="last" required autofocus>
 <input type="email" class="form-control" placeholder="Email" name="email" required autofocus>

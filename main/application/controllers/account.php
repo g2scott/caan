@@ -281,7 +281,7 @@
 		
 			if ($this->form_validation->run() == FALSE)
 			{
-				$this->load->view('account/recoverPasswordForm');
+				$this->load->view('Account/recoverPasswordForm');
 			}
 			else
 			{

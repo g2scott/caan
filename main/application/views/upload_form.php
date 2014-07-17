@@ -60,9 +60,10 @@
 <input type="text" class="form-control" placeholder="Video Description" name="video_description" required>
 <select name = "type" class="form-control">
                   <!-- <option selected = "selected">Amazing</option> -->
-                  <option>football</option>
-                  <option>basketball</option>
-                  <option>hockey</option>
+                  <option>Football</option>
+                  <option>Basketball</option>
+                  <option>Hockey</option>
+                  <option>Other</option>
                   <!-- <option>9</option>
                   <option>8</option>
                   <option>7</option>
