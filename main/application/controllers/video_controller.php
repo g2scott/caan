@@ -15,7 +15,7 @@ class Video_controller extends CI_Controller {
 	public function build_single_video_page($video_id)
 	{
 		$link = $this->video_model->find_video_links($video_id);
-
+		$link = str_replace("type=sd'", "type=sd&amp;regularColorTop=960000&amp;regularColorBottom=d70000'", $link);
 		$output  = "<div class=\"flex-video widescreen\">";
 		$output .= "$link";
 		$output .= "</div>";
