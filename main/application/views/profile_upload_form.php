@@ -84,7 +84,7 @@ Description
 <input type="file" class="form-control" name="userfile" size="20" />
 
 <br /><br />
-<button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+<button class="btn btn-lg btn-default btn-block" type="submit">Submit</button>
 
 </form>
 

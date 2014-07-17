@@ -79,7 +79,7 @@
 
 <br /><br />
 
-<input type="submit" class="btn btn-lg btn-primary btn-block" value="Video Upload" />
+<input type="submit" class="btn btn-lg btn-default btn-block" value="Video Upload" />
 
 </form>
 

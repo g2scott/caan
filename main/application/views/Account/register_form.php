@@ -82,7 +82,7 @@
 <input type="password" class="form-control" placeholder="password" name="password" required>
 <!-- <textarea> creates a multiline textbox -->
 <textarea class="form-control" placeholder="About Me" name = "about_me_text" rows = "4" cols = "36" autofocus></textarea>
-<button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+<button class="btn btn-lg btn-default btn-block" type="submit">Register</button>
 </form>
 
 </div> <!-- /container -->
