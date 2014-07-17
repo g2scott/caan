@@ -46,10 +46,10 @@ function loadMenubar (url) {
 		} else {
 			var signin = "<a href=\"";
 			signin += url + '/account/login_user';
-			signin += "\">Sign in</a>";
+			signin += "\"><span class=\"glyphicon glyphicon-user\">Login</a>";
 			var signup = "<a href=\"";
 			signup += url + '/account/register_user';
-			signup += "\">Sign up</a>";
+			signup += "\"><span class=\"glyphicon glyphicon-user\">Register</a>";
 			$('#signin').html(signin);
 			$('#signup').html(signup);
 
@@ -94,7 +94,7 @@ function loadCategory (url) {
 			outputVideo += generateVideoTags(data[i],url);
 		};
 		var outputType =  "<p class=\"lead\"></p><div id=\"category\" class=\"list-group\">";
-		outputType += "<a href=\"all_type.html\" class=\"list-group-item\">All Categories</a>";
+		outputType += "<a href=\"all_type.html\" class=\"list-group-item list-group-item-warning\">All Categories</a>";
 		outputType += "<a href=\"" + data[0].type + ".html\" class=\"list-group-item\">" + data[0].type + "</a>";
 		for (var i=1; i < data.length; i++) {
 			if(data[i].type != data[i-1].type){
