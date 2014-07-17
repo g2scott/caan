@@ -47,63 +47,61 @@ class Upload extends CI_Controller {
 			if ( ! $this->upload->do_upload())
 			{
 				$data['error'] = $this->upload->display_errors();
-				
-				
-	
 				$this->load->view('profile_upload_form', $data);
+				goto abort;
 			}
-		}else
+		}
+		$error = array('error' => $this->upload->display_errors());
+		$data_array = $this->upload->data();
+
+
+		$this->load->library('form_validation');
+		
+		if ($data['user']->user_name != $this->input->post('username')){
+			$this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.user_name]');
+		}
+		if ($data['user']->email != $this->input->post('email')){
+			$this->form_validation->set_rules('email', 'Email', 'required|is_unique[users.email]');
+		}
+		if ($data['user']->password != $this->input->post('password')){
+			$this->form_validation->set_rules('password', 'Password', 'required');
+		}
+		
+		$this->form_validation->set_rules('first', 'First', 'required');
+		
+		$this->form_validation->set_rules('last', 'Last', 'required');
+		
+		$this->form_validation->set_rules('about_me_text', 'AboutMe', "required");
+
+		if ($this->form_validation->run() == FALSE)
 		{
-			$error = array('error' => $this->upload->display_errors());
-			$data_array = $this->upload->data();
-
-
-			$this->load->library('form_validation');
+			$data['error'] = validation_errors();
+			$this->load->view('profile_upload_form', $data);
+		}
+		else
+		{
+			$stored_user = $this->user_model->find_user_object_by_id($user_id);
+			$user = User::serialize_object($stored_user);
+			$user->user_name = $this->input->post('username');
+			$user->email = $this->input->post('email');
+			$user->first = $this->input->post('first');
+			$user->last = $this->input->post('last');
 			
-			if ($data['user']->user_name != $this->input->post('username')){
-				$this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.user_name]');
-			}
-			if ($data['user']->email != $this->input->post('email')){
-				$this->form_validation->set_rules('email', 'Email', 'required|is_unique[users.email]');
-			}
 			if ($data['user']->password != $this->input->post('password')){
-				$this->form_validation->set_rules('password', 'Password', 'required');
+				$clearPassword = $this->input->post('password');
+				$user->encryptPassword($clearPassword);
 			}
-			
-			$this->form_validation->set_rules('first', 'First', 'required');
-			
-			$this->form_validation->set_rules('last', 'Last', 'required');
-			
-			$this->form_validation->set_rules('about_me_text', 'AboutMe', "required");
+			$user->about_me_text = $this->input->post('about_me_text');
+			$user->img_path = $data_array['full_path'];
 
-			if ($this->form_validation->run() == FALSE)
-			{
-				$data['error'] = validation_errors();
-				$this->load->view('profile_upload_form', $data);
-			}
-			else
-			{
-				$stored_user = $this->user_model->find_user_object_by_id($user_id);
-				$user = User::serialize_object($stored_user);
-				$user->user_name = $this->input->post('username');
-				$user->email = $this->input->post('email');
-				$user->first = $this->input->post('first');
-				$user->last = $this->input->post('last');
-				if ($data['user']->password != $this->input->post('password')){
-					$clearPassword = $this->input->post('password');
-					$user->encryptPassword($clearPassword);
-				}
-				$user->about_me_text = $this->input->post('about_me_text');
-				$user->img_path = $data_array['full_path'];
-
-				$this->user_model->update_user($user);
-				$data['url'] = site_url();
-				$this->load->view('profile_page', $data);
-
-			}
+			$this->user_model->update_user($user);
+			$data['url'] = site_url();
+			
+			$this->load->view('profile_page', $data);
 
 		}
 		
+		abort:
 	}
 	
 	/**
@@ -144,7 +142,6 @@ class Upload extends CI_Controller {
 			$this->form_validation->set_rules('video_description', 'Video Description', "required");
 			// $this->form_validation->set_rules('file', 'Uploaded file', "required");
 	
-		 
 			if ($this->form_validation->run() == FALSE)
 			{
 				$this->load->view('Account/add_video');
@@ -162,7 +159,6 @@ class Upload extends CI_Controller {
 				$video->name = $this->input->post('video_name');
 				$video->description = $this->input->post('video_description');
 
-				
 				$this->load->model('video_model');
 
 				$error = $this->video_model->insert($video);
@@ -170,8 +166,6 @@ class Upload extends CI_Controller {
 				// $this->load->view('profile_page');
 
 			}	
-
-
 			$data = array('upload_data' => $this->upload->data(), 'path' => $data_array['full_path'], 'json' => $json_return);
 			
 			// $this->load->view('upload_success', $data);

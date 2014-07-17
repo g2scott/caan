@@ -80,7 +80,7 @@ Description
 <!-- <textarea> creates a multiline textbox -->
 <input type ="text" class="form-control" value="<?php echo $user->about_me_text ?>" name = "about_me_text" rows = "4" cols = "36" autofocus></input>
 
-<label>select personal picture</label>
+<label>Profile Picture</label>
 <input type="file" class="form-control" name="userfile" size="20" />
 
 <br /><br />
