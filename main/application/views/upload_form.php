@@ -61,6 +61,10 @@
 <select name = "type" class="form-control">
                   <!-- <option selected = "selected">Amazing</option> -->
                   <option>Football</option>
+                  <option>Lacrosse</option>
+                  <option>Swimming</option>
+                  <option>Tennis</option>
+                  <option>Baseball</option>
                   <option>Basketball</option>
                   <option>Hockey</option>
                   <option>Other</option>

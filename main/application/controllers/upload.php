@@ -122,7 +122,10 @@ class Upload extends CI_Controller {
 	function do_upload()
 	{
 		$config['upload_path'] = './assets/temp';
-		$config['allowed_types'] = 'flv';
+		$config['allowed_types'] = 'flv|3g2|3gp|3gp2|3gpp|asf|avi|divx|dv|dvx|flv
+			|gvi|m1pg|m1v|m21|m2t|m2ts|m2v|m4e|m4u|m4v|mjp|mod|moov|mov|movie|mp21
+			|mp4|mpe|mpeg|mpg|mpv2|mts|qt|qtch|qtz|rm|rmvb|rv|svi|swi|tivo|tod|tp|ts
+			|vfw|vid|vob|vp6|vp7|wm|wmv|xvid|yuv';
 		$config['max_size']	= '0';
 		$config['max_width']  = '0';
 		$config['max_height']  = '0';

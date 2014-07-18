@@ -37,10 +37,10 @@ function loadMenubar (url) {
 		if (data.login != false) {
 			var profile = "<a href=\"";
 			profile += url + '/main_page/profile';
-			profile += "\">Profile</a>";
+			profile += "\"><span class=\"glyphicon glyphicon-user\">Profile</a>";
 			var logout = "<a href=\"";
 			logout += url + '/account/logout_user';
-			logout += "\">Log out</a>";
+			logout += "\"><span class=\"glyphicon glyphicon-user\">Log-out</a>";
 			$('#signin').html(profile);
 			$('#signup').html(logout);
 		} else {

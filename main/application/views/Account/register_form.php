@@ -45,7 +45,7 @@
 <!-- Collect the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse navbar-ex1-collapse">
 <ul class="nav navbar-nav">
-                    <li id="stream"><a href="<?php echo site_url() ?>">Stream</a>
+                    <li id="stream"><a href="<?php echo site_url() ?>"><span class="glyphicon glyphicon-film">Stream</a>
                     </li>
                     <li>
                         
@@ -61,7 +61,7 @@
          </div>
         
                     </li>
-<li><a href="<?php echo site_url('account/login_user') ?>">Sign in</a>
+<li><a href="<?php echo site_url('account/login_user') ?>"><i class="glyphicon glyphicon-user"></i>Login</a>
 </li>
 
 </ul>

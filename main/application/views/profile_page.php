@@ -40,7 +40,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                                       <li id="stream"><a href="<?php echo site_url() ?>">Stream</a>
+                    <li id="stream"><a href="<?php echo site_url() ?>"><span class="glyphicon glyphicon-film">Stream</a>
                     </li>
                     <li>
                         
@@ -56,7 +56,7 @@
          </div>
         
                     </li>
-					<li><a href=" <?php echo site_url() ?>/account/logout_user">Log out</a>
+					<li><a href=" <?php echo site_url() ?>/account/logout_user"><span class="glyphicon glyphicon-user">Log-out</a>
                     </li>
                 </ul>
             </div>
@@ -69,27 +69,36 @@
 
         <div class="row">
 
-            <div class="col-md-3">
+            <div class="col-md-5">
 				
 					
-	                	
+	                			                <div class="list-group">
+							<div id="profile_img"><img src="<?php echo base_url() ?>/assets/img/missing.jpg" class="list-group-item thumbnail" style="text-align: center"></div>
+						<p class="lead" id="user_name"></p>
+						
+	                    <div id="about_me"></div>
+						
+	                	</div>
 		                
-							<div id="profile_img"><img src="<?php echo base_url() ?>/assets/img/missing.jpg"</div>
-							<div class="caption">
-						<p class="lead" id="user_name">User Name</p>
+
+            
+            							<!--  <div id="profile_img"><img src="<?php echo base_url() ?>/assets/img/missing.jpg"</div>  -->   
+<!-- 							<div class="caption"> -->
+<!-- 						<p class="lead" id="user_name">User Name</p> -->
 				
 						
-	                    <p id="about_me">About Me </p>
-						
-	                	
-						
-				
+<!-- 	                    <p id="about_me">About Me </p> -->
+<!-- 			 </div> -->
+            
+            
+            
+            
 				<!-- <a class="btn btn-primary" target="_blank" href="#edit_profile"> Edit Profile </a> -->
                 <a class="btn btn-default" href="../upload/profile_upload"> Edit Profile </a>
 				<!-- <a class="btn btn-primary" href="../profile_page/edit_profile"> Edit Profile </a> -->
 				<!-- <a class="btn btn-primary" target="_blank" href="">Add New Video</a> -->
 				<a class="btn btn-default" href="../upload/video_upload">Upload Video</a>
-            </div>
+           
           
             </div>
 
