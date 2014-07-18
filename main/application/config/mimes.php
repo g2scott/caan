@@ -88,6 +88,7 @@ $mimes = array(	'flv'    =>    array('video/x-flv', 'flv-application/octet-strea
 				'xsl'	=>	'text/xml',
 				'mpeg'	=>	'video/mpeg',
 				'mpg'	=>	'video/mpeg',
+				'mp4'   =>  'video/mp4',
 				'mpe'	=>	'video/mpeg',
 				'qt'	=>	'video/quicktime',
 				'mov'	=>	'video/quicktime',

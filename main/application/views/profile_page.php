@@ -71,35 +71,17 @@
 
             <div class="col-md-5">
 				
-					
-	                			                <div class="list-group">
+	                	
+		                <div class="list-group">
 							<div id="profile_img"><img src="<?php echo base_url() ?>/assets/img/missing.jpg" class="list-group-item thumbnail" style="text-align: center"></div>
 						<p class="lead" id="user_name"></p>
 						
-	                    <div id="about_me"></div>
+	                    <div  id="about_me"></div>
 						
 	                	</div>
-		                
-
-            
-            							<!--  <div id="profile_img"><img src="<?php echo base_url() ?>/assets/img/missing.jpg"</div>  -->   
-<!-- 							<div class="caption"> -->
-<!-- 						<p class="lead" id="user_name">User Name</p> -->
-				
 						
-<!-- 	                    <p id="about_me">About Me </p> -->
-<!-- 			 </div> -->
-            
-            
-            
-            
-				<!-- <a class="btn btn-primary" target="_blank" href="#edit_profile"> Edit Profile </a> -->
                 <a class="btn btn-default" href="../upload/profile_upload"> Edit Profile </a>
-				<!-- <a class="btn btn-primary" href="../profile_page/edit_profile"> Edit Profile </a> -->
-				<!-- <a class="btn btn-primary" target="_blank" href="">Add New Video</a> -->
 				<a class="btn btn-default" href="../upload/video_upload">Upload Video</a>
-           
-          
             </div>
 
             <div class="col-md-7">
