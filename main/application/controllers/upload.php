@@ -43,6 +43,7 @@ class Upload extends CI_Controller {
 
 		$this->load->library('upload', $config);
 
+
 		if (!empty($_FILES['userfile']['name'])){
 			if ( ! $this->upload->do_upload())
 			{
@@ -50,10 +51,21 @@ class Upload extends CI_Controller {
 				$this->load->view('profile_upload_form', $data);
 				goto abort;
 			}
+			else{
+				$config['image_library'] = 'gd2';
+				$config['source_image'] = "./assets/img/profile/{$user_id}" . ".jpg";
+				$config['quality'] = 100;
+				$config['maintain_ratio'] = TRUE;
+				$config['width'] =200;
+				$config['height'] = 200;
+				
+				$this->load->library('image_lib', $config);
+				
+				$this->image_lib->resize();
+			}
 		}
 		$error = array('error' => $this->upload->display_errors());
 		$data_array = $this->upload->data();
-
 
 		$this->load->library('form_validation');
 		
