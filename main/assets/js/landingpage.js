@@ -31,7 +31,7 @@ function loadMenubar (url) {
 		// console.log(data);
 		if (data.login != false) {
 			var profile = "<a href=\"";
-			profile += url + '/main_page/profile';
+			profile += url + '/profile_page';
 			profile += "\"><span class=\"glyphicon glyphicon-user\">Profile</a>";
 			var logout = "<a href=\"";
 			logout += url + '/account/logout_user';

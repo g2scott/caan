@@ -76,13 +76,6 @@ use Facebook\GraphObject;
 
 		// 	}
 		// }
-
-		/**
-		 * create account for facebook user at the first time logged in throught their facebook account
-		 * user_id, user_name, user_profile, and user_infor get from the facebook profile
-		 * to insert this into the database. 
-		 */
-
 	
 		/**
 		 * during user login need to check if this user clicked login with facebook link 
@@ -119,10 +112,11 @@ use Facebook\GraphObject;
 						$this->session->set_userdata($session_data);
 
 
-						$data['user']=$user;
-						$data['url'] = site_url();
+// 						$data['user']=$user;
+// 						$data['url'] = site_url();
 			
-						$this->load->view('profile_page', $data);
+						//$this->load->view('profile_page', $data);
+						redirect('profile_page', 'refresh');
 						//redirect('profile_page/index', 'refresh'); //redirect to the main application page
 					}
 					else {
@@ -165,9 +159,12 @@ use Facebook\GraphObject;
 					
 					$this->session->set_userdata($session_data);
 					
-					$data['user']=$user;
-					$data['url'] = site_url();
-					$this->load->view('profile_page', $data);
+// 					$data['user']=$user;
+// 					$data['url'] = site_url();
+					
+					//$this->load->view('profile_page');
+					redirect('profile_page/', 'refresh');
+					
 					
 				}else{
 				
@@ -197,6 +194,7 @@ use Facebook\GraphObject;
 					
 					$data['user']=$user;
 					$data['url'] = site_url();
+					
 					$this->load->view('profile_page', $data);
 					
 				}

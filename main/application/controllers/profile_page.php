@@ -26,10 +26,10 @@ class Profile_page extends CI_Controller {
 		$this->load->model('user_model');
 	}
 	
-// 	public function index()
-// 	{
-
-// 	}
+	public function index()
+	{
+		$this->load->view('profile_page');
+	}
 	
 	public function build_profile()
 	{

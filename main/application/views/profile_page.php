@@ -80,8 +80,8 @@
 						
 	                	</div>
 						
-                <a class="btn btn-default" href="../upload/profile_upload"> Edit Profile </a>
-				<a class="btn btn-default" href="../upload/video_upload">Upload Video</a>
+                <a class="btn btn-default" href="<?php echo site_url() ?>/upload/profile_upload"> Edit Profile </a>
+				<a class="btn btn-default" href="<?php echo site_url() ?>/upload/video_upload">Upload Video</a>
             </div>
 
             <div class="col-md-7">
@@ -122,7 +122,8 @@
     <script src="<?php echo base_url() ?>assets/js/bootstrap.js"></script>
     <script src="<?php echo base_url() ?>assets/js/profilepage.js"></script>
 	<script>
-	var url = "<?php echo $url ?>";
+	
+	var url = "<?php echo site_url() ?>";
 	
 	window.onload = load(url);
 	

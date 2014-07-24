@@ -88,12 +88,5 @@ class Main_page extends CI_Controller {
 		echo $data;
 	}
 
-	public function profile()
-	{
-		$data['url'] = site_url();
-		$this->load->view("profile_page", $data);
-	}
-
-
 }
 ?>

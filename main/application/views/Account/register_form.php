@@ -75,6 +75,9 @@
 
 <form class="form-signin" role="form" action="<?=site_url("account/createNew"); ?>" method="post">
 <h2 class="form-signin-heading">Register</h2>
+
+	<?php echo '<a href="' . $this->helper->getLoginUrl() . '">Login with Facebook</a>'; ?>
+        
 <input type="text" class="form-control" placeholder="First Name" name="first" required autofocus>
 <input type="text" class="form-control" placeholder="Last Name" name="last" required autofocus>
 <input type="email" class="form-control" placeholder="Email" name="email" required autofocus>

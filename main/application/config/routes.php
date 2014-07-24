@@ -40,6 +40,8 @@
 
 //$route['videos/(:num)'] = "video_controller/build_single_video_page/$1";
 
+//$route['profile/(:num)'] = "account/_login/$1";
+
 $route['default_controller'] = "main_page";
 
 $route['404_override'] = '';
