@@ -131,6 +131,7 @@ class Upload extends CI_Controller {
 		$config['max_height']  = '0';
 
 		$this->load->library('upload', $config);
+		form_open_multipart();
 
 		if ( ! $this->upload->do_upload())
 		{

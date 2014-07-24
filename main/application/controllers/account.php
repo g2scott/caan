@@ -43,7 +43,7 @@
 		 */
 		public function _facebook_login()
 		{
-			$redirect_url = "http://caanapp.ca/caan/main/";
+			$redirect_url = "http://localhost/htdocs/caan/main";
 			
 			Facebook\FacebookSession::setDefaultApplication($this->appId, $this->appSecret);
 			$this->fb_helper = new Facebook\FacebookRedirectLoginHelper($redirect_url, $this->appId, $this->appSecret);
@@ -230,7 +230,7 @@
 		function createNew() {
 			$this->load->library('form_validation');
 			$this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.user_name]');
-			$this->form_validation->set_rules('password', 'Password', 'required');
+			$this->form_validation->set_rules('password', 'Password', 'required|min_length[4]|max_length[8]');
 			$this->form_validation->set_rules('first', 'First', "required");
 			$this->form_validation->set_rules('last', 'last', "required");
 			$this->form_validation->set_rules('email', 'Email', "required|is_unique[users.email]");

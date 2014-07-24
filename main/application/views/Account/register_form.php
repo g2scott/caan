@@ -79,7 +79,7 @@
 <input type="text" class="form-control" placeholder="Last Name" name="last" required autofocus>
 <input type="email" class="form-control" placeholder="Email" name="email" required autofocus>
 <input type="text" class="form-control" placeholder="User Name" name="username" required autofocus>
-<input type="password" class="form-control" placeholder="password" name="password" required>
+<input type="password" class="form-control" placeholder="Password (4-8 characters)" name="password" required>
 <!-- <textarea> creates a multiline textbox -->
 <textarea class="form-control" placeholder="About Me" name = "about_me_text" rows = "4" cols = "36" autofocus></textarea>
 <button class="btn btn-lg btn-default btn-block" type="submit">Register</button>
