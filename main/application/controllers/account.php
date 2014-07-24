@@ -1,9 +1,15 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	session_start(); 		// call session start
 	require_once '../vendor/autoload.php';
-	use Facebook\FacebookRequest;
-	use Facebook\GraphUser;
-	use Facebook\FacebookRequestException;
+use Facebook\FacebookSession;
+use Facebook\FacebookRedirectLoginHelper;
+use Facebook\FacebookRequest;
+use Facebook\FacebookResponse;
+use Facebook\FacebookSDKException;
+use Facebook\FacebookRequestException;
+use Facebook\FacebookAuthorizationException;
+use Facebook\GraphObject;
+	
 
 	class Account extends CI_Controller {
 
@@ -43,28 +49,11 @@
 		 */
 		public function _facebook_login()
 		{
-			$redirect_url = "http://localhost/htdocs/caan/main";
+			$redirect_url = "http://localhost/htdocs/caan/main/index.php/account/login_user";
 			
 			Facebook\FacebookSession::setDefaultApplication($this->appId, $this->appSecret);
-			$this->fb_helper = new Facebook\FacebookRedirectLoginHelper($redirect_url, $this->appId, $this->appSecret);
+			$this->helper = new Facebook\FacebookRedirectLoginHelper($redirect_url, $this->appId, $this->appSecret);
 
-			try {
-			  $session = $this->fb_helper->getSessionFromRedirect();
-			} catch(FacebookRequestException $ex) {
-			  // When Facebook returns an error
-			} catch(\Exception $ex) {
-			  // When validation fails or other local issues
-			}
-			if ($session) {
-			    // Logged in
-				// create a user in my database, to compare with next login, 
-				// simple store user's facebook username as 
-
-				// $session_data = array('user'  => "vincent_test");
-				// $this->session->set_userdata($session_data);
-				// $this->load->view('profile_page');
-				$this->fb_session = $session;
-			}
 		}
 
 		/**
@@ -93,28 +82,7 @@
 		 * user_id, user_name, user_profile, and user_infor get from the facebook profile
 		 * to insert this into the database. 
 		 */
-		public function _create_account_for_fb_user()
-		{
-			$user = new User();
-			// $user->id = ''; // came from facebook user account
-			// $user->password = ''; // need generate by the system
 
-			$facebook = new Facebook(array(
-			  'appId' => $this->appId,
-			  'secret' => $this->appSecret,
-			));
-			if ($user) {
-			  try {
-			    // Proceed knowing you have a logged in user who's authenticated.
-			    $user_profile = $facebook->api('/me');
-			  } catch (FacebookApiException $e) {
-			    error_log($e);
-			    $user = null;
-			  }
-			}
-			$this->load->model('user_model');
-			$this->user_model->insert($user);
-		}
 	
 		/**
 		 * during user login need to check if this user clicked login with facebook link 
@@ -123,46 +91,8 @@
 		 */	
 		public function login() {
 
-			$user_id = $this->session->userdata('user_id');
-			
-			if (isset($this->fb_session)) {
-
-				try {
-
-				    $user_profile = (new FacebookRequest(
-				      $this->fb_session, 'GET', '/me'
-				    ))->execute()->getGraphObject(GraphUser::className());;
-			    
-				    // echo "Name: " . $user_profile->getName();
-
-
-				    /**
-				     * 1. get infor for facebook user from $user_profile object, ex. facebook id, 
-				     *
-				     * 2. check if this facebook id existd in users table fb_id field
-				     *
-				     * 3. yes, using facebook id to retrieve user infor to prepare loading profile_page
-				     *
-				     * 4. no, create account for facebook user, pass $user_profile object to _create_account_for_fb_user
-				     * function, then automatic login
-				     */
-
-			  	} catch(FacebookRequestException $e) {
-
-				    echo "Exception occured, code: " . $e->getCode();
-				    echo " with message: " . $e->getMessage();
-				}    
-
-				$data['url'] = site_url();
-				$this->load->view('profile_page', $data);
-
-			} elseif (!empty($user_id)) {
-				$data['url'] = site_url();
-				$this->load->view('profile_page', $data);
-
-			}else {
 				$this->load->library('form_validation');
-				$this->form_validation->set_rules('username', 'Username', 'required');
+				$this->form_validation->set_rules('email', 'Email', 'required');
 				$this->form_validation->set_rules('password', 'Password', 'required');
 			
 				if ($this->form_validation->run() == FALSE)
@@ -172,12 +102,12 @@
 				}
 				else
 				{
-					$login = $this->input->post('username');
+					$login = $this->input->post('email');
 					$clearPassword = $this->input->post('password');
 			
 					$this->load->model('user_model');
 			
-					$user = $this->user_model->get($login);
+					$user = $this->user_model->getFromEmail($login);
 			
 					if (isset($user) && $user->comparePassword($clearPassword)) {
 
@@ -202,19 +132,82 @@
 						
 					}
 				}			
-			}		
+					
 		}
-	
+
 		public function login_user()
 		{
-			$user_id = $this->session->userdata('user_id');
-			if (!empty($user_id)) {
-				$this->login();	
-			} else {
-				$data['helper'] = $this->fb_helper;
-				//$data['test'] = 'test message';
-				$this->load->view('Account/login_form', $data);
+			try {
+				$session = $this->helper->getSessionFromRedirect();
+			} catch( FacebookRequestException $ex ) {
+				// When Facebook returns an error
+			} catch( Exception $ex ) {
+				// When validation fails or other local issues
 			}
+			
+			// see if we have a session
+			if ( isset( $session ) ) {
+				// graph api request for user data
+				$request = new FacebookRequest( $session, 'GET', '/me' );
+				$response = $request->execute();
+				// get response
+				$graphObject = $response->getGraphObject();
+				
+				$this->load->model('user_model');
+				
+				$user = $this->user_model->getFromEmail($graphObject->getProperty("email"));
+			
+				if (isset($user)){
+					$session_data = array(
+							'user_id'    => $user->id,
+							'logged_in' 	=> TRUE
+					);
+					
+					$this->session->set_userdata($session_data);
+					
+					$data['user']=$user;
+					$data['url'] = site_url();
+					$this->load->view('profile_page', $data);
+					
+				}else{
+				
+					$user = new User(); // this class autoloaded
+					
+					$user->user_name = $graphObject->getProperty("name");
+					$user->first = $graphObject->getProperty("first_name");
+					$user->last = $graphObject->getProperty("last_name");
+					$user->email = $graphObject->getProperty("email");
+					$user->fb_id = $graphObject->getProperty("id");
+						
+					$this->load->model('user_model');
+					
+					$this->db->trans_start();
+					$this->user_model->insert($user);
+					$this->db->trans_complete();
+					
+					$user = $this->user_model->getFromEmail($graphObject->getProperty("email"));
+					
+					if (isset($user)){
+					$session_data = array(
+							'user_id'    => $user->id,
+							'logged_in' 	=> TRUE
+					);
+					
+					$this->session->set_userdata($session_data);
+					
+					$data['user']=$user;
+					$data['url'] = site_url();
+					$this->load->view('profile_page', $data);
+					
+				}
+				}
+				
+				
+			} else {
+				// show login url
+				$this->login();
+			}
+			
 		}
 		
 		public function register_user()

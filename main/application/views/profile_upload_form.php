@@ -49,7 +49,7 @@
         
                     </li>
                     
-        <li><a href=" <?php echo base_url() ?>/index.php">Log out</a>  
+        <li><a href="<?php echo site_url() ?>/account/logout_user">Log out</a>  
                     </li>
                 </ul>
             </div>
@@ -75,7 +75,7 @@ Username
 Email
 <input type="email" class="form-control" value="<?php echo $user->email ?>" name="email" required autofocus>
 Password
-<input type="password" class="form-control" value="<?php echo $user->password ?>" name="password" required>
+<input type="password" class="form-control" value="<?php echo $user->password ?>" name="password" >
 Description
 <!-- <textarea> creates a multiline textbox -->
 <input type ="text" class="form-control" value="<?php echo $user->about_me_text ?>" name = "about_me_text" rows = "4" cols = "36" autofocus></input>

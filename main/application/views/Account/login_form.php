@@ -90,9 +90,9 @@
 
         <!-- <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div> -->
 
-        <?php echo '<a href="' . $helper->getLoginUrl() . '">Login with Facebook</a>'; ?>
+        <?php echo '<a href="' . $this->helper->getLoginUrl() . '">Login with Facebook</a>'; ?>
 
-        <input type="text" class="form-control" placeholder="User Name" name="username" required autofocus>
+        <input type="text" class="form-control" placeholder="Email" name="email" required autofocus>
         <input type="password" class="form-control" placeholder="Password" name="password" required>
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me

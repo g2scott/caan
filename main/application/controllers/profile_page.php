@@ -1,5 +1,19 @@
 <?php 
 session_start();
+use Facebook\FacebookSession;
+use Facebook\FacebookRedirectLoginHelper;
+use Facebook\FacebookRequest;
+use Facebook\FacebookResponse;
+use Facebook\FacebookSDKException;
+use Facebook\FacebookRequestException;
+use Facebook\FacebookAuthorizationException;
+use Facebook\GraphObject;
+
+
+
+
+
+
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Profile_page extends CI_Controller {
@@ -12,6 +26,10 @@ class Profile_page extends CI_Controller {
 		$this->load->model('user_model');
 	}
 	
+// 	public function index()
+// 	{
+
+// 	}
 	
 	public function build_profile()
 	{
