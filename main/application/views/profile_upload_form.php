@@ -67,14 +67,14 @@
         <h2 class="form-signin-heading">Settings</h2>
 
 First
-<input type="text" class="form-control" value="<?php echo $user->first ?>" name="first" required autofocus>
+<input type="text" class="form-control" value="<?php echo $user->first ?>" name="first" autofocus>
 Last
-<input type="text" class="form-control" value="<?php echo $user->last ?>" name="last" required autofocus>
+<input type="text" class="form-control" value="<?php echo $user->last ?>" name="last" autofocus>
 Username
 <input type="text" class="form-control" value="<?php echo $user->user_name ?>" name="username" required autofocus>
 Email
 <input type="email" class="form-control" value="<?php echo $user->email ?>" name="email" required autofocus>
-Password
+New Password (4-8 chars)
 <input type="password" class="form-control" value="<?php echo $user->password ?>" name="password" >
 Description
 <!-- <textarea> creates a multiline textbox -->

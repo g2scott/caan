@@ -75,17 +75,17 @@
 
 <form class="form-signin" role="form" action="<?=site_url("account/createNew"); ?>" method="post">
 <h2 class="form-signin-heading">Register</h2>
+   
+<!-- <input type="text" class="form-control" placeholder="First Name" name="first" required autofocus> -->
+<!-- <input type="text" class="form-control" placeholder="Last Name" name="last" required autofocus> -->
 
-	<?php echo '<a href="' . $this->helper->getLoginUrl() . '">Login with Facebook</a>'; ?>
-        
-<input type="text" class="form-control" placeholder="First Name" name="first" required autofocus>
-<input type="text" class="form-control" placeholder="Last Name" name="last" required autofocus>
 <input type="email" class="form-control" placeholder="Email" name="email" required autofocus>
 <input type="text" class="form-control" placeholder="User Name" name="username" required autofocus>
 <input type="password" class="form-control" placeholder="Password (4-8 characters)" name="password" required>
 <!-- <textarea> creates a multiline textbox -->
-<textarea class="form-control" placeholder="About Me" name = "about_me_text" rows = "4" cols = "36" autofocus></textarea>
+<textarea class="form-control" placeholder="Description (optional)" name = "about_me_text" rows = "4" cols = "36" autofocus></textarea>
 <button class="btn btn-lg btn-default btn-block" type="submit">Register</button>
+Login With Facebook (soon)
 </form>
 
 </div> <!-- /container -->

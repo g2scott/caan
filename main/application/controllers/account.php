@@ -1,41 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 	session_start(); 		// call session start
-	require_once '../vendor/autoload.php';
-use Facebook\FacebookSession;
-use Facebook\FacebookRedirectLoginHelper;
-use Facebook\FacebookRequest;
-use Facebook\FacebookResponse;
-use Facebook\FacebookSDKException;
-use Facebook\FacebookRequestException;
-use Facebook\FacebookAuthorizationException;
-use Facebook\GraphObject;
-	
 
 	class Account extends CI_Controller {
 
 		public $fb_helper;
 		public $fb_session;
-		// public $session_data;
-
-		private $appId = "129704493787021";
-		private $appSecret = "9f2f02c678fb359804197bc05e3eacd6";
 
 		public function __construct()
 		{
 			parent::__construct();
 			$this->load->model('user');
 			$this->load->helper('form');
-			/**
-			 * construct facebook helper when this controller been called
-			 * to prepare the user login with facebook
-			 *	
-			 * might need deal some expression later 	
-			 */
-			$this->_facebook_login();
-			
-			/**
-			 *  end of facebook helper prepare
-			 */
 		}
 
 		public function index()
@@ -43,40 +18,6 @@ use Facebook\GraphObject;
 			$this->login();
 		}
 
-		/**
-		 * function to prepare facebook login with facebook app configuration information
-		 * this will be called throught this controller constructor when this controller been invoked
-		 */
-		public function _facebook_login()
-		{
-			$redirect_url = "http://localhost/htdocs/caan/main/index.php/account/login_user";
-			
-			Facebook\FacebookSession::setDefaultApplication($this->appId, $this->appSecret);
-			$this->helper = new Facebook\FacebookRedirectLoginHelper($redirect_url, $this->appId, $this->appSecret);
-
-		}
-
-		/**
-		 * if login user with active facebook session, will to retrive this user
-		 */
-		// public function _retrive_facebook_user($user)
-		// {
-		// 	if () {
-		// 		// find the user from the database to setup $session_data
-		// 		$session_data = array(
-	 //                'user'  	=> $user,
-	 //                'user_id'   => $user->id,
-	 //                'logged_in' => TRUE
-	 //            );
-
-		// 		$this->session->set_userdata($session_data);
-		// 	} else {
-		// 		// add user to our database
-		// 		$this->_create_account_for_fb_user();
-
-		// 	}
-		// }
-	
 		/**
 		 * during user login need to check if this user clicked login with facebook link 
 		 * and with active facebook session if not using regular login function from login_form form
@@ -211,8 +152,8 @@ use Facebook\GraphObject;
 			$this->load->library('form_validation');
 			$this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.user_name]');
 			$this->form_validation->set_rules('password', 'Password', 'required|min_length[4]|max_length[8]');
-			$this->form_validation->set_rules('first', 'First', "required");
-			$this->form_validation->set_rules('last', 'last', "required");
+// 			$this->form_validation->set_rules('first', 'First', "required");
+// 			$this->form_validation->set_rules('last', 'last', "required");
 			$this->form_validation->set_rules('email', 'Email', "required|is_unique[users.email]");
 		
 			 

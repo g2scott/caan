@@ -116,7 +116,7 @@
             url: "login_user",
             data: frm.serialize(),
             success: function (data) {
-                alert(data.message);
+                //alert(data.message);
                 window.location.href = "../" + data.message;
             }
         });

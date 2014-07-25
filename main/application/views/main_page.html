@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="/cache.appcache">
+<html lang="en" manifest="<?php echo base_url() ?>cache.appcache">
 
 <head>
     <meta charset="utf-8">
@@ -10,12 +10,9 @@
 
     <title>Canadian Amateur</title>
 
-
-
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url() ?>assets/css/bootstrap.css" rel="stylesheet">
     
-
     <!-- Add custom CSS here -->
     <link href="<?php echo base_url() ?>assets/css/shop-homepage.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/css/responsive_video.css" rel="stylesheet">
@@ -25,6 +22,7 @@
 <body>
 
 <div id="fb-root"></div>
+
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
@@ -64,14 +62,14 @@
          </div>
          </form>
          </div>
-        
                     </li>
                     <li id="signin"><a href="<?php echo site_url('account/login_user') ?>"></a>
                     </li>
                     <li id="signup"><a href="<?php echo site_url('account/register_user') ?>"></a>
-                    </li>
+                    </li>  
+
+                    
                 </ul>
-            </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
@@ -89,7 +87,6 @@
                         <a href="#" class="list-group-item">Authentic Dragon Bones</a>
                     </div> -->
             </div>
-            
 
             <div class="col-md-9">
 
@@ -105,17 +102,17 @@
                             <div class="carousel-inner hidden-xs">
                                 <div class="item active">
                                  <a href="http://caanapp.ca/caan/main/index.php/video_controller/build_single_video_page/61"> 
-                                    <img class="slide-image" src="<?php echo base_url() ?>/assets/img/mov-reel.png" alt="">
+                                    <img class="slide-image" src="<?php echo base_url() ?>/assets/img/mov-reel2.png" alt="">
                                     </a>
                                 </div>
                                 <div class="item">
                                 <a href="http://caanapp.ca/caan/main/index.php/video_controller/build_single_video_page/61">
-                                    <img class="slide-image" src="<?php echo base_url() ?>/assets/img/mov-reel.png" alt="">
+                                    <img class="slide-image" src="<?php echo base_url() ?>/assets/img/mov-reel2.png" alt="">
                                     </a>
                                 </div>
                                 <div class="item">
                                 <a href="http://caanapp.ca/caan/main/index.php/video_controller/build_single_video_page/61">
-                                    <img class="slide-image" src="<?php echo base_url() ?>/assets/img/mov-reel.png" alt="">
+                                    <img class="slide-image" src="<?php echo base_url() ?>/assets/img/mov-reel2.png" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -179,23 +176,18 @@
     <!-- /.container -->
 
     <div class="container">
-
         <hr>
-
         <footer>
             <div class="row">
                 <div class="col-lg-12">
                     <p>© 2014 Canadian Amateur Athletes Network</a>
-                    
                     </p>
                     <div class="fb-like" data-href="http://caanapp.ca" data-width="20" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>	
                 </div>
             </div>
         </footer>
-
     </div>
     <!-- /.container -->
-
 
     <!-- JavaScript -->
     <script src="<?php echo base_url() ?>assets/js/jquery-1.10.2.js"></script>
@@ -206,15 +198,7 @@
 	 <script>
 		var url = "<?php echo site_url();?>";
 		window.onload = load(url);
-		
-		
 	</script>
-	
-
-
-
-
-<a href="http://stackoverflow.com">click me, then press the back button</a>
 	
 </body>
 

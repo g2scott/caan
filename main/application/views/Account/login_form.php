@@ -158,7 +158,7 @@
             url: frm.attr('action'),
             data: frm.serialize(),
             success: function (data) {
-                alert(data.message);
+                //alert(data.message);
                 window.location.href = '<?=site_url();?>' + data.message;
             }
         });

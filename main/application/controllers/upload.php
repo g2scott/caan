@@ -69,19 +69,20 @@ class Upload extends CI_Controller {
 
 		$this->load->library('form_validation');
 		
+		$pass = $this->input->post('password');
+		
 		if ($data['user']->user_name != $this->input->post('username')){
 			$this->form_validation->set_rules('username', 'Username', 'required');
 		}
 		if ($data['user']->email != $this->input->post('email')){
 			$this->form_validation->set_rules('email', 'Email', 'required|is_unique[users.email]');
 		}
-// 		if ($data['user']->password != $this->input->post('password')){
-// 			$this->form_validation->set_rules('password', 'Password', 'required');
-// 		}
+		if (isset($pass) && strlen($pass)){
+ 			$this->form_validation->set_rules('password', 'Password', 'required|min_length[4]|max_length[8]');
+ 		}
 		
 		$this->form_validation->set_rules('first', 'First', 'required');
-		
-		$this->form_validation->set_rules('last', 'Last', 'required');
+//		$this->form_validation->set_rules('last', 'Last', 'required');
 		
 // 		$this->form_validation->set_rules('about_me_text', 'AboutMe', "required");
 
@@ -99,7 +100,7 @@ class Upload extends CI_Controller {
 			$user->first = $this->input->post('first');
 			$user->last = $this->input->post('last');
 			
-			$pass = $this->input->post('password');
+			
 			
 			if (isset($pass) && strlen($pass)){
 				
