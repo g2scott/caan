@@ -27,6 +27,8 @@
   </head>
 
   <body>
+  
+<!--   depricated -->
     <div id="fb-root"></div>
     <script>
     (function(d, s, id) {
@@ -37,6 +39,10 @@
       fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>
+    
+    
+    <script src="../../assets/js/facebook.js"></script>
+ 
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -85,12 +91,13 @@
 
 
 
-      <form class="form-signin" role="form" action="<?=site_url("account/Login"); ?>" method="post">
+      <form id="login_form" class="form-signin" role="form" action="<?=site_url("account/login"); ?>" method="post">
         <h2 class="form-signin-heading">Login</h2>
 
         <!-- <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div> -->
 
-        <?php echo '<a href="' . $this->helper->getLoginUrl() . '">Login with Facebook</a>'; ?>
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
 
         <input type="text" class="form-control" placeholder="Email" name="email" required autofocus>
         <input type="password" class="form-control" placeholder="Password" name="password" required>
@@ -101,6 +108,7 @@
         <?php echo "<p>" . anchor('account/recoverPasswordForm','Recover Password') . "</p>"; ?>
 
       </form>
+
 
 	
 
@@ -136,8 +144,37 @@
 
     </div>
 
+    
 
     <script src="../../assets/js/jquery-1.10.2.js"></script>
     <script src="../../assets/js/bootstrap.js"></script>
+    
+    
+    
+    <script type="text/javascript">
+    var frm = $('#login_form');
+    frm.submit(function (ev) {
+        $.ajax({
+           	async: false,
+        	dataType: 'json',
+            type: frm.attr('method'),
+            url: frm.attr('action'),
+            data: frm.serialize(),
+            success: function (data) {
+                alert(data.message);
+                window.location.href = '<?=site_url();?>' + data.message;
+            }
+        });
+
+        ev.preventDefault();
+    });
+	</script>
+
+
+
+<div id="status">
+</div>
+    
+    
   </body>
 </html>

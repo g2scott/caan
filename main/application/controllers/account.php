@@ -116,95 +116,84 @@ use Facebook\GraphObject;
 // 						$data['url'] = site_url();
 			
 						//$this->load->view('profile_page', $data);
-						redirect('profile_page', 'refresh');
+						
+						
+// 						redirect('profile_page', 'refresh');
+
+						echo json_encode(array('status'=>'success','message'=>"/profile_page"));
+						
+						
+						
 						//redirect('profile_page/index', 'refresh'); //redirect to the main application page
 					}
 					else {
-						$data['errorMsg']='Incorrect username or password!';
-						$data['helper'] = $this->fb_helper;
-						$this->load->view('Account/login_form',$data);
+// 						$data['errorMsg']='Incorrect username or password!';
+// 						$data['helper'] = $this->fb_helper;
+// 						/$this->load->view('Account/login_form',$data);
+						echo json_encode(array('status'=>'success','message'=>"/account/login"));
 						
 					}
 				}			
 					
 		}
-
+// FACEBOOK LOGIN
 		public function login_user()
 		{
-			try {
-				$session = $this->helper->getSessionFromRedirect();
-			} catch( FacebookRequestException $ex ) {
-				// When Facebook returns an error
-			} catch( Exception $ex ) {
-				// When validation fails or other local issues
-			}
+				
+		$this->load->model('user_model');
+
+		$user = $this->user_model->getFromEmail($this->input->post('email'));
+	
+		if (isset($user)){
+			$session_data = array(
+					'user_id'    => $user->id,
+					'logged_in' 	=> TRUE
+			);
 			
-			// see if we have a session
-			if ( isset( $session ) ) {
-				// graph api request for user data
-				$request = new FacebookRequest( $session, 'GET', '/me' );
-				$response = $request->execute();
-				// get response
-				$graphObject = $response->getGraphObject();
-				
-				$this->load->model('user_model');
-				
-				$user = $this->user_model->getFromEmail($graphObject->getProperty("email"));
+			$this->session->set_userdata($session_data);
+
+	
+			//redirect('profile_page/', 'refresh');
+			echo json_encode(array('status'=>'success','message'=>"profile_page"));
 			
-				if (isset($user)){
-					$session_data = array(
-							'user_id'    => $user->id,
-							'logged_in' 	=> TRUE
-					);
-					
-					$this->session->set_userdata($session_data);
-					
-// 					$data['user']=$user;
-// 					$data['url'] = site_url();
-					
-					//$this->load->view('profile_page');
-					redirect('profile_page/', 'refresh');
-					
-					
-				}else{
+		}else{
+		
+			$user = new User(); // this class autoloaded
+			
+			$user->user_name = $this->input->post('user_name');
+// 			$user->first = $this->input->post('first');
+// 			$user->last = $this->input->post('last');
+			$user->email = $this->input->post('email');
+			$user->fb_id = $this->input->post('id');
 				
-					$user = new User(); // this class autoloaded
-					
-					$user->user_name = $graphObject->getProperty("name");
-					$user->first = $graphObject->getProperty("first_name");
-					$user->last = $graphObject->getProperty("last_name");
-					$user->email = $graphObject->getProperty("email");
-					$user->fb_id = $graphObject->getProperty("id");
-						
-					$this->load->model('user_model');
-					
-					$this->db->trans_start();
-					$this->user_model->insert($user);
-					$this->db->trans_complete();
-					
-					$user = $this->user_model->getFromEmail($graphObject->getProperty("email"));
-					
-					if (isset($user)){
-					$session_data = array(
-							'user_id'    => $user->id,
-							'logged_in' 	=> TRUE
-					);
-					
-					$this->session->set_userdata($session_data);
-					
-					$data['user']=$user;
-					$data['url'] = site_url();
-					
-					$this->load->view('profile_page', $data);
-					
-				}
-				}
+			$this->load->model('user_model');
+			
+			$this->db->trans_start();
+			$this->user_model->insert($user);
+			$this->db->trans_complete();
+			
+			$user = $this->user_model->getFromEmail($this->input->post('email'));
+			
+			if (isset($user)){
+			$session_data = array(
+					'user_id'    => $user->id,
+					'logged_in' 	=> TRUE
+			);
+			
+			$this->session->set_userdata($session_data);
+			
+			$data['user']=$user;
+			$data['url'] = site_url();
+			
+			//$this->load->view('profile_page', $data);
+			
+			echo json_encode(array('status'=>'success','message'=>"profile_page"));
+			
+		}
+		}
 				
 				
-			} else {
-				// show login url
-				$this->login();
-			}
+
 			
 		}
 		

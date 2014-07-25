@@ -61,7 +61,7 @@
          </div>
         
                     </li>
-<li><a href="<?php echo site_url('account/login_user') ?>"><i class="glyphicon glyphicon-user"></i>Login</a>
+<li><a href="<?php echo site_url('account/login') ?>"><i class="glyphicon glyphicon-user"></i>Login</a>
 </li>
 
 </ul>
