@@ -18,10 +18,11 @@ function generateVideoTags(data, url)
 	// end .caption div
 
 	// add like button below 
-	//outputVideo += "<div class=\"fb-like\" data-href=\"http://caanapp.ca/caan/main/index.php/video_controller/build_single_video_page/" + data.v_id + "\" data-width=\"20\" data-layout=\"button_count\" data-action=\"like\" data-show-faces=\"true\" data-share=\"true\"></div>";
+
 	outputVideo += "<iframe src=\"//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fcaanapp.ca/caan/main/index.php/video_controller/build_single_video_page/" + data.v_id + "&amp;width=25&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=21&amp;appId=129704493787021\" scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden; width:100%; height:21px;\" allowTransparency=\"true\"></iframe>";
+	
 	// rating reviews 
-	outputVideo += "<div class=\"ratings\"><p class=\"pull-right\">15 reviews</p><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span></p></div></div></div></div>";
+	outputVideo += "<div class=\"ratings\"><p class=\"pull-right\">15 Views</p><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span></p></div></div></div></div>";
 	// console.log(link);
 	return outputVideo;
 }

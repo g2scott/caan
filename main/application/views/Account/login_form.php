@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" manifest="/cache.appcache">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -93,20 +93,17 @@
 
       <form id="login_form" class="form-signin" role="form" action="<?=site_url("account/login"); ?>" method="post">
         <h2 class="form-signin-heading">Login</h2>
-
-        <!-- <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div> -->
-
-    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
-
+        
+        <?php echo "<p>" . anchor('account/recoverPasswordForm','Recover Password') . "</p>"; ?>
         <input type="text" class="form-control" placeholder="Email" name="email" required autofocus>
         <input type="password" class="form-control" placeholder="Password" name="password" required>
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>
         <button class="btn btn-lg btn-default btn-block" type="submit">Login</button>
-        <?php echo "<p>" . anchor('account/recoverPasswordForm','Recover Password') . "</p>"; ?>
 
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
       </form>
 
 
