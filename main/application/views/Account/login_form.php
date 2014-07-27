@@ -90,7 +90,7 @@
         </label>
         <button class="btn btn-lg btn-default btn-block" type="submit">Login</button>
 
-<button class="btn btn-lg" onclick="login()"><img style="max-width 100%; margin-top: -5px;"
+<button class="btn btn-lg" onclick="login()"><img style="width: 90%; height: 90%; margin-top: -5px; vertical-align: middle;"
              src="<?php echo base_url() ?>assets/img/facebook-connect-button.png"></button>
 
 
