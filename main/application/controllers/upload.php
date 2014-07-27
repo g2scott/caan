@@ -81,8 +81,9 @@ class Upload extends CI_Controller {
  			$this->form_validation->set_rules('password', 'Password', 'required|min_length[4]|max_length[8]');
  		}
 		
+//  		Enabled to to failing with not rules present
 		$this->form_validation->set_rules('first', 'First', 'required');
-//		$this->form_validation->set_rules('last', 'Last', 'required');
+		$this->form_validation->set_rules('last', 'Last', 'required');
 		
 // 		$this->form_validation->set_rules('about_me_text', 'AboutMe', "required");
 
