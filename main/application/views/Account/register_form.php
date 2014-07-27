@@ -85,7 +85,8 @@
 <!-- <textarea> creates a multiline textbox -->
 <textarea class="form-control" placeholder="Description (optional)" name = "about_me_text" rows = "4" cols = "36" autofocus></textarea>
 <button class="btn btn-lg btn-default btn-block" type="submit">Register</button>
-Login With Facebook (soon)
+<button class="btn btn-lg" onclick="login()"><img style="max-width 100%; margin-top: -5px;"
+             src="<?php echo base_url() ?>assets/img/facebook-connect-button.png"></button>
 </form>
 
 </div> <!-- /container -->
@@ -107,5 +108,120 @@ Login With Facebook (soon)
 
 <script src="<?php echo base_url(); ?>/assets/js/jquery-1.10.2.js"></script>
 <script src="<?php echo base_url(); ?>/assets/js/bootstrap.js"></script>
+        <script src="../../assets/js/openFB.js"></script>
+        
+<script>
+     // Defaults to sessionStorage for storing the Facebook token
+     openFB.init({appId: '129704493787021'});
+
+    //  Uncomment the line below to store the Facebook token in localStorage instead of sessionStorage
+    //  openFB.init({appId: 'YOUR_FB_APP_ID', tokenStore: window.localStorage});
+
+    function login() {
+        openFB.login(
+                function(response) {
+                    if(response.status === 'connected') {
+                        alert('Facebook login succeeded, got access token: ' + response.authResponse.token);
+                        this.getInfo();
+                    } else {
+                        alert('Facebook login failed: ' + response.error);
+                    }
+                }, {scope: 'email,read_stream,publish_stream'});
+    }
+
+    function getInfo() {
+        openFB.api({
+            path: '/me',
+            success: function(response) {
+                console.log(JSON.stringify(response));
+                //document.getElementById("userName").innerHTML = data.name;
+                //document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
+             // document.getElementById('status').innerHTML =
+             // 'Thanks for logging in, ' + response.name + '!';
+                   
+                   var f = document.createElement("form");
+                   f.setAttribute('method',"post");
+                   f.setAttribute('action',"login_user");
+                   f.setAttribute('id',"fb_form");
+
+                   var i = document.createElement("input"); //input element, text
+                   i.setAttribute('type',"hidden");
+                   i.setAttribute('name',"user_name");
+                   i.setAttribute('value',response.name);
+                   
+                   var email = document.createElement("input"); //input element, text
+                   email.setAttribute('type',"hidden");
+                   email.setAttribute('name',"email");
+                   email.setAttribute('value',response.email);
+                   
+                   var id = document.createElement("input"); //input element, text
+                   id.setAttribute('type',"hidden");
+                   id.setAttribute('name',"id");
+                   id.setAttribute('value',response.id);
+
+                   f.appendChild(i);
+                   f.appendChild(email);
+                   f.appendChild(id);
+
+                   //and some more input elements here
+                   //and dont forget to add a submit button
+
+                   document.getElementsByTagName('body')[0].appendChild(f);
+                   
+                   var frm = $('#fb_form');
+                   
+                     $.ajax({
+                         async: false,
+                      dataType: 'json',
+                         type: frm.attr('method'),
+                         url: "login_user",
+                         data: frm.serialize(),
+                         success: function (data) {
+                             alert(data.message);
+                             window.location.href = "../" + data.message;
+                         }
+                     });
+                     
+            },
+            error: errorHandler});
+    }
+
+    function share() {
+        openFB.api({
+            method: 'POST',
+            path: '/me/feed',
+            params: {
+                message: document.getElementById('Message').value || 'Testing Facebook APIs'
+            },
+            success: function() {
+                alert('the item was posted on Facebook');
+            },
+            error: errorHandler});
+    }
+
+    function revoke() {
+        openFB.revokePermissions(
+                function() {
+                    alert('Permissions revoked');
+                },
+                errorHandler);
+    }
+
+    function logout() {
+        openFB.logout(
+                function() {
+                    alert('Logout successful');
+                },
+                errorHandler);
+    }
+
+    function errorHandler(error) {
+        alert(error.message);
+    }
+	//
+</script>
+
+
+
 </body>
 </html>
