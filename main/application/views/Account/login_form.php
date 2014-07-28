@@ -52,13 +52,13 @@
                     <li id="stream"><a href="<?php echo site_url() ?>"><span class="glyphicon glyphicon-film">Stream</a>
                     </li>
                     <li>
-                        
+<!--                         SEARCH -->
              <div class="input-group input-group-sm">
          <form class="navbar-form" role="search">
          <div class="input-group">
              <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
              <div class="input-group-btn">
-                 <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-user"></i></button>
+                 <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
              </div>
          </div>
          </form>
