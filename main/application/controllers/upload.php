@@ -111,8 +111,8 @@ class Upload extends CI_Controller {
 			$user->about_me_text = $this->input->post('about_me_text');
 			
 			if ($do_photo_upload){
-// 				$user->img_path = $data_array['full_path'];
-				$test = base_url() . $config['source_image'];
+// 				Removed base_url() . $config...
+				$test = $config['source_image'];
 				$user->img_path = $test ;
 			}
 			$this->user_model->update_user($user);
