@@ -43,8 +43,10 @@ class Upload extends CI_Controller {
 
 		$this->load->library('upload', $config);
 
-
+// Check if a photo has been selected for upload
+		$do_photo_upload = false;
 		if (!empty($_FILES['userfile']['name'])){
+			$do_photo_upload = true;
 			if ( ! $this->upload->do_upload())
 			{
 				$data['error'] = $this->upload->display_errors();
@@ -101,16 +103,16 @@ class Upload extends CI_Controller {
 			$user->first = $this->input->post('first');
 			$user->last = $this->input->post('last');
 			
-			
-			
 			if (isset($pass) && strlen($pass)){
 				
 				$clearPassword = $this->input->post('password');
 				$user->encryptPassword($clearPassword);
 			}
 			$user->about_me_text = $this->input->post('about_me_text');
-			$user->img_path = $data_array['full_path'];
-
+			
+			if ($do_photo_upload){
+				$user->img_path = $data_array['full_path'];
+			}
 			$this->user_model->update_user($user);
 			$data['url'] = site_url();
 			

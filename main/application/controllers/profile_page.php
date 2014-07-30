@@ -53,7 +53,11 @@ class Profile_page extends CI_Controller {
 		$this->load->helper('directory');
 		$dir = './assets/img/profile';
 		$map = directory_map($dir);
+		
+		$this->load->model('user_model');
 		$user_id = $this->session->userdata['user_id'];
+		
+		
 		foreach ($map as $key => $value) {
 			$file = strstr($value, '.' , true);
 			if ($user_id == $file) {

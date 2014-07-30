@@ -196,23 +196,18 @@ public function get_last_entrie()
         return $query->result();
     }
 
-
-    // function insert_entry()
-    // {
-    // $this->title = $_POST['title']; // please read the below note
-    // $this->content = $_POST['content'];
-    // $this->date = time();
-    //
-    // $this->db->insert('entries', $this);
-    // }
-    //
-    // function update_entry()
-    // {
-        // $this->title = $_POST['title'];
-        // $this->content = $_POST['content'];
-        // $this->date = time();
-        //
-        // $this->db->update('entries', $this, array('id' => $_POST['id']));
-        // }
-
+function get_image_path($id)
+    {
+    	$query = $this->db->get_where('users',array('id' => $id));
+    	return $query->row(0,'img_path');
+    }
+    
+// function update_image_path($product) {
+//     $this->db->where('id', $product->id);
+//     return $this->db->update("product", array('name' => $product->name,
+//     	'description' => $product->description,
+//     	'price' => $product->price));
+//     }
+    
+    
 }
