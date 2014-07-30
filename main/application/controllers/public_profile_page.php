@@ -59,16 +59,8 @@ class Public_profile_page extends CI_Controller {
 
 	public function find_user_img_path($user_id)
 	{
-		$this->load->helper('directory');
-		$dir = './assets/img/profile';
-		$map = directory_map($dir);
-		// $user_id = $this->session->userdata['user_id'];
-		foreach ($map as $key => $value) {
-			$file = strstr($value, '.' , true);
-			if ($user_id == $file) {
-				$data['file'] = $value;
-			}
-		}
+		$this->load->model('user_model');
+		$data['file'] = $this->user_model->get_image_path($user_id);
 		$data['url'] = base_url();
 		$result = json_encode($data);
 		echo $result; 

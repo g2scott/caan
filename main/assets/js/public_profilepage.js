@@ -58,8 +58,7 @@ function load (url, userId)
 		// console.log(data);
 		// console.log(data.file);
 		if ( data.file!= null) {
-			var file = data.file;
-			var img_path = data.url + 'assets/img/profile/' + data.file;
+			var img_path = data.file;
 			$('#profile_img :first-child').attr('src', img_path);
 		};
 	});

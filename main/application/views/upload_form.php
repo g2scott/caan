@@ -53,7 +53,7 @@
 
 <form class="form-signin" role="form" action="<?=site_url("upload/do_upload"); ?>" method="post" enctype="multipart/form-data">
         <h4 class="form-signin-heading"><?php echo $error;?></h4>
-        <h2 class="form-signin-heading">upload new video</h2>
+        <h2 class="form-signin-heading">Upload Video</h2>
 
 
 <input type="text" class="form-control" placeholder="Video Name" name="video_name" required autofocus>
@@ -79,6 +79,7 @@
                   <option>1</option>
                   <option>Awful</option> -->
 </select>
+Max Filesize 64M
 <input type="file" class="form-control" name="userfile" size="20" />
 
 <br /><br />
