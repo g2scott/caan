@@ -31,7 +31,7 @@ class Upload extends CI_Controller {
 		// 1. get back profile from database
 		$data['user'] = $this->user_model->find_user_object_by_id($user_id);
 		// 2. display in the view and filled into the form
-		$user_id = $this->session->userdata['user_id'];
+		//$user_id = $this->session->userdata['user_id'];
 	
 		$config['upload_path'] = './assets/img/profile';
 		$config['allowed_types'] = 'gif|jpg|png';
@@ -111,7 +111,9 @@ class Upload extends CI_Controller {
 			$user->about_me_text = $this->input->post('about_me_text');
 			
 			if ($do_photo_upload){
-				$user->img_path = $data_array['full_path'];
+// 				$user->img_path = $data_array['full_path'];
+				$test = base_url() . $config['source_image'];
+				$user->img_path = $test ;
 			}
 			$this->user_model->update_user($user);
 			$data['url'] = site_url();

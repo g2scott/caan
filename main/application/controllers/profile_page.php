@@ -50,21 +50,24 @@ class Profile_page extends CI_Controller {
 
 	public function find_user_img_path()
 	{
-		$this->load->helper('directory');
-		$dir = './assets/img/profile';
-		$map = directory_map($dir);
+// 		$this->load->helper('directory');
+// 		$dir = './assets/img/profile';
+// 		$map = directory_map($dir);
 		
 		$this->load->model('user_model');
 		$user_id = $this->session->userdata['user_id'];
+		$data['file'] = $this->user_model->get_image_path($user_id);
+		
+// 		foreach ($map as $key => $value) {
+// 			$file = strstr($value, '.' , true);
+// 			if ($user_id == $file) {
+// 				$data['file'] = $value;
+// 			}
+// 		}
 		
 		
-		foreach ($map as $key => $value) {
-			$file = strstr($value, '.' , true);
-			if ($user_id == $file) {
-				$data['file'] = $value;
-			}
-		}
 		$data['url'] = base_url();
+		
 		$result = json_encode($data);
 		echo $result; 
 	}

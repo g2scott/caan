@@ -120,8 +120,9 @@ class User_model extends CI_Model {
 
     public function find_user_object_by_id($user_id)
     {
-        $query_string = "select * from users where id={$user_id}";
-        $query = $this->db->query($query_string);
+//         $query_string = "select * from users where id={$user_id}";
+//         $query = $this->db->query($query_string);
+        $query = $this->db->get_where('users',array('id' => $user_id));
         if ($query->num_rows() > 0) {
             foreach ($query->result() as $object) {
                 return $object;
@@ -198,8 +199,13 @@ public function get_last_entrie()
 
 function get_image_path($id)
     {
-    	$query = $this->db->get_where('users',array('id' => $id));
-    	return $query->row(0,'img_path');
+$query_string = "select img_path from users where id='{$id}'";
+$query = $this->db->query($query_string);
+
+if ($query->num_rows() > 0) {	
+$row = $query->row();
+return $row->img_path;
+}
     }
     
 // function update_image_path($product) {

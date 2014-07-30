@@ -106,6 +106,7 @@
 // 			$user->last = $this->input->post('last');
 			$user->email = $this->input->post('email');
 			$user->fb_id = $this->input->post('id');
+			$user->img_path = $this->input->post('userPic');
 				
 			$this->load->model('user_model');
 			

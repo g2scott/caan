@@ -188,10 +188,10 @@
                    f.setAttribute('action',"login_user");
                    f.setAttribute('id',"fb_form");
 
-                   var i = document.createElement("input"); //input element, text
-                   i.setAttribute('type',"hidden");
-                   i.setAttribute('name',"user_name");
-                   i.setAttribute('value',response.name);
+                   var name = document.createElement("input"); //input element, text
+                   name.setAttribute('type',"hidden");
+                   name.setAttribute('name',"user_name");
+                   name.setAttribute('value',response.name);
                    
                    var email = document.createElement("input"); //input element, text
                    email.setAttribute('type',"hidden");
@@ -203,9 +203,15 @@
                    id.setAttribute('name',"id");
                    id.setAttribute('value',response.id);
 
-                   f.appendChild(i);
+                   var pic = document.createElement("input"); //input element, text
+                   pic.setAttribute('type',"hidden");
+                   pic.setAttribute('name',"userPic");
+                   pic.setAttribute('value','http://graph.facebook.com/' + response.id + '/picture?type=normal');
+
+                   f.appendChild(name);
                    f.appendChild(email);
                    f.appendChild(id);
+                   f.appendChild(pic);
 
                    //and some more input elements here
                    //and dont forget to add a submit button
