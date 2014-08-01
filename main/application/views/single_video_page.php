@@ -33,7 +33,7 @@
                 <!-- <a class="navbar-brand" href="/">Home</a> -->
                 <a class="navbar-brand" href="<?php echo base_url() ?>">
                 <img style="max-width:100px; margin-top: -3px;"
-             src="<?php echo base_url() ?>assets/img/home.jpg">
+             src="<?php echo base_url() ?>assets/img/home.png">
              </a>
             </div>
 
