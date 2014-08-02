@@ -47,9 +47,10 @@
 
 						$session_data = array(
 		                   'user_id'    => $user->id,
-		                   'logged_in' 	=> TRUE
+		                   'logged_in' 	=> TRUE,
+							'fb_session' => FALSE,
+							'fb_token' => "0"
 		               );
-						
 
 						$this->session->set_userdata($session_data);
 
@@ -58,21 +59,16 @@
 // 						$data['url'] = site_url();
 			
 						//$this->load->view('profile_page', $data);
-						
-						
-// 						redirect('profile_page', 'refresh');
 
 						echo json_encode(array('status'=>'success','message'=>"/profile_page"));
-						
-						
-						
+
 						//redirect('profile_page/index', 'refresh'); //redirect to the main application page
 					}
 					else {
 // 						$data['errorMsg']='Incorrect username or password!';
 // 						$data['helper'] = $this->fb_helper;
 // 						/$this->load->view('Account/login_form',$data);
-						echo json_encode(array('status'=>'success','message'=>"/account/login"));
+						echo json_encode(array('status'=>'success','message'=>"/accountzzz/login"));
 						
 					}
 				}			
@@ -120,7 +116,9 @@
 			if (isset($user)){
 			$session_data = array(
 					'user_id'    => $user->id,
-					'logged_in' 	=> TRUE
+					'logged_in' 	=> TRUE,
+					'fb_session' => TRUE,
+					'fb_token' => "0"
 			);
 			
 			$this->session->set_userdata($session_data);

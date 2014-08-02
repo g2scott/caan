@@ -77,7 +77,7 @@
             
 
         </div>
-        <div class="fb-like" data-href="<?php echo current_url() ?>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+        <div class="fb-like" data-href="<?php echo current_url() ?>" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>
 
     </div>
     <!-- /.container -->
