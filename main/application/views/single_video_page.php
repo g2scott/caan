@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta property="og:image" content="http://placehold.it/800X150" />
+        <meta property="og:title" content="CAAN"/>
+    <meta property="og:url" content="http://www.caanapp.ca"/>
+    <meta property="og:description" content="Amateur Athletes"/>
+    <meta property="og:site_name" content="caanapp.ca"/>
+    <meta property="og:type" content="website"/>
 
     <title>Canadian Amateur</title>
 
@@ -20,6 +26,14 @@
 </head>
 
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=129704493787021&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -63,6 +77,7 @@
             
 
         </div>
+        <div class="fb-like" data-href="<?php echo current_url() ?>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 
     </div>
     <!-- /.container -->

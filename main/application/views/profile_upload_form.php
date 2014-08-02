@@ -86,6 +86,10 @@ Description
 <br /><br />
 <button class="btn btn-lg btn-default btn-block" type="submit">Submit</button>
 
+<a href="<?=site_url("profile_page"); ?>" style='text-decoration:none;'>
+  <input type="button" class="btn btn-lg btn-default btn-block" value="Cancel" />
+</a>
+
 </form>
 
 

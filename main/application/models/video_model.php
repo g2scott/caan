@@ -31,6 +31,30 @@ class Video_model extends CI_Model {
 		$json_return = SproutVideo\Video::create_video($path);
 		return $json_return;	
 	}
+	
+	public function get_sprout_video($id)
+	{
+		Sproutvideo::$api_key = '1e376f3f3954ea1ef83163390092427c';
+		$json_return = SproutVideo\Video::get_video($id);
+		return $json_return;
+	}
+	
+	public function get_thumbnail($video_id)
+	{
+		$query = $this->db->get_where('videos',array('v_id' => $video_id));
+	
+		if ($query->num_rows() > 0)
+		{
+			$row = $query->row();
+	
+			return $row->thumbnail;
+			// 			echo $row->name;
+			// 			echo $row->body;
+		}
+	
+	
+	}
+	
 
 	/**
 	 * delete video from sprout video site

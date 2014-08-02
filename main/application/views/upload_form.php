@@ -49,7 +49,7 @@
 
 <?php //echo form_open_multipart('upload/do_upload');?>
 
-<form class="form-signin" role="form" action="<?=site_url("upload/do_upload"); ?>" method="post" enctype="multipart/form-data">
+<form class="form-signin" role="form" action="<?=site_url("video_controller/do_upload"); ?>" method="post" enctype="multipart/form-data">
         <h4 class="form-signin-heading"><?php echo $error;?></h4>
         <h2 class="form-signin-heading">Upload Video</h2>
 
@@ -71,11 +71,17 @@
 Max Filesize 64M
 <input type="file" class="form-control" name="userfile" size="20" />
 
-<br /><br />
+<br />
 
-<input type="submit" class="btn btn-lg btn-default btn-block" value="Video Upload" />
+<input type="submit" class="btn btn-lg btn-default btn-block" value="Upload Video" />
+
+
+<a href="<?=site_url("profile_page"); ?>" style='text-decoration:none;'>
+  <input type="button" class="btn btn-lg btn-default btn-block" value="Cancel" />
+</a>
 
 </form>
+
 
 <script src="../../assets/js/jquery-1.10.2.js"></script>
 <script src="../../assets/js/bootstrap.js"></script>

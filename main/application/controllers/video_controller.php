@@ -12,11 +12,13 @@ class Video_controller extends CI_Controller {
 	public function build_single_video_page($video_id)
 	{
 		$link = $this->video_model->find_video_links($video_id);
+		$thumbnail = $this->video_model->get_thumbnail($video_id);
 		$link = str_replace("type=sd'", "type=sd&amp;regularColorTop=960000&amp;regularColorBottom=d70000'", $link);
 		$output  = "<div class=\"flex-video widescreen\">";
 		$output .= "$link";
 		$output .= "</div>";
 		$data['output'] = $output;
+		$data['thumbnail'] = $thumbnail;
 		$this->load->view('single_video_page', $data);
 	}
 	
@@ -24,6 +26,11 @@ class Video_controller extends CI_Controller {
 	function video_upload()
 	{
 		$this->load->view('upload_form', array('error' => ' ' ));
+	}
+	
+	function cancel()
+	{
+		$this->load->view('profile_page');
 	}
 	
 	
@@ -53,26 +60,25 @@ class Video_controller extends CI_Controller {
 		{
 			$data_array = $this->upload->data();
 			$json_return = $this->video_model->upload_to_sprout($data_array);
-			//$array_return = json_decode($json_return);
 			$link = $json_return['embed_code'];
 			$sprout_id = $json_return['id'];
-			// $this->load->model('video_model');
-			// $this->video_model->createNew($link);
-	
+
 			/**
 			 * start form validation here, may move to some other function later
 			 */
 			$this->load->library('form_validation');
-			
-			//$this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.user_name]');
+
+			$assets = $json_return['assets'];
+			$thumbnails = $assets['thumbnails'];
+			$poster_frames = $assets['poster_frames'];
 
 			$this->form_validation->set_rules('video_name', 'Video Name', 'required');
 			$this->form_validation->set_rules('video_description', 'Video Description', "required");
-			// $this->form_validation->set_rules('file', 'Uploaded file', "required");
 	
 			if ($this->form_validation->run() == FALSE)
 			{
-				$this->load->view('Account/add_video');
+				$data['error'] = validation_errors();
+				$this->load->view('upload_form, $data');
 			}
 			else
 			{
@@ -86,18 +92,19 @@ class Video_controller extends CI_Controller {
 				$video->type = $this->input->post('type');
 				$video->name = $this->input->post('video_name');
 				$video->description = $this->input->post('video_description');
+				
+				$video->thumbnail = $thumbnails[2];
+				$video->poster_frame = $poster_frames[0];
 	
 				$this->load->model('video_model');
 	
 				$error = $this->video_model->insert($video);
-					
-				// $this->load->view('profile_page');
 	
 			}
-			$data = array('upload_data' => $this->upload->data(), 'path' => $data_array['full_path'], 'json' => $json_return);
+			//$data = array('upload_data' => $this->upload->data(), 'path' => $data_array['full_path'], 'json' => $json_return);
 			
-			$url['url'] = site_url();
-			$this->load->view('profile_page');
+			//$url['url'] = site_url();
+			redirect('profile_page');
 			
 		}
 	}

@@ -106,9 +106,8 @@ class User_model extends CI_Model {
             $result = $query->result_array();
             return $result;
         }
-
     }
-
+    
     public function find_user_object_by_id($user_id)
     {
         $query = $this->db->get_where('users',array('id' => $user_id));
@@ -117,6 +116,8 @@ class User_model extends CI_Model {
 			return $row;
         }      
     }
+    
+    
     
 /**
 * add a use

@@ -241,7 +241,7 @@
             method: 'POST',
             path: '/me/feed',
             params: {
-                message: document.getElementById('Message').value || 'Testing Facebook APIs'
+                message: document.getElementById('Message').value || 'Testing Facebook APIs',
             },
             success: function() {
                 alert('the item was posted on Facebook');

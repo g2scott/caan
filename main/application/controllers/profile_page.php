@@ -71,19 +71,20 @@ class Profile_page extends CI_Controller {
 		try {
 			$return = $this->video_model->delete_from_sprout($sprout_id);
 			
+			//Guzzle exceptions not working
 		} catch (Exception $e) {
-			$req = $e->getRequest();
-            $resp =$e->getResponse();
-            echo $req;
-            echo $resp;
+// 			$req = $e->getRequest();
+//             $resp =$e->getResponse();
+//             echo $req;
+//             echo $resp;
 		}
 		
 
 		if (isset($return)) {
 			// delete record from videos table
 			$result = $this->video_model->delete_video_by_id($video_id);
-			$data['url'] = site_url();
-			$this->load->view('profile_page', $data);
+			//$data['url'] = site_url();
+			redirect('profile_page');
 		}
 
 	}
@@ -188,7 +189,9 @@ class Profile_page extends CI_Controller {
 				$test = base_url() . $config['source_image'];
 				$user->img_path = $test ;
 			}
+			
 			$this->user_model->update_user($user);
+			
 			$data['url'] = site_url();
 				
 			//$this->load->view('profile_page', $data);
