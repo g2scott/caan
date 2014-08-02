@@ -62,7 +62,7 @@
 
 <!-- <?php //echo form_open_multipart('upload/do_upload');?>  -->
 
-<form class="form-signin" role="form" action="<?=site_url("upload/upload_profile"); ?>" method="post" enctype="multipart/form-data">
+<form class="form-signin" role="form" action="<?=site_url("profile_page/upload_profile"); ?>" method="post" enctype="multipart/form-data">
         <h4 class="form-signin-heading"><?php echo $error;?></h4>
         <h2 class="form-signin-heading">Settings</h2>
 

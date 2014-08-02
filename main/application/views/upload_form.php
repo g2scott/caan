@@ -14,8 +14,8 @@
 
     <!-- Add custom CSS here -->
     <link href="../../assets/css/signin.css" rel="stylesheet">
-
 </head>
+
 <body>
 <!--  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"> -->
 <!--         <div class="container"> -->
@@ -47,18 +47,16 @@
         <!-- /.container -->
 <!--     </nav> -->
 
-
-
 <?php //echo form_open_multipart('upload/do_upload');?>
 
 <form class="form-signin" role="form" action="<?=site_url("upload/do_upload"); ?>" method="post" enctype="multipart/form-data">
         <h4 class="form-signin-heading"><?php echo $error;?></h4>
         <h2 class="form-signin-heading">Upload Video</h2>
 
-
 <input type="text" class="form-control" placeholder="Video Name" name="video_name" required autofocus>
 <input type="text" class="form-control" placeholder="Video Description" name="video_description" required>
 <select name = "type" class="form-control">
+
                   <!-- <option selected = "selected">Amazing</option> -->
                   <option>Football</option>
                   <option>Lacrosse</option>
@@ -68,16 +66,7 @@
                   <option>Basketball</option>
                   <option>Hockey</option>
                   <option>Other</option>
-                  <!-- <option>9</option>
-                  <option>8</option>
-                  <option>7</option>
-                  <option>6</option>
-                  <option>5</option>
-                  <option>4</option>
-                  <option>3</option>
-                  <option>2</option>
-                  <option>1</option>
-                  <option>Awful</option> -->
+                  
 </select>
 Max Filesize 64M
 <input type="file" class="form-control" name="userfile" size="20" />
@@ -88,8 +77,8 @@ Max Filesize 64M
 
 </form>
 
-
 <script src="../../assets/js/jquery-1.10.2.js"></script>
 <script src="../../assets/js/bootstrap.js"></script>
+
 </body>
 </html>

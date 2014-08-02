@@ -54,7 +54,7 @@
          </div>
          </form>
          </div>
-        
+         
                     </li>
 					<li><a href=" <?php echo site_url() ?>/account/logout_user"><span class="glyphicon glyphicon-user">Log-out</a>
                     </li>
@@ -70,8 +70,7 @@
         <div class="row">
 
             <div class="col-md-5">
-				
-	                	
+					                	
 		                <div class="list-group">
 							<div id="profile_img"><img src="<?php echo base_url() ?>/assets/img/missing.jpg" class="center-block img-circle img-responsive" style="text-align: center"></div>
 						<p class="lead" id="user_name"></p>
@@ -80,18 +79,14 @@
 						
 	                	</div>
 						
-                <a class="btn btn-default" href="<?php echo site_url() ?>/upload/profile_upload"> Edit Profile </a>
-				<a class="btn btn-default" href="<?php echo site_url() ?>/upload/video_upload">Upload Video</a>
+                <a class="btn btn-default" href="<?php echo site_url() ?>/profile_page/profile_upload"> Edit Profile </a>
+				<a class="btn btn-default" href="<?php echo site_url() ?>/video_controller/video_upload">Upload Video</a>
             </div>
 
             <div class="col-md-7">
 
-           
-				
                 <div class="row" id="list_video">
 	
-                                                
-
                 </div>
 
             </div>
