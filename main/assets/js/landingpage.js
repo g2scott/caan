@@ -12,7 +12,7 @@ function generateVideoTags(data, url)
 	outputVideo +=	"\">" + data.name + "</a></h4><p>" + data.description +  "</p>";
 	outputVideo += "<p><a href=\"";
 
-	outputVideo +=	url + "/public_profile_page/load/" + data.u_id + "\">" + data.first + " " + data.last + "</a></p>";
+	outputVideo +=	url + "/public_profile_page/load/" + data.u_id + "\">" + data.user_name + "</a></p>";
 
 	outputVideo += "</div>"; 
 	// end .caption div

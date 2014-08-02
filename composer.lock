@@ -4,57 +4,8 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ea3256cf96034d6872a4d3055c7ac715",
+    "hash": "e9a7d89c53583a86a3b35cc2e5f922e5",
     "packages": [
-        {
-            "name": "facebook/php-sdk-v4",
-            "version": "4.0.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/facebook/facebook-php-sdk-v4.git",
-                "reference": "4d77aa2fe57a3777040d6a60aa31fbe7465cb4ca"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/facebook/facebook-php-sdk-v4/zipball/4d77aa2fe57a3777040d6a60aa31fbe7465cb4ca",
-                "reference": "4d77aa2fe57a3777040d6a60aa31fbe7465cb4ca",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "guzzlehttp/guzzle": "~4.0",
-                "mockery/mockery": "dev-master",
-                "phpunit/phpunit": "3.7.*"
-            },
-            "suggest": {
-                "guzzlehttp/guzzle": "Allows for implementation of the Guzzle HTTP client"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Facebook\\": "src/Facebook/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Facebook Platform"
-            ],
-            "authors": [
-                {
-                    "name": "Facebook",
-                    "homepage": "https://github.com/facebook/facebook-php-sdk-v4/contributors"
-                }
-            ],
-            "description": "Facebook SDK for PHP",
-            "homepage": "https://github.com/facebook/facebook-php-sdk-v4",
-            "keywords": [
-                "facebook",
-                "sdk"
-            ],
-            "time": "2014-06-10 20:42:16"
-        },
         {
             "name": "guzzle/guzzle",
             "version": "v3.7.4",
@@ -153,12 +104,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/SproutVideo/sproutvideo-php.git",
-                "reference": "3b82457a8385c479e1dfb530278b9333f19cec27"
+                "reference": "5f5aed34253df0f908a18c4f1f0091829e50dedb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SproutVideo/sproutvideo-php/zipball/3b82457a8385c479e1dfb530278b9333f19cec27",
-                "reference": "3b82457a8385c479e1dfb530278b9333f19cec27",
+                "url": "https://api.github.com/repos/SproutVideo/sproutvideo-php/zipball/5f5aed34253df0f908a18c4f1f0091829e50dedb",
+                "reference": "5f5aed34253df0f908a18c4f1f0091829e50dedb",
                 "shasum": ""
             },
             "require": {
@@ -189,21 +140,21 @@
                 "video",
                 "video hosting"
             ],
-            "time": "2014-06-19 16:03:21"
+            "time": "2014-07-07 22:40:45"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.5.0",
+            "version": "v2.5.2",
             "target-dir": "Symfony/Component/EventDispatcher",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "cb62ec8dd05893fc8e4f0e6e21e326e1fc731fe8"
+                "reference": "2215d2ef6fd7ab24d55576a3d924df575c741762"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/cb62ec8dd05893fc8e4f0e6e21e326e1fc731fe8",
-                "reference": "cb62ec8dd05893fc8e4f0e6e21e326e1fc731fe8",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/2215d2ef6fd7ab24d55576a3d924df575c741762",
+                "reference": "2215d2ef6fd7ab24d55576a3d924df575c741762",
                 "shasum": ""
             },
             "require": {
@@ -248,7 +199,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com",
-            "time": "2014-04-29 10:13:57"
+            "time": "2014-07-09 09:05:48"
         }
     ],
     "packages-dev": [],
