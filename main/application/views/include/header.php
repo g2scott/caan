@@ -1,16 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" manifest="<?php echo base_url() ?>cache.appcache">
+
 <head>
-   <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="description" content="">
-   <meta name="keywords" content="">
-   <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="./assets/img/favicon.png"> 
 
-   <title>CodeIgniter Bootstrap</title>
+    <title>CAAN</title>
 
-   <link href="<?php echo base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
-   <link href="<?php echo base_url('assets/css/font-awesome.css') ?>" rel="stylesheet">
-   <link href="<?php echo base_url('assets/css/custom.css') ?>" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="<?php echo base_url() ?>assets/css/bootstrap.css" rel="stylesheet">
+    
+    <!-- Add custom CSS here -->
+    <link href="<?php echo base_url() ?>assets/css/shop-homepage.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/css/responsive_video.css" rel="stylesheet">
+	
 </head>
+
 <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="<?php echo site_url() ?>">
+                 <img style="max-width:100px; margin-top: -5px;"
+             src="<?php echo base_url() ?>assets/img/home.png"></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li id="stream"><a href="stream"><span class="glyphicon glyphicon-film">Stream</a>
+                    </li>
+                    <li>
+                        
+             <div class="input-group input-group-sm">
+         <form class="navbar-form" role="search">
+         <div class="input-group">
+             <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+             <div class="input-group-btn">
+                 <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+             </div>
+         </div>
+         </form>
+         </div>
+                    </li>
+                    <li id="signin"><a href="<?php echo site_url('account/login_user') ?>"></a>
+                    </li>
+                    <li id="signup"><a href="<?php echo site_url('account/register_user') ?>"></a>
+                    </li>  
+<a>beta</a>
+                    
+                </ul>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>

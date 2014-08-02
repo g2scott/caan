@@ -7,6 +7,8 @@ function generateVideoTags(data, url)
 	var link = data.link.replace(replace, "<iframe class='sproutvideo-player' src='http:");
 	outputVideo += link;
 	// outputVideo += "\' allowfullscreen></iframe></div><div class=\"caption\"><h4 class=\"pull-right\"></h4><h4><a href=\"#\">" + data.name + "</a></h4><p>" + data.description +  "</p></div><div class=\"ratings\"><p class=\"pull-right\">15 reviews</p><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span></p></div></div></div></div>";
+	
+	//HYPERLINK TO SINGLE VIDEO PAGE OR EDIT PAGE
 	outputVideo += "</div><div class=\"caption\"><h4 class=\"pull-right\"></h4><h4><a href=\"#\">" + data.name + "</a></h4><p>" + data.description +  "</p>";
 	outputVideo += "<p><a href=\"";
 	outputVideo += url + "/profile_page/delete/" + data.v_id;

@@ -97,20 +97,11 @@ class User_model extends CI_Model {
     		return null;
     }
     
-    function getFromId($id)
-    {
-    	$this->db->where('id',$id);
-    	$query = $this->db->get('user');
-    	if ($query && $query->num_rows() > 0)
-    		return $query->row(0,'User');
-    	else
-    		return null;
-    }
-
+    
+    //NEED TO ASSEMBLE THESE 2 FUNCTIONS INTO 1.  Vincent is an IDIOT.
     public function find_user_by_id($user_id)
     {
-        $query_string = "select * from users where id={$user_id}";
-        $query = $this->db->query($query_string);
+        $query = $this->db->get_where('users',array('id' => $user_id));
         if ($query->num_rows() > 0) {
             $result = $query->result_array();
             return $result;
@@ -120,13 +111,10 @@ class User_model extends CI_Model {
 
     public function find_user_object_by_id($user_id)
     {
-//         $query_string = "select * from users where id={$user_id}";
-//         $query = $this->db->query($query_string);
         $query = $this->db->get_where('users',array('id' => $user_id));
         if ($query->num_rows() > 0) {
-            foreach ($query->result() as $object) {
-                return $object;
-            }
+			$row = $query->row();
+			return $row;
         }      
     }
     
@@ -135,42 +123,41 @@ class User_model extends CI_Model {
 */
 public function register($email, $login, $first, $last, $password, $about_me_text)
 {
-$new_user = array (
-'email' => $email,
-'user_name' => $login,
-'password' => $password,
-'first' => $first,
-'last' => $last,
-'about_me_text' => $about_me_text
-);
-// active record, database function
-$this->db->insert('users', $new_user);
-
-return true;
+	$new_user = array (
+	'email' => $email,
+	'user_name' => $login,
+	'password' => $password,
+	'first' => $first,
+	'last' => $last,
+	'about_me_text' => $about_me_text
+	);
+	// active record, database function
+	$this->db->insert('users', $new_user);
+	
+	return true;
 }
 
 public function find_user_id($user_name)
 {
-$query_string = "select id from users where user_name='{$user_name}'";
-$query = $this->db->query($query_string);
-if ($query->num_rows() > 0) {
-foreach ($query->result() as $row) {
-return $row->id;
-}
-}
+	$query_string = "select id from users where user_name='{$user_name}'";
+	$query = $this->db->query($query_string);
+	if ($query->num_rows() > 0) {
+		$row = $query->row();
+		return $row->id;
+	}
 }
 
 
 
 public function find_user_password($user_name)
 {
-$query_string = "select password from users where user_name='{$user_name}'";
-$query = $this->db->query($query_string);
-
-if ($query->num_rows() > 0) {	
-$row = $query->row();
-return $row->password;
-}
+	$query_string = "select password from users where user_name='{$user_name}'";
+	$query = $this->db->query($query_string);
+	
+	if ($query->num_rows() > 0) {	
+		$row = $query->row();
+	return $row->password;
+	}
 }
 
 // Initializes the password to a random value
@@ -199,21 +186,14 @@ public function get_last_entrie()
 
 function get_image_path($id)
     {
-$query_string = "select img_path from users where id='{$id}'";
-$query = $this->db->query($query_string);
+	$query_string = "select img_path from users where id='{$id}'";
+	$query = $this->db->query($query_string);
 
-if ($query->num_rows() > 0) {	
-$row = $query->row();
-return $row->img_path;
-}
+	if ($query->num_rows() > 0) {	
+		$row = $query->row();
+		return $row->img_path;
+	}
     }
-    
-// function update_image_path($product) {
-//     $this->db->where('id', $product->id);
-//     return $this->db->update("product", array('name' => $product->name,
-//     	'description' => $product->description,
-//     	'price' => $product->price));
-//     }
-    
+     
     
 }

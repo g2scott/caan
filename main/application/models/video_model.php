@@ -14,22 +14,6 @@ class Video_model extends CI_Model {
     }
 	
 
-    /**
-     * Query video table to get the video
-     * @param $video_id string
-     * @return $video, object
-     */
-    public function get($video_id)
-    {
-    	$this->db->where('v_id',$video_id);
-    	$query = $this->db->get('videos');
-    	if ($query && $query->num_rows() > 0)
-			
-    		return $query->row(0,'Video');
-    	else
-    		return null;
-    }
-
     public function insert($video) {
     	return $this->db->insert('videos',$video);
 
@@ -60,7 +44,7 @@ class Video_model extends CI_Model {
 	}
 
 	/**
-	 * This function find video acoording to provide video_id
+	 * This function find video acoording to video_id
 	 * @param String $video_id, passed from controller
 	 * @return Object return a video object
 	 */
@@ -72,9 +56,8 @@ class Video_model extends CI_Model {
 		$query = $this->db->get('videos');
 		if ($query->num_rows() > 0)
 		{
-			foreach ($query->result() as $row){
-				return $row;
-			}
+			$row = $query->row();
+			return $row;
 		}
 	}
 
@@ -188,19 +171,23 @@ class Video_model extends CI_Model {
 		
 	}
 	
-	
+// 	unfucked codeignitor active re3cord access fir single row.  use everywhere else.
 	public function find_video_links($video_id)
 	{
-		$query_string = "select * from videos where v_id={$video_id}";
-		$query = $this->db->query($query_string);
+		$query = $this->db->get_where('videos',array('v_id' => $video_id));
+		
 		if ($query->num_rows() > 0)
 		{
-		   foreach ($query->result() as $row)
-		   {
-		      return $row->link;
-		   }
+			$row = $query->row();
+		
+			return $row->link;
+// 			echo $row->name;
+// 			echo $row->body;
 		}
+
+		
 	}
 	
 }	
+
 ?>
