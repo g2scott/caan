@@ -144,7 +144,7 @@
             url: frm.attr('action'),
             data: frm.serialize(),
             success: function (data) {
-			alert(data.message);
+			//alert(data.message);
             window.location.href = '<?=site_url();?>' + data.message;
             }
         });
@@ -165,7 +165,7 @@
         openFB.login(
                 function(response) {
                     if(response.status === 'connected') {
-                        alert('Facebook login succeeded, got access token: ' + response.authResponse.token);
+                        //alert('Facebook login succeeded, got access token: ' + response.authResponse.token);
                         this.getInfo();
                     } else {
                         alert('Facebook login failed: ' + response.error);
@@ -227,7 +227,7 @@
                          url: "login_user",
                          data: frm.serialize(),
                          success: function (data) {
-                             alert(data.message);
+                             //alert(data.message);
                              window.location.href = "../" + data.message;
                          }
                      });
