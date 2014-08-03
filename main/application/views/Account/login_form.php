@@ -40,23 +40,6 @@
 <div id="status">
 </div>
 
-	<div class="container">
-
-        <hr>
-
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <!-- <p>Copyright &copy; Company 2013 - Template by <a href="http://maxoffsky.com/">Maks</a> -->
-                    </p>
-                </div>
-            </div>
-        </footer>
-
-    </div>
-
-    
-
     <script src="../../assets/js/jquery-1.10.2.js"></script>
     <script src="../../assets/js/bootstrap.js"></script>
         <script src="../../assets/js/openFB.js"></script>
@@ -243,6 +226,11 @@ loadMenubar('<?php echo site_url();?>');
 <div id="status">
 </div>
     
+    <div class="container">
+        <hr>
+        <footer>
+        </footer>
+    </div>
     
   </body>
 </html>

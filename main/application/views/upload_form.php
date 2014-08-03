@@ -68,6 +68,11 @@ function loadMenubar (url) {
 loadMenubar('<?php echo site_url();?>');
 </script>
 
+	<div class="container">
+        <hr>
+        <footer>
+        </footer>
+    </div>
 
 </body>
 </html>

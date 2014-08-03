@@ -19,21 +19,6 @@
 </form>
 
 </div> <!-- /container -->
-<div class="container">
-
-<hr>
-
-<footer>
-<div class="row">
-<div class="col-lg-12">
-<!-- <p>Copyright &copy; Company 2013 - Template by <a href="http://maxoffsky.com/">Maks</a> -->
-</p>
-</div>
-</div>
-</footer>
-
-</div>
-
 
 <script src="<?php echo base_url(); ?>/assets/js/jquery-1.10.2.js"></script>
 <script src="<?php echo base_url(); ?>/assets/js/bootstrap.js"></script>
@@ -191,5 +176,11 @@ function loadMenubar (url) {
 loadMenubar('<?php echo site_url();?>');
 </script>
 
+	<div class="container">
+        <hr>
+        <footer>
+        </footer>
+    </div>
+    
 </body>
 </html>

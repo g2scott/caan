@@ -30,21 +30,6 @@
     </div>
     <!-- /.container -->
 
-    <div class="container">
-
-        <hr>
-
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Canadian Amateur Athletes Network</a>
-                    </p>
-                </div>
-            </div>
-        </footer>
-
-    </div>
-    <!-- /.container -->
 
     <!-- JavaScript -->
     <script src="<?php echo base_url() ?>assets/js/jquery-1.10.2.js"></script>
@@ -122,6 +107,13 @@ loadMenubar('<?php echo site_url();?>');
 <div id="loading" style="position: fixed; left: 0; right: 0; bottom: 0; top: 0; background: url(../assets/img/loadingBar.gif) rgba(0,0,0,0.3); 
 z-index: 1000;   background-position: center center; background-repeat: no-repeat;"></div>
 
+
+	<div class="container">
+        <hr>
+        <footer>
+        </footer>
+    </div>
+    
 </body>
 
 </html>

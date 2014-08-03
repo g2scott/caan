@@ -13,8 +13,8 @@ function generateVideoTags(data, url)
 	outputVideo += "<p><a href=\"";
 	outputVideo += url + "/profile_page/delete/" + data.v_id;
 	outputVideo += "\" onclick=\"$return confirm('Are you sure?') \"><span style=\"color:red\">DELETE</span></a></p></div>";
-	
-	outputVideo += "<button class=\"btn btn-xs\" onclick=\"share('" + url + "/public_profile_page/load/" + data.u_id + "', '" + data.thumbnail + "')\"><img style=\"width: 110%; height: 100%; margin-top: 0px; vertical-align: right;\"src=\"http://agoodbrief.org/agoodbrief/mainsite/facebook-share-small-icon.png\"></button>";
+	//SHARE
+	outputVideo += "<a  onclick=\"share('" + url + "/public_profile_page/load/" + data.u_id + "', '" + data.thumbnail + "')\" class=\"btn btn-facebook\"><i class=\"fa fa-facebook\"></i> Share on Facebook</a>";
 	
 	outputVideo += "<div class=\"ratings\"><p class=\"pull-right\">15 reviews</p><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span></p></div></div></div></div>";
 	return outputVideo;

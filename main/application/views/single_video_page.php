@@ -22,22 +22,6 @@
     </div>
     <!-- /.container -->
 
-    <div class="container">
-
-        <hr>
-
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Canadian Amateur Athletes Network</a>
-                    </p>
-                </div>
-            </div>
-        </footer>
-
-    </div>
-    <!-- /.container -->
-
     <!-- JavaScript -->
     <script src="<?php echo base_url() ?>assets/js/jquery-1.10.2.js"></script>
     <script src="<?php echo base_url() ?>assets/js/bootstrap.js"></script>
@@ -74,7 +58,12 @@ function loadMenubar (url) {
 }
 loadMenubar('<?php echo site_url();?>');
 </script>
-	
+
+	<div class="container">
+        <hr>
+        <footer>
+        </footer>
+    </div>
 
 </body>
 

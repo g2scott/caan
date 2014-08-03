@@ -21,6 +21,7 @@
     <link href="<?php echo base_url() ?>assets/css/responsive_video.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/css/signin.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/css/profile_page.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
 	
 </head>
 
