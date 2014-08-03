@@ -47,6 +47,9 @@ class Video_controller extends CI_Controller {
 		$config['max_size']	= '0';
 		$config['max_width']  = '0';
 		$config['max_height']  = '0';
+		//SANITIZE USERFILE
+		$filename = $this->security->sanitize_filename($this->input->post('userfile'));
+		$config['file_name'] = $filename;
 	
 		$this->load->library('upload', $config);
 	
@@ -94,7 +97,7 @@ class Video_controller extends CI_Controller {
 				$video->description = $this->input->post('video_description');
 				
 				$video->thumbnail = $thumbnails[2];
-				$video->poster_frame = $poster_frames[0];
+				$video->poster_frame = $poster_frames[2];
 	
 				$this->load->model('video_model');
 	

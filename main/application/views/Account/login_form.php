@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="/cache.appcache">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -80,7 +80,10 @@
 
 
       <form id="login_form" class="form-signin" role="form" action="<?=site_url("account/login"); ?>" method="post">
-        <h2 class="form-signin-heading">Login</h2>
+      
+      <h2 class="form-signin-heading">Login</h2>
+      <h4 id="error" class="form-signin-heading"></h4>
+        
         
         <?php echo "<p>" . anchor('account/recoverPasswordForm','Recover Password') . "</p>"; ?>
         <input type="text" class="form-control" placeholder="Email" name="email" required autofocus>
@@ -144,9 +147,16 @@
             url: frm.attr('action'),
             data: frm.serialize(),
             success: function (data) {
-			//alert(data.message);
-            window.location.href = '<?=site_url();?>' + data.message;
-            }
+                if (data.status == 'success'){
+					//alert(data.message);
+            		window.location.href = '<?=site_url();?>' + data.message;
+                }if (data.status == 'error'){
+					//alert("Incorrect username or password!");
+					
+            		//window.location.href = '<?=site_url();?>' + data.message;
+            		document.getElementById("error").innerHTML = data.message;
+                }
+            },
         });
 
         ev.preventDefault();

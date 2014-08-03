@@ -12,12 +12,22 @@
 			$this->load->model('user');
 			$this->load->helper('form');
 		}
-
-		public function index()
-		{
-			$this->login();
+		
+		public function _remap($method, $params = array()) {
+			// enforce access control to protected functions
+		
+			$protected = array('recoverPassword','logout_user');
+		
+			if (in_array($method,$protected) && !$this->session->userdata('logged_in')     )
+				redirect('account/login', 'refresh'); //Then we redirect to the index page again
+				
+			return call_user_func_array(array($this, $method), $params);
 		}
 
+		public function load_login(){
+			$this->load->view('Account/login_form');
+		}
+		
 		/**
 		 * during user login need to check if this user clicked login with facebook link 
 		 * and with active facebook session if not using regular login function from login_form form
@@ -27,12 +37,12 @@
 
 				$this->load->library('form_validation');
 				$this->form_validation->set_rules('email', 'Email', 'required');
-				$this->form_validation->set_rules('password', 'Password', 'required');
+				$this->form_validation->set_rules('password', 'Password', 'required | alpha_dash');
+				
 			
 				if ($this->form_validation->run() == FALSE)
 				{
-					$data['helper'] = $this->fb_helper;
-					$this->load->view('Account/login_form', $data);
+					echo json_encode(array('status'=>'error','message'=>"Incorrect username or password!"));
 				}
 				else
 				{
@@ -53,11 +63,9 @@
 		               );
 
 						$this->session->set_userdata($session_data);
-
-
 // 						$data['user']=$user;
 // 						$data['url'] = site_url();
-			
+		
 						//$this->load->view('profile_page', $data);
 
 						echo json_encode(array('status'=>'success','message'=>"/profile_page"));
@@ -68,7 +76,7 @@
 // 						$data['errorMsg']='Incorrect username or password!';
 // 						$data['helper'] = $this->fb_helper;
 // 						/$this->load->view('Account/login_form',$data);
-						echo json_encode(array('status'=>'success','message'=>"/accountzzz/login"));
+						echo json_encode(array('status'=>'error','message'=>"Couldn't find you, check your credentials."));
 						
 					}
 				}			
@@ -140,8 +148,8 @@
 		
 		public function register_user()
 		{
-			$url['url'] = base_url();
-			$this->load->view('Account/register_form', $url);
+			$data['error'] = "";
+			$this->load->view('Account/register_form', $data);
 		}
 	
 		/**
@@ -151,7 +159,7 @@
 		function createNew() {
 			$this->load->library('form_validation');
 			$this->form_validation->set_rules('username', 'Username', 'required|is_unique[users.user_name]');
-			$this->form_validation->set_rules('password', 'Password', 'required|min_length[4]|max_length[8]');
+			$this->form_validation->set_rules('password', 'Password', 'required|min_length[4]|max_length[8]|alpha_dash');
 // 			$this->form_validation->set_rules('first', 'First', "required");
 // 			$this->form_validation->set_rules('last', 'last', "required");
 			$this->form_validation->set_rules('email', 'Email', "required|is_unique[users.email]");
@@ -159,7 +167,8 @@
 			 
 			if ($this->form_validation->run() == FALSE)
 			{
-				$this->load->view('account/register_form');
+				$data['error'] = validation_errors();
+				$this->load->view('Account/register_form', $data);
 			}
 			else
 			{
@@ -175,21 +184,15 @@
 				 
 				$this->load->model('user_model');
 		
-				 
-				$error = $this->user_model->insert($user);
-
-				$data['helper'] = $this->fb_helper; 
-				$this->load->view('account/login_form', $data);
+				$this->load->view('Account/login_form');
 			}
 		}
 
 
 		public function logout_user()
 		{
-			//session_destroy();
-			// $this->session->unset_userdata('some_name');
 			$this->session->sess_destroy();
-			$this->load->view('main_page.html');
+			redirect('/', 'refresh');
 		}
 		
 		public function recoverPasswordForm() {
@@ -245,7 +248,7 @@
 		
 				}else {
 					$data['errorMsg']="No record exists for this email!";
-					$this->load->view('account/recoverPasswordForm',$data);
+					$this->load->view('Account/recoverPasswordForm',$data);
 				}
 			}
 		}

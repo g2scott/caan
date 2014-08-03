@@ -41,7 +41,7 @@ function loadMenubar (url) {
 			$('#signup').html(logout);
 		} else {
 			var signin = "<a href=\"";
-			signin += url + '/account/login';
+			signin += url + '/account/load_login';
 			signin += "\"><span class=\"glyphicon glyphicon-user\">Login</a>";
 			var signup = "<a href=\"";
 			signup += url + '/account/register_user';

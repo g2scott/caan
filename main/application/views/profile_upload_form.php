@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<html lang="en" manifest="/cache.appcache">
+<html lang="en">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -74,7 +74,7 @@ Username
 <input type="text" class="form-control" value="<?php echo $user->user_name ?>" name="username" required autofocus>
 Email
 <input type="email" class="form-control" value="<?php echo $user->email ?>" name="email" required autofocus>
-New Password (4-8 chars)
+New Password (4-8 Regular Characters)
 <input type="password" class="form-control" value="" name="password" >
 Description
 <!-- <textarea> creates a multiline textbox -->

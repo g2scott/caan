@@ -154,7 +154,7 @@ class Profile_page extends CI_Controller {
 			$this->form_validation->set_rules('email', 'Email', 'required|is_unique[users.email]');
 		}
 		if (isset($pass) && strlen($pass)){
-			$this->form_validation->set_rules('password', 'Password', 'required|min_length[4]|max_length[8]');
+			$this->form_validation->set_rules('password', 'Password', 'required|min_length[4]|max_length[8]|alpha_dash');
 		}
 	
 		//  		Enabled to to failing with not rules present
