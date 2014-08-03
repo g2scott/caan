@@ -1,64 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<html lang="en">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Upload Videos</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="../../assets/css/bootstrap.css" rel="stylesheet">
-
-    <!-- Add custom CSS here -->
-    <link href="../../assets/css/signin.css" rel="stylesheet">
-
-</head>
-<body>
- <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="<?php echo base_url() ?>">Home</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <li id="stream"><a href="<?php echo site_url() ?>">Stream</a>
-                    </li>
-                    <li>
-                        
-             <div class="input-group input-group-sm">
-         <form class="navbar-form" role="search">
-         <div class="input-group">
-             <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-             <div class="input-group-btn">
-                 <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-             </div>
-         </div>
-         </form>
-         </div>
-        
-                    </li>
-                    
-        <li><a href="<?php echo site_url() ?>/account/logout_user">Log out</a>  
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-
+<?php include 'include/header.php';?>
 
 <!-- <?php //echo form_open_multipart('upload/do_upload');?>  -->
 
@@ -95,5 +36,36 @@ Description
 
 <script src="../../assets/js/jquery-1.10.2.js"></script>
 <script src="../../assets/js/bootstrap.js"></script>
+
+<script>
+function loadMenubar (url) {
+	$.getJSON( url + '/main_page/check_login', function(data){
+		// console.log(data);
+		if (data.login != false) {
+			var profile = "<a href=\"";
+			profile += url + '/profile_page';
+			profile += "\"><span class=\"glyphicon glyphicon-user\">Profile</a>";
+			var logout = "<a href=\"";
+			logout += url + '/account/logout_user';
+			logout += "\" onclick=\"logout()\"><span class=\"glyphicon glyphicon-user\">Log-out</a>";
+			$('#signin').html(profile);
+			$('#signup').html(logout);
+		} else {
+			var signin = "<a href=\"";
+			signin += url + '/account/load_login';
+			signin += "\"><span class=\"glyphicon glyphicon-user\">Login</a>";
+			var signup = "<a href=\"";
+			signup += url + '/account/register_user';
+			signup += "\"><span class=\"glyphicon glyphicon-user\">Register</a>";
+			$('#signin').html(signin);
+			$('#signup').html(signup);
+
+		}
+	}) // getJSON end
+}
+loadMenubar('<?php echo site_url();?>');
+</script>
+
+
 </body>
 </html>

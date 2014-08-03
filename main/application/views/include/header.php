@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" manifest="<?php echo base_url() ?>cache.appcache">
+<html lang="en">
+<!--  manifest="<?php echo base_url() ?>cache.appcache"  -->
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">
     <meta name="keywords" content="">
-    <link rel="shortcut icon" href="./assets/img/favicon.png"> 
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="<?php echo base_url() ?>assets/img/favicon.png"> 
+    
 
     <title>CAAN</title>
 
@@ -17,10 +19,13 @@
     <!-- Add custom CSS here -->
     <link href="<?php echo base_url() ?>assets/css/shop-homepage.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/css/responsive_video.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/css/signin.css" rel="stylesheet">
+    <link href="<?php echo base_url() ?>assets/css/profile_page.css" rel="stylesheet">
 	
 </head>
 
 <body>
+
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -38,7 +43,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li id="stream"><a href="stream"><span class="glyphicon glyphicon-film">Stream</a>
+                    <li id="stream"><a href="#"><span class="glyphicon glyphicon-film">Stream</a>
                     </li>
                     <li>
                         
@@ -57,10 +62,12 @@
                     </li>
                     <li id="signup"><a href="<?php echo site_url('account/register_user') ?>"></a>
                     </li>  
-<a>beta</a>
+                    
+					<a>beta</a>
                     
                 </ul>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
+    
