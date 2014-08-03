@@ -36,7 +36,7 @@ function loadMenubar (url) {
 			profile += "\"><span class=\"glyphicon glyphicon-user\">Profile</a>";
 			var logout = "<a href=\"";
 			logout += url + '/account/logout_user';
-			logout += "\"><span class=\"glyphicon glyphicon-user\">Log-out</a>";
+			logout += "\" onclick=\"logout()\"><span class=\"glyphicon glyphicon-user\">Log-out</a>";
 			$('#signin').html(profile);
 			$('#signup').html(logout);
 		} else {
@@ -131,6 +131,12 @@ function loadVideoStream (url) {
 		})
 	})
 }		
+
+function logout(){
+	//alert("logout");
+	tokenStore = window.sessionStorage;
+	tokenStore.removeItem('fbtoken');
+}
 
 
 function load (url) {

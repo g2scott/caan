@@ -56,7 +56,7 @@
          </div>
          
                     </li>
-					<li><a href=" <?php echo site_url() ?>/account/logout_user"><span class="glyphicon glyphicon-user">Log-out</a>
+					<li><a href=" <?php echo site_url() ?>/account/logout_user" onclick='logout()' ><span class="glyphicon glyphicon-user">Log-out</a>
                     </li>
                 </ul>
             </div>
@@ -64,7 +64,7 @@
         </div>
         <!-- /.container -->
     </nav>
-
+    
     <div class="container">
 
         <div class="row">
@@ -116,6 +116,7 @@
     <script src="<?php echo base_url() ?>assets/js/jquery-1.10.2.js"></script>
     <script src="<?php echo base_url() ?>assets/js/bootstrap.js"></script>
     <script src="<?php echo base_url() ?>assets/js/profilepage.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/openFB.js"></script>
 	<script>
 	
 	var url = "<?php echo site_url() ?>";
@@ -124,6 +125,39 @@
 	
 	</script>
 	
+	<script>
+	    function share(url, thumbnail) {
+        openFB.api({
+            method: 'POST',
+            path: '/me/feed',
+            params: {
+                message: 'Testing Facebook API',
+                picture: thumbnail,
+                link: url
+            },
+            success: function() {
+                alert('the item was posted on Facebook');
+            },
+            error: errorHandler});
+    }
+	    function logout(){
+	    	//alert("logout");
+	    	tokenStore = window.sessionStorage;
+	    	tokenStore.removeItem('fbtoken');
+	    }
+	    function errorHandler(error) {
+	        alert(error.message);
+	    }
+	    $(document).ajaxStart(function(){
+	        $('#loading').show();
+	     }).ajaxStop(function(){
+	        $('#loading').hide();
+	     });
+	    
+	    
+	    </script>
+<div id="loading" style="position: fixed; left: 0; right: 0; bottom: 0; top: 0; background: url(../assets/img/loadingBar.gif) rgba(0,0,0,0.3); 
+z-index: 1000;   background-position: center center; background-repeat: no-repeat;"></div>
 
 </body>
 

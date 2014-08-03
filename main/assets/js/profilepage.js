@@ -12,10 +12,16 @@ function generateVideoTags(data, url)
 	outputVideo += "</div><div class=\"caption\"><h4 class=\"pull-right\"></h4><h4><a href=\"#\">" + data.name + "</a></h4><p>" + data.description +  "</p>";
 	outputVideo += "<p><a href=\"";
 	outputVideo += url + "/profile_page/delete/" + data.v_id;
-	outputVideo += "\" onclick=\"return confirm('Are you sure?')\"><span style=\"color:red\">DELETE</span></a></p></div>";
+	outputVideo += "\" onclick=\"$return confirm('Are you sure?') \"><span style=\"color:red\">DELETE</span></a></p></div>";
+	
+	outputVideo += "<button class=\"btn btn-xs\" onclick=\"share('" + url + "/public_profile_page/load/" + data.u_id + "', '" + data.thumbnail + "')\"><img style=\"width: 110%; height: 100%; margin-top: 0px; vertical-align: right;\"src=\"http://agoodbrief.org/agoodbrief/mainsite/facebook-share-small-icon.png\"></button>";
+	
 	outputVideo += "<div class=\"ratings\"><p class=\"pull-right\">15 reviews</p><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span></p></div></div></div></div>";
 	return outputVideo;
 }
+
+//	\"http://caanapp.ca/caan/main/index.php/video_controller/build_single_video_page/\"" + data.v_id + ", ";
+//	outputVideo += data.thumbnail + "
 
 function load (url) 
 {

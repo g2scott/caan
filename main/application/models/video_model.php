@@ -113,7 +113,7 @@ class Video_model extends CI_Model {
 	 */
 	public function find_video_by_user($user_id)
 	{
-		$query_string = "select link, name, description, u_id, v_id, first, last, type from videos join users where videos.u_id=users.id and videos.u_id='{$user_id}' order by u_id";
+		$query_string = "select link, name, description, u_id, v_id, first, last, type, thumbnail, poster_frame from videos join users where videos.u_id=users.id and videos.u_id='{$user_id}' order by u_id";
 		// $query_string = "select * from videos where u_id='{$user_id}'";
 		$query = $this->db->query($query_string);
 		if ($query->num_rows() > 0) {

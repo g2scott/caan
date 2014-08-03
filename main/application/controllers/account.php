@@ -86,6 +86,7 @@
 		public function login_user()
 		{
 				
+				//User Email Exists
 		$this->load->model('user_model');
 
 		$user = $this->user_model->getFromEmail($this->input->post('email'));
@@ -93,7 +94,9 @@
 		if (isset($user)){
 			$session_data = array(
 					'user_id'    => $user->id,
-					'logged_in' 	=> TRUE
+					'logged_in' 	=> TRUE,
+					'fb_session' => TRUE,
+					'fb_token' => "0"
 			);
 			
 			$this->session->set_userdata($session_data);
@@ -103,7 +106,7 @@
 			echo json_encode(array('status'=>'success','message'=>"profile_page"));
 			
 		}else{
-		
+			//User Email Does not Exist
 			$user = new User(); // this class autoloaded
 			
 			$user->user_name = $this->input->post('user_name');
@@ -131,8 +134,8 @@
 			
 			$this->session->set_userdata($session_data);
 			
-			$data['user']=$user;
-			$data['url'] = site_url();
+// 			$data['user']=$user;
+// 			$data['url'] = site_url();
 			
 			//$this->load->view('profile_page', $data);
 			
@@ -192,7 +195,7 @@
 		public function logout_user()
 		{
 			$this->session->sess_destroy();
-			redirect('/', 'refresh');
+			redirect('account/load_login', 'refresh');
 		}
 		
 		public function recoverPasswordForm() {

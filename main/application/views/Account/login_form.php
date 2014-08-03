@@ -27,9 +27,6 @@
   </head>
 
   <body>
-
-    
-
  
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -93,7 +90,7 @@
         </label>
         <button class="btn btn-lg btn-default btn-block" type="submit">Login</button>
 
-<button class="btn btn-lg" onclick="login()"><img style="width: 90%; height: 90%; margin-top: -5px; vertical-align: middle;"
+<button type='button' class="btn btn-lg" onclick="login()"><img style="width: 90%; height: 90%; margin-top: -5px; vertical-align: middle;"
              src="<?php echo base_url() ?>assets/img/facebook-connect-button.png"></button>
 
 
@@ -175,7 +172,7 @@
         openFB.login(
                 function(response) {
                     if(response.status === 'connected') {
-                        //alert('Facebook login succeeded, got access token: ' + response.authResponse.token);
+						//alert('Facebook login succeeded, got access token: ' + response.authResponse.token);
                         this.getInfo();
                     } else {
                         alert('Facebook login failed: ' + response.error);
@@ -223,8 +220,6 @@
                    f.appendChild(id);
                    f.appendChild(pic);
 
-                   //and some more input elements here
-                   //and dont forget to add a submit button
 
                    document.getElementsByTagName('body')[0].appendChild(f);
                    
@@ -237,8 +232,14 @@
                          url: "login_user",
                          data: frm.serialize(),
                          success: function (data) {
-                             //alert(data.message);
-                             window.location.href = "../" + data.message;
+                             if (data.status == "success"){
+                             	//alert(data.message);
+                             	window.location.href = "../" + data.message;
+                             }
+                             if (data.status == "error"){
+                                 //alert(data.message);
+                            	 document.getElementById("error").innerHTML = data.message;
+                             }
                          }
                      });
                      
@@ -278,6 +279,7 @@
     function errorHandler(error) {
         alert(error.message);
     }
+    
 	//
 </script>
 
