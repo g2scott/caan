@@ -1,5 +1,4 @@
 <?php include './application/views/include/header.php';?>
-
 <div class="container">
 
 <form class="form-signin" role="form" action="<?=site_url("account/createNew"); ?>" method="post">

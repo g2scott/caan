@@ -1,7 +1,4 @@
 <?php include './application/views/include/header.php';?>
-    
-    
-<br /><br />
     <div class="container">
 
 
