@@ -34,6 +34,9 @@
     <?php if (isset($app_id)){
     	echo $app_id;
     } ?>
+   	<?php if (isset($video)){
+    	echo $video;
+    } ?>
     
     <title>CAAN</title>
 

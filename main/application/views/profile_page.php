@@ -43,20 +43,23 @@
 	window.onload = load(url);
 	
 	</script>
-	
+
 	<script>
-	    function share(url, thumbnail) {
+	    function share(url, thumbnail, source, name, description) {
         openFB.api({
             method: 'POST',
             path: '/me/feed',
             params: {
-                message: 'Testing Facebook API',
+                message: 'Posted by CAAN',
                 picture: thumbnail,
-                description: "description",
-                name: "name",
-                title: "TITLE",
-                caption: "caption",
-                link: url
+                description: description,
+                name: name,
+                height: 360,
+                width: 640,
+                //title: "TITLE",
+                caption: "For full HD please install the CAAN App, or visit the Web App.",
+                link: url,
+                //source: source
             },
             success: function() {
                 alert('the item was posted on Facebook');

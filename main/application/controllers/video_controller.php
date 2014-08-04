@@ -12,18 +12,23 @@ class Video_controller extends CI_Controller {
 	public function build_single_video_page($video_id)
 	{
 		$video = $this->video_model->find_video_by_id($video_id);
-		//$link = $this->video_model->find_video_links($video_id);
 		$link = $video->link;
-		//$thumbnail = $this->video_model->get_thumbnail($video_id);
+		//Add color to player embed code
 		$link = str_replace("type=sd'", "type=sd&amp;regularColorTop=960000&amp;regularColorBottom=d70000'", $link);
+		
 		$output  = "<div class=\"flex-video widescreen\">";
 		$output .= "$link";
 		$output .= "</div>";
+
+		$parts = explode ( "/" , $video->thumbnail );
+		//Build video source from thumbnail source, not getting this info from sprout.  look into that.
+		$source = "https://cdn.sproutvideo.com/" . $parts[3] . "/videos/iphone/" . $parts[5] . ".mp4";
 		
 		$data['output'] = $output;
 		$data['title'] = "<meta property=\"og:title\" content=\""  . $video->name .  "\">";
-		$data['type'] = "<meta property=\"og:type\" content=\"article\" >";
-		$data['thumbnail'] = "<meta property=\"og:image\" content=\"" . $video->thumbnail . "\">";
+		$data['type'] = "<meta property=\"og:type\" content=\"video\" >";
+		$data['video'] = "<meta property=\"og:video\" content=\"" . $source . "\">";
+		$data['thumbnail'] = "<meta property=\"og:image\" content=\"" . $video->poster_frame . "\">";
 		$data['description'] = "<meta property=\"og:description\" content=\"" . $video->description . "\">";
 		$data['admins'] = "<meta property=\"fb:admins\" content=\"671745245\">";
 		$data['app_id'] = "<meta property=\"fb:app_id\" content=\"129704493787021\"/>";
