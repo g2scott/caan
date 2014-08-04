@@ -5,12 +5,36 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
+    <meta name="description" content="1">
+    <meta name="keywords" content="2">
+    <meta name="author" content="3">
+    
     <link rel="shortcut icon" href="<?php echo base_url() ?>assets/img/favicon.png"> 
     
-
+    <?php if (isset($title)){
+    	echo $title;
+    } ?>
+    
+    <?php if (isset($type)){
+    	echo $type;
+    } ?>
+    
+    <?php if (isset($thumbnail)){
+    	echo $thumbnail;
+    } ?>
+    
+    <?php if (isset($description)){
+    	echo $description;
+    } ?>
+    
+    <?php if (isset($admins)){
+    	echo $admins;
+    } ?>
+    
+    <?php if (isset($app_id)){
+    	echo $app_id;
+    } ?>
+    
     <title>CAAN</title>
 
     <!-- Bootstrap core CSS -->

@@ -15,11 +15,11 @@ Username
 <input type="text" class="form-control" value="<?php echo $user->user_name ?>" name="username" required autofocus>
 Email
 <input type="email" class="form-control" value="<?php echo $user->email ?>" name="email" required autofocus>
-New Password (4-8 Regular Characters)
+New Password (4-8 regular characters)
 <input type="password" class="form-control" value="" name="password" >
 Description
 <!-- <textarea> creates a multiline textbox -->
-<input type ="text" class="form-control" value="<?php echo $user->about_me_text ?>" name = "about_me_text" rows = "4" cols = "36" autofocus></input>
+<input type ="text" class="form-control" placeholder="Description (optional)" value="<?php echo $user->about_me_text ?>" name = "about_me_text" rows = "4" cols = "36" autofocus></input>
 
 <label>Profile Picture</label>
 <input type="file" class="form-control" name="userfile" size="20" />

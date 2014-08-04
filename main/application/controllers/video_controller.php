@@ -11,14 +11,23 @@ class Video_controller extends CI_Controller {
 
 	public function build_single_video_page($video_id)
 	{
-		$link = $this->video_model->find_video_links($video_id);
-		$thumbnail = $this->video_model->get_thumbnail($video_id);
+		$video = $this->video_model->find_video_by_id($video_id);
+		//$link = $this->video_model->find_video_links($video_id);
+		$link = $video->link;
+		//$thumbnail = $this->video_model->get_thumbnail($video_id);
 		$link = str_replace("type=sd'", "type=sd&amp;regularColorTop=960000&amp;regularColorBottom=d70000'", $link);
 		$output  = "<div class=\"flex-video widescreen\">";
 		$output .= "$link";
 		$output .= "</div>";
+		
 		$data['output'] = $output;
-		$data['thumbnail'] = $thumbnail;
+		$data['title'] = "<meta property=\"og:title\" content=\""  . $video->name .  "\">";
+		$data['type'] = "<meta property=\"og:type\" content=\"article\" >";
+		$data['thumbnail'] = "<meta property=\"og:image\" content=\"" . $video->thumbnail . "\">";
+		$data['description'] = "<meta property=\"og:description\" content=\"" . $video->description . "\">";
+		$data['admins'] = "<meta property=\"fb:admins\" content=\"671745245\">";
+		$data['app_id'] = "<meta property=\"fb:app_id\" content=\"129704493787021\"/>";
+	
 		$this->load->view('single_video_page', $data);
 	}
 	
@@ -91,6 +100,8 @@ class Video_controller extends CI_Controller {
 	
 				$video->u_id = $user_id;
 				$video->link = $link; 	// need input from the sproutvide upload return
+				$video->sd_video_url = $assets->sd_video_url;
+				$video->hd_video_url = $assets->hd_video_url;
 				$video->sprout_id = $sprout_id;
 				$video->type = $this->input->post('type');
 				$video->name = $this->input->post('video_name');

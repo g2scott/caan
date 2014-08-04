@@ -10,10 +10,10 @@
 
 <input type="email" class="form-control" placeholder="Email" name="email" required autofocus>
 <input type="text" class="form-control" placeholder="User Name" name="username" required autofocus>
-<input type="password" class="form-control" placeholder="Password (4-8 Regular Characters)" name="password" required>
+<input type="password" class="form-control" placeholder="Password (4-8 regular characters)" name="password" required>
 <!-- <textarea> creates a multiline textbox -->
 <textarea class="form-control" placeholder="Description (optional)" name = "about_me_text" rows = "4" cols = "36" autofocus></textarea>
-<button class="btn btn-lg btn-default btn-block" type="submit">Connect Using Email</button>
+<button class="btn btn-lg btn-default btn-block" type="submit">Register By Email</button>
 <button class="btn btn-lg" onclick="login()"><img style="width: 90%; height: 90%;  margin-top: -5px;"
              src="<?php echo base_url() ?>assets/img/facebook-connect-button.png"></button>
 </form>

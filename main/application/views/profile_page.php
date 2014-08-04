@@ -36,7 +36,7 @@
     <script src="<?php echo base_url() ?>assets/js/bootstrap.js"></script>
     <script src="<?php echo base_url() ?>assets/js/profilepage.js"></script>
     <script src="<?php echo base_url() ?>assets/js/openFB.js"></script>
-	<script>
+	<script type="text/javascript">
 	
 	var url = "<?php echo site_url() ?>";
 	
@@ -52,6 +52,10 @@
             params: {
                 message: 'Testing Facebook API',
                 picture: thumbnail,
+                description: "description",
+                name: "name",
+                title: "TITLE",
+                caption: "caption",
                 link: url
             },
             success: function() {

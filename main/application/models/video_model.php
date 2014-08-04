@@ -48,8 +48,6 @@ class Video_model extends CI_Model {
 			$row = $query->row();
 	
 			return $row->thumbnail;
-			// 			echo $row->name;
-			// 			echo $row->body;
 		}
 	
 	
