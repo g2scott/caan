@@ -12,7 +12,7 @@ function generateVideoTags(data, url)
 	outputVideo += "</div><div class=\"caption\"><h4 class=\"pull-right\"></h4><h4><a href=\"#\">" + data.name + "</a></h4><p>" + data.description +  "</p>";
 	outputVideo += "<p><a href=\"";
 	outputVideo += url + "/profile_page/delete/" + data.v_id;
-	outputVideo += "\" onclick=\"$return confirm('Are you sure?') \"><span style=\"color:red\">DELETE</span></a></p></div>";
+	outputVideo += "\" onclick=\"return confirm('Are you sure?') \"><span style=\"color:red\">DELETE</span></a></p></div>";
 	//SHARE
 	outputVideo += "<a  onclick=\"share('" + url + "/video_controller/build_single_video_page/" + data.v_id + "', '" + data.thumbnail + "')\" class=\"btn btn-facebook\"><i class=\"fa fa-facebook\"></i> Share on Facebook</a>";
 	
