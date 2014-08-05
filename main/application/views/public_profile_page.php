@@ -25,7 +25,7 @@
 	                	</div>
 
                         <div id="follow">  
-                        <!-- <a class="btn btn-primary" href="#">follow</a> -->
+                        <!-- <a class="btn btn-primary" href="#">Follow</a> -->
                         </div>
 						
 				
