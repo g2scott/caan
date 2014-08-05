@@ -17,7 +17,7 @@ function generateVideoTags(data, url)
 	var source = data.link.replace(replace, "https:");
 	source = source.substring(0,source.lastIndexOf("?"));
 	//SHARE
-	outputVideo += "<a  onclick=\"share('" + url + "/video_controller/build_single_video_page/" + data.v_id + "', '" + data.poster_frame + "', '" + source + "', '" + data.name + "', '" + data.description + "')\" class=\"btn btn-facebook\"><i class=\"fa fa-facebook\"></i> Share on Facebook</a>";
+	outputVideo += "<a  onclick=\"share('" + url + "/video_controller/build_single_video_page/" + data.v_id + "', '" + data.poster_frame + "', '" + source + "', '" + data.name + "', '" + data.description + "')\" class=\"btn btn-facebook\" style=\"color:#3B5999;\"><i class=\"fa fa-facebook\"></i> Share on Facebook</a>";
 	
 	//outputVideo += "<div class=\"ratings\"><p class=\"pull-right\">15 reviews</p><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span></p></div></div></div></div>";
 	outputVideo += "</div></div></div>";

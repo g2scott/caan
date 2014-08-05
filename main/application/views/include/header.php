@@ -49,7 +49,7 @@
     <link href="<?php echo base_url() ?>assets/css/signin.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/css/profile_page.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-	
+	    <link href="<?php echo base_url() ?>assets/css/custom.css" rel="stylesheet">
 </head>
 
 <body>
@@ -91,7 +91,7 @@
                     <li id="signup"><a href="<?php echo site_url('account/register_user') ?>"></a>
                     </li>  
                     
-					<a>beta</a>
+					<a style="color:#00E;">beta</a>
                     
                 </ul>
             <!-- /.navbar-collapse -->

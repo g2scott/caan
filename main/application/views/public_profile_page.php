@@ -35,7 +35,7 @@
 				<!-- <a class="btn btn-primary" href="../upload/video_upload">Add New Video</a> -->
             </div>
 
-
+<br/>
             <div class="col-md-7">
 	
                 <div class="row" id="list_video">

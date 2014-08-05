@@ -16,7 +16,7 @@
                 <a class="btn btn-default" href="<?php echo site_url() ?>/profile_page/profile_upload"><i class="fa fa-cog"></i>Settings </a>
 				<a class="btn btn-default" href="<?php echo site_url() ?>/video_controller/video_upload">Upload Video</a>
             </div>
-
+<br/>
             <div class="col-md-7">
 
                 <div class="row" id="list_video">
