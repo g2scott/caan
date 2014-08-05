@@ -105,8 +105,6 @@ class Video_controller extends CI_Controller {
 	
 				$video->u_id = $user_id;
 				$video->link = $link; 	// need input from the sproutvide upload return
-				$video->sd_video_url = $assets->sd_video_url;
-				$video->hd_video_url = $assets->hd_video_url;
 				$video->sprout_id = $sprout_id;
 				$video->type = $this->input->post('type');
 				$video->name = $this->input->post('video_name');
