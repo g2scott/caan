@@ -8,18 +8,18 @@ function generateVideoTags(data, url)
 	link = data.link.replace(replace, "type=sd&amp;regularColorTop=960000&amp;regularColorBottom=d70000'");
 	outputVideo += link;
 	outputVideo += "</div><div class=\"caption\"><h4 class=\"pull-right\"></h4><h4><a href=\"";
-	outputVideo += url + "/video_controller/build_single_video_page/" + data.v_id;
+	outputVideo += url + "/videos/load/" + data.v_id;
 	outputVideo +=	"\">" + data.name + "</a></h4><p>" + data.description +  "</p>";
 	outputVideo += "<p><a href=\"";
 
-	outputVideo +=	url + "/public_profile_page/load/" + data.u_id + "\">" + data.user_name + "</a></p>";
+	outputVideo +=	url + "/profiles/load/" + data.u_id + "\">" + data.user_name + "</a></p>";
 
 	outputVideo += "</div>"; 
 	// end .caption div
 
 	// add FACEBOOK like button below 
 
-	outputVideo += "<iframe src=\"//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fcaanapp.ca/caan/main/index.php/video_controller/build_single_video_page/" + data.v_id + "&amp;width=20&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=27&amp;appId=129704493787021\" scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden; width:100%; height:21px;\" allowTransparency=\"true\"></iframe>";
+	outputVideo += "<iframe src=\"//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fcaanapp.ca/caan/main/index.php/videos/load/" + data.v_id + "&amp;width=20&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=27&amp;appId=129704493787021\" scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden; width:100%; height:21px;\" allowTransparency=\"true\"></iframe>";
 	
 	// rating reviews 
 	//outputVideo += "<div class=\"ratings\"><p class=\"pull-right\">15 Views</p><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span></p></div></div></div></div>";

@@ -10,7 +10,7 @@ function generateVideoTags(data)
 	
 	outputVideo += "</div><div class=\"caption\"><h4 class=\"pull-right\"></h4><h4><a href=\"#\">" + data.name + "</a></h4><p>" + data.description +  "</p></div>";
 	//FACEBOOK
-	outputVideo += "<iframe src=\"//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fcaanapp.ca/caan/main/index.php/video_controller/build_single_video_page/" + data.v_id + "&amp;width=20&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=27&amp;appId=129704493787021\" scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden; width:100%; height:21px;\" allowTransparency=\"true\"></iframe>";
+	outputVideo += "<iframe src=\"//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fcaanapp.ca/caan/main/index.php/videos/load/" + data.v_id + "&amp;width=20&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=27&amp;appId=129704493787021\" scrolling=\"no\" frameborder=\"0\" style=\"border:none; overflow:hidden; width:100%; height:21px;\" allowTransparency=\"true\"></iframe>";
 	
 	//outputVideo += "<div class=\"ratings\"><p class=\"pull-right\">15 reviews</p><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span><span class=\"glyphicon glyphicon-star\"></span></p></div></div></div></div>";
 	outputVideo += "</div></div></div>";
@@ -23,7 +23,7 @@ function load (url, userId)
 		timeout: 6000
 	});
 	//console.log(url);
-	$.getJSON(url + '/public_profile_page/build_public_profile/' + userId, function(data){
+	$.getJSON(url + '/profiles/build_public_profile/' + userId, function(data){
 		var userName = data[0].user_name;
 		var aboutMe = data[0].about_me_text;
 		//console.log(userName);
@@ -32,7 +32,7 @@ function load (url, userId)
 		$('#about_me').html(aboutMe);
 	});
 	
-	$.getJSON(url + '/public_profile_page/build_public_video_list/' + userId, function(data){
+	$.getJSON(url + '/profiles/build_public_video_list/' + userId, function(data){
 		//console.log(data);
 		var outputVideo = '';
 		for (var i=0; i < data.length; i++) {
@@ -41,16 +41,16 @@ function load (url, userId)
 		$('#list_video').html(outputVideo);
 	});
 
-	$.getJSON(url + '/public_profile_page/build_follow_button/' + userId, function(data){
+	$.getJSON(url + '/profiles/build_follow_button/' + userId, function(data){
 		var output = '';
 		var tester = data.data;
 		console.log(data.data);
 		if (tester != null) {	
 		// build output by adding variable data(data is the text of follow or unfollow)
 			if (tester == true) {
-				output = "<a class=\"btn btn-primary\" href=\"" + url + "/public_profile_page/unfollow/" + userId + "\">unfollow</a>";
+				output = "<a class=\"btn btn-primary\" href=\"" + url + "/profiles/unfollow/" + userId + "\">unfollow</a>";
 			} else {
-				output = "<a class=\"btn btn-primary\" href=\"" + url + "/public_profile_page/follow/" + userId +"\">Follow</a>";
+				output = "<a class=\"btn btn-primary\" href=\"" + url + "/profiles/follow/" + userId +"\">Follow</a>";
 			} 
 		}
 		console.log(output);
@@ -58,7 +58,7 @@ function load (url, userId)
 		$('#follow').html(output);
 	});
 
-	$.getJSON(url + '/public_profile_page/find_user_img_path/' + userId, function(data){
+	$.getJSON(url + '/profiles/find_user_img_path/' + userId, function(data){
 		// console.log(data);
 		// console.log(data.file);
 		if ( data.file!= null) {
