@@ -89,9 +89,9 @@
          </form>
          </div>
                     </li>
-                    <li id="signin"><a href="<?php echo site_url('account/login_user') ?>"></a>
+                    <li id="signin"><a href="#"></a>
                     </li>
-                    <li id="signup"><a href="<?php echo site_url('account/register_user') ?>"></a>
+                    <li id="signup"><a href="#"></a>
                     </li>  
                     
 					<a style="color:#00E;">beta</a>

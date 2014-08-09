@@ -3,4 +3,4 @@ Deny from all
 # RewriteCond $1 !^(index\.php|images|robots\.txt)
 # RewriteRule ^(.*)$ /index.php/$1 [L]
 
-AddType text/cache-manifest .appcache
+#AddType text/cache-manifest .appcache
