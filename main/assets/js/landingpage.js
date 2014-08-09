@@ -8,11 +8,11 @@ function generateVideoTags(data, url)
 	link = data.link.replace(replace, "type=sd&amp;regularColorTop=960000&amp;regularColorBottom=d70000'");
 	outputVideo += link;
 	outputVideo += "</div><div class=\"caption\"><h4 class=\"pull-right\"></h4><h4><a href=\"";
-	outputVideo += url + "/videos/load/" + data.v_id;
+	outputVideo += url + "videos/load/" + data.v_id;
 	outputVideo +=	"\">" + data.name + "</a></h4><p>" + data.description +  "</p>";
 	outputVideo += "<p><a href=\"";
 
-	outputVideo +=	url + "/profiles/load/" + data.u_id + "\">" + data.user_name + "</a></p>";
+	outputVideo +=	url + "profiles/load/" + data.u_id + "\">" + data.user_name + "</a></p>";
 
 	outputVideo += "</div>"; 
 	// end .caption div
