@@ -88,19 +88,19 @@ function loadMenubar (url) {
 		// console.log(data);
 		if (data.login != false) {
 			var profile = "<a href=\"";
-			profile += url + '/profile_page';
+			profile += url + 'profile_page';
 			profile += "\"><span class=\"glyphicon glyphicon-user\">Profile</a>";
 			var logout = "<a href=\"";
-			logout += url + '/account/logout_user';
+			logout += url + 'account/logout_user';
 			logout += "\" onclick=\"logout()\"><span class=\"glyphicon glyphicon-user\">Log-out</a>";
 			$('#signin').html(profile);
 			$('#signup').html(logout);
 		} else {
 			var signin = "<a href=\"";
-			signin += url + '/account/load_login';
+			signin += url + 'account/load_login';
 			signin += "\"><span class=\"glyphicon glyphicon-user\">Login</a>";
 			var signup = "<a href=\"";
-			signup += url + '/account/register_user';
+			signup += url + 'account/register_user';
 			signup += "\"><span class=\"glyphicon glyphicon-user\">Register</a>";
 			$('#signin').html(signin);
 			$('#signup').html(signup);

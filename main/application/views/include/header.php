@@ -18,6 +18,9 @@
     <?php if (isset($type)){
     	echo $type;
     } ?>
+    <?php if (isset($uri)){
+    	echo $uri;
+    } ?>
     
     <?php if (isset($thumbnail)){
     	echo $thumbnail;

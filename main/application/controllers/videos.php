@@ -27,6 +27,8 @@ class Videos extends CI_Controller {
 		$data['output'] = $output;
 		$data['title'] = "<meta property=\"og:title\" content=\""  . $video->name .  "\">";
 		$data['type'] = "<meta property=\"og:type\" content=\"video\" >";
+		$data['uri'] = "<meta property=\"og:url\" content=\"http://caanapp.ca/videos/load/" . $video->v_id . "\">";
+		
 		$data['video'] = "<meta property=\"og:video\" content=\"" . $source . "\">";
 		$data['thumbnail'] = "<meta property=\"og:image\" content=\"" . $video->poster_frame . "\">";
 		$data['description'] = "<meta property=\"og:description\" content=\"" . $video->description . "\">";
