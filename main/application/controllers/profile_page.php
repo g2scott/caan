@@ -176,6 +176,9 @@ class Profile_page extends CI_Controller {
 			$user->email = $this->input->post('email');
 			$user->first = $this->input->post('first');
 			$user->last = $this->input->post('last');
+			$user->height = $this->input->post('height')." Meters";
+			$user->weight = $this->input->post('weight')." Kilograms";
+			$user->age = "Age ".$this->input->post('age');
 				
 			if (isset($pass) && strlen($pass)){
 	

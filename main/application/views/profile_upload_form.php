@@ -20,6 +20,12 @@ New Password (4-8 regular characters)
 Description
 <!-- <textarea> creates a multiline textbox -->
 <input type ="text" class="form-control" placeholder="Description (optional)" value="<?php echo $user->about_me_text ?>" name = "about_me_text" rows = "4" cols = "36" autofocus></input>
+Weight (Kilograms)
+<input type="text" class="form-control" value="<?php echo explode(" ", $user->weight)[0] ?>" name="weight" autofocus>
+Height (Meters)
+<input type="text" class="form-control" value="<?php echo explode(" ", $user->height)[0] ?>" name="height" autofocus>
+Age (Years)
+<input type="text" class="form-control" value="<?php echo explode(" ", $user->age)[1] ?>" name="age" autofocus>
 
 <label>Profile Picture</label>
 <input type="file" class="form-control" name="userfile" size="20" />

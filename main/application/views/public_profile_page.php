@@ -19,8 +19,11 @@
 		                <div class="list-group">
 							<div id="profile_img"><img src="<?php echo base_url() ?>/assets/img/missing.jpg" class="center-block img-circle img-responsive" style="text-align: center"></div>
 						<p class="lead" id="user_name"></p>
-						
-	                    <div id="about_me"></div>
+						<div id="age"></div>
+	                    <div id="height"></div>
+	                    <div id="weight"></div>
+	                    <br/>
+	                 	<div  id="about_me"></div>
 						
 	                	</div>
 

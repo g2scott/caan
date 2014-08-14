@@ -39,6 +39,9 @@ function load (url)
 		//console.log(aboutMe);
 		$('#user_name').html(userName);
 		$('#about_me').html(aboutMe);
+		$('#height').html(data[0].height);
+		$('#weight').html(data[0].weight);
+		$('#age').html(data[0].age);
 	});
 	
 	$.getJSON(url + '/profile_page/build_video_list', function(data){

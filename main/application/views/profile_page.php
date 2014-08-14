@@ -8,15 +8,18 @@
 		                <div class="list-group">
 							<div id="profile_img"><img src="<?php echo base_url() ?>/assets/img/missing.jpg" class="center-block img-circle img-responsive" style="text-align: center"></div>
 						<p class="lead" id="user_name"></p>
-						
-	                    <div  id="about_me"></div>
+						<div id="age"></div>
+	                    <div id="height"></div>
+	                    <div id="weight"></div>
+	                    <br/>
+	                 	<div  id="about_me"></div>
 						
 	                	</div>
 						
                 <a class="btn btn-default" href="<?php echo site_url() ?>/profile_page/profile_upload"><i class="fa fa-cog"></i>Settings </a>
 				<a class="btn btn-default" href="<?php echo site_url() ?>/video_controller/video_upload">Upload Video</a>
             </div>
-<br/>
+			<br/>
             <div class="col-md-7">
 
                 <div class="row" id="list_video">
