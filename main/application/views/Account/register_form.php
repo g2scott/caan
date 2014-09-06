@@ -14,7 +14,7 @@
 <!-- <textarea> creates a multiline textbox -->
 <textarea class="form-control" placeholder="Description (optional)" name = "about_me_text" rows = "4" cols = "36" autofocus></textarea>
 <button class="btn btn-lg btn-default btn-block" type="submit">Register By Email</button>
-<button class="btn btn-lg" onclick="login()"><img style="width: 90%; height: 90%;  margin-top: -5px;"
+<button type = "button" class="btn btn-lg" onclick="login()"><img style="width: 90%; height: 90%;  margin-top: -5px;"
              src="<?php echo base_url() ?>assets/img/facebook-connect-button.png"></button>
 </form>
 
