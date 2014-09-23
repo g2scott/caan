@@ -62,6 +62,14 @@ class Main_page extends CI_Controller {
 		}
 		
 	}
+	
+	public function privacy(){
+		$this->load->view('privacy_policy.php');
+	}
+	
+	public function nominations(){
+		$this->load->view('contest_details.php');
+	}
 
 	public function search_video($search_term)
 	{

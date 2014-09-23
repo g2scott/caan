@@ -104,12 +104,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/SproutVideo/sproutvideo-php.git",
-                "reference": "5f5aed34253df0f908a18c4f1f0091829e50dedb"
+                "reference": "8966c032c18d13937a198b3a5101c1b7a3051484"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SproutVideo/sproutvideo-php/zipball/5f5aed34253df0f908a18c4f1f0091829e50dedb",
-                "reference": "5f5aed34253df0f908a18c4f1f0091829e50dedb",
+                "url": "https://api.github.com/repos/SproutVideo/sproutvideo-php/zipball/8966c032c18d13937a198b3a5101c1b7a3051484",
+                "reference": "8966c032c18d13937a198b3a5101c1b7a3051484",
                 "shasum": ""
             },
             "require": {
@@ -140,21 +140,21 @@
                 "video",
                 "video hosting"
             ],
-            "time": "2014-07-07 22:40:45"
+            "time": "2014-08-21 21:07:51"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.5.2",
+            "version": "v2.5.4",
             "target-dir": "Symfony/Component/EventDispatcher",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher.git",
-                "reference": "2215d2ef6fd7ab24d55576a3d924df575c741762"
+                "reference": "8faf5cc7e80fde74a650a36e60d32ce3c3e0457b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/2215d2ef6fd7ab24d55576a3d924df575c741762",
-                "reference": "2215d2ef6fd7ab24d55576a3d924df575c741762",
+                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/8faf5cc7e80fde74a650a36e60d32ce3c3e0457b",
+                "reference": "8faf5cc7e80fde74a650a36e60d32ce3c3e0457b",
                 "shasum": ""
             },
             "require": {
@@ -187,19 +187,17 @@
             ],
             "authors": [
                 {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
-                },
-                {
                     "name": "Symfony Community",
                     "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
                 }
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com",
-            "time": "2014-07-09 09:05:48"
+            "time": "2014-07-28 13:20:46"
         }
     ],
     "packages-dev": [],

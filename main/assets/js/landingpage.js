@@ -63,7 +63,9 @@ function loadVideoByCategory (data, url) {
 		type = type.slice(0, index);
 		// console.log(type);
 		var outputVideo = '';
-		
+		if (type == 'nominations'){
+			document.location.href = url + "/main_page/nominations";
+		}
 		if (type == 'all_type'){
 			for (var i=0; i<data.length; i++){
 				outputVideo += generateVideoTags(data[i], url);
@@ -91,6 +93,7 @@ function loadCategory (url) {
 			outputVideo += generateVideoTags(data[i],url);
 		};
 		var outputType =  "<p class=\"lead\"></p><div id=\"category\" class=\"list-group\">";
+		outputType += "<a href=\"nominations.html\" class=\"list-group-item\" style=\"color:red\">Athlete Nominations</a>";
 		outputType += "<a href=\"all_type.html\" class=\"list-group-item\">Trending</a>";
 		outputType += "<a href=\"" + data[0].type + ".html\" class=\"list-group-item\">" + data[0].type + "</a>";
 		for (var i=1; i < data.length; i++) {
