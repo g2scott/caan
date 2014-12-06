@@ -2,7 +2,7 @@
 
 <?php //echo form_open_multipart('upload/do_upload');?>
 
-<form class="form-signin" role="form" action="<?=site_url("video_controller/do_upload"); ?>" method="post" enctype="multipart/form-data">
+<form class="form-signin" role="form" action="<?=site_url("videos/do_upload"); ?>" method="post" enctype="multipart/form-data">
         <h4 class="form-signin-heading"><?php echo $error;?></h4>
         <h2 class="form-signin-heading">Upload Video</h2>
 
