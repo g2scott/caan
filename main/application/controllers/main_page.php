@@ -18,28 +18,11 @@ class Main_page extends CI_Controller {
 	public function build_category()
 	{
 		$return = $this->video_model->find_video_catgories(); 
-		// $return = NULL;
-		// need echo or print to ajax response
+
+		// need to echo or print to ajax response
 		echo $return;
 	}
 
-	// public function stream($user_name)
-	// {
-	// 	// get following users
-	// 	$users = $this->user_model->find_following_users($user_name);
-	// 	$user_array = explode(",", $users);
-	// 	foreach ($user_array as $key => $value) {
-	// 		$return = $this->video_model->find_video_by_user($value);
-	// 		$data["user_{$key}"] = $return;
-	// 	}
-	// 	echo $data;
-	// }
-
-	/**
-	 * user login their profile page, click 'feed' button, then load single page view, triger
-	 * javascript file to run ajax call this controller get the json return then display at 
-	 * the main pages
-	 */
 	public function build_video_stream()
 	{
 		if (isset($this->session->userdata['user_id'])) {
@@ -57,6 +40,7 @@ class Main_page extends CI_Controller {
 			echo $json_result;
 		} else {
 			$data['result'] = FALSE;
+			// ?
 			$json_result = json_encode($data);
 			echo $json_result;
 		}

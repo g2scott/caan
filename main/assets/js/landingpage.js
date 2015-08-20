@@ -1,3 +1,6 @@
+
+
+// GENERATE A SINGLE VIDEOS HTML TAG
 function generateVideoTags(data, url)
 {
 	var outputVideo = '';
@@ -28,6 +31,10 @@ function generateVideoTags(data, url)
 	return outputVideo;
 }
 
+
+
+
+// AJAX LOAD MENU OPTIONS
 function loadMenubar (url) {
 	$.getJSON( url + '/main_page/check_login', function(data){
 		// console.log(data);
@@ -54,6 +61,7 @@ function loadMenubar (url) {
 	}) // getJSON end
 }
 
+// LOAD VIDEO CATEGORY
 function loadVideoByCategory (data, url) {
 	// console.log(data);
 	$('#category').find('a').on('click', function(e){
@@ -83,15 +91,21 @@ function loadVideoByCategory (data, url) {
 	})
 }
 
+
+// AJAX LOAD CATEGORIES AND LOAD ALL VIDEOS
 function loadCategory (url) {
 	$.getJSON( url + '/main_page/build_category', function(data){
 		// console.log(data);
 		// console.log(data[1].type);
 		// console.log(data.length);
+
+		// ALL VIDEOS
 		var outputVideo = '';
 		for (var i=0; i < data.length; i++) {
 			outputVideo += generateVideoTags(data[i],url);
 		};
+
+		// CATEGORIES
 		var outputType =  "<p class=\"lead\"></p><div id=\"category\" class=\"list-group\">";
 		outputType += "<a href=\"nominations.html\" class=\"list-group-item\" style=\"color:red\">Athlete Nominations</a>";
 		outputType += "<a href=\"all_type.html\" class=\"list-group-item\">Trending</a>";
@@ -105,6 +119,8 @@ function loadCategory (url) {
 		}
 			outputType += "</div>";
 			// console.log(outputVideo);
+
+			// LOAD
 			$('#list_category').html(outputType);
 			$('#list_video').html(outputVideo);
 			
@@ -113,6 +129,7 @@ function loadCategory (url) {
 	}) // getJSON end 
 }
 
+// AJAX LOAD USER VIDEO STREAM
 function loadVideoStream (url) {
 	var outputVideo = '';
 	$('#stream').click(function(e){
