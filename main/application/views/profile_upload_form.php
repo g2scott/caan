@@ -25,7 +25,7 @@ Weight (Kilograms)
 Height (Meters)
 <input type="text" class="form-control" value="<?php echo explode(" ", $user->height)[0] ?>" name="height" autofocus>
 Age (Years)
-<input type="text" class="form-control" value="<?php echo explode(" ", $user->age)[1] ?>" name="age" autofocus>
+<input type="text" class="form-control" value="<?php echo explode(" ", $user->age)[0] ?>" name="age" autofocus>
 
 <label>Profile Picture</label>
 <input type="file" class="form-control" name="userfile" size="20" />

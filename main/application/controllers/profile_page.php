@@ -129,7 +129,7 @@ class Profile_page extends CI_Controller {
 			}
 			else{
 				$config['image_library'] = 'gd2';
-				$config['source_image'] = "./assets/img/profile/{$user_id}" . ".jpg";
+				$config['source_image'] = "assets/img/profile/{$user_id}" . ".jpg";
 				$config['quality'] = 100;
 				$config['maintain_ratio'] = TRUE;
 				$config['width'] =200;

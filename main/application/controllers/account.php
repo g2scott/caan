@@ -178,14 +178,18 @@
 				$user = new User(); // this class autoloaded 
 		
 				$user->user_name = $this->input->post('username');
-				$user->first = $this->input->post('first');
-				$user->last = $this->input->post('last');
+				// $user->first = $this->input->post('first');
+				// $user->last = $this->input->post('last');
 				$clearPassword = $this->input->post('password');
 				$user->encryptPassword($clearPassword);
 				$user->email = $this->input->post('email');
 				$user->about_me_text = $_POST['about_me_text'];
 				 
 				$this->load->model('user_model');
+				
+				$this->db->trans_start();
+				$this->user_model->insert($user);
+				$this->db->trans_complete();
 		
 				$this->load->view('Account/login_form');
 			}

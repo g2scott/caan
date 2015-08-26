@@ -39,10 +39,10 @@ $config['cdn_url']	= '';
 |
 | Typically this will be your index.php file, unless you've renamed it to
 | something else. If you are using mod_rewrite to remove the page set this
-| variable so that it is blank.
+| variable so that it is blank.  ****BLANK FOR REWRITING
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -56,11 +56,11 @@ $config['index_page'] = '';
 | 'AUTO'			Default - auto detects
 | 'PATH_INFO'		Uses the PATH_INFO
 | 'QUERY_STRING'	Uses the QUERY_STRING
-| 'REQUEST_URI'		Uses the REQUEST_URI
+| 'REQUEST_URI'		Uses the REQUEST_URI  USED********FOR REWRITING
 | 'ORIG_PATH_INFO'	Uses the ORIG_PATH_INFO
 |
 */
-$config['uri_protocol']	= 'REQUEST_URI';
+$config['uri_protocol']	= 'AUTO';
 
 /*
 |--------------------------------------------------------------------------
